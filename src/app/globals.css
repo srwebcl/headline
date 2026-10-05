@@ -1,26 +1,440 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+  Sistema de color Headline
+  - Base: gris suave (matiz del "head" del logo), blanco y casi negro.
+    Acento único: lila institucional (#8E4A9B, del logo).
+  - El amarillo del logo (--dot) sólo aparece como "punto" de firma, nunca en UI.
+  - Cada bloque declara un tono (.tone-paper = gris, .tone-white, .tone-ink, .tone-lila) que define
+    variables locales (--bg, --fg, --muted, --line, --accent, --accent-fg).
+    Tailwind las consume vía @theme (bg-bg, text-fg, border-line, text-accent...).
+  - Esquinas rectas en todo el sitio (radius 0). Excepción documentada: el punto (círculo).
+*/
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  /* Gris suave: el gris del logo (#63656A) aclarado; mismo matiz, fondo luminoso. */
+  --paper: #e2e3e6;
+  --paper-2: #d7d8dc;
+  --fg-paper: #1a191d;
+  --muted-paper: #4f5056;
+  --line-paper: #c4c5ca;
+  --accent-paper: var(--lila);
+
+  --light: #f5f4f2;
+  --light-2: #ecebe7;
+
+  /* Tinta sobre blanco */
+  --fg-light: #1a191d;
+  --muted-light: #5c5a61;
+  --line-light: #d9d6d1;
+
+  --ink: #18171b;
+  --ink-2: #222026;
+  --fg-ink: #f3f1f5;
+  --muted-ink: #a9a5af;
+  --line-ink: #35323a;
+
+  --lila: #8e4a9b;
+  --lila-deep: #7a3d87;
+  --lila-light: #c18fcd;
+  --on-lila: #ffffff;
+  --muted-lila: #f1e6f3;
+
+  --white: #fefefe;
+  --white-2: #f3f2f0;
+
+  --dot: #f2e300;
+  --gutter: clamp(20px, 5vw, 72px);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --paper: #26272b;
+    --paper-2: #303136;
+    --fg-paper: #eeecf0;
+    --muted-paper: #b3b2b8;
+    --line-paper: #3a3b40;
+
+    --light: #121115;
+    --light-2: #19181d;
+    --fg-light: #eeecf0;
+    --muted-light: #a39fa9;
+    --line-light: #2c2a31;
+
+    --ink: #0b0a0d;
+    --ink-2: #16151a;
+    --line-ink: #2a2830;
+
+    --white: #19181d;
+    --white-2: #222026;
+
+    --lila: #c18fcd;
+    --lila-deep: #6e3779;
+    --muted-lila: #eadcee;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.tone-paper {
+  --bg: var(--paper);
+  --bg-2: var(--paper-2);
+  --fg: var(--fg-paper);
+  --muted: var(--muted-paper);
+  --line: var(--line-paper);
+  --accent: var(--accent-paper);
+  --accent-fg: #ffffff;
+  --logo-ink: color-mix(in oklab, var(--fg-paper) 72%, transparent);
+}
+
+/* Claro: color original de la barra de navegación (blanco cálido; casi negro en modo oscuro). */
+.tone-light {
+  --bg: var(--light);
+  --bg-2: var(--light-2);
+  --fg: var(--fg-light);
+  --muted: var(--muted-light);
+  --line: var(--line-light);
+  --accent: var(--lila);
+  --accent-fg: #ffffff;
+}
+
+/* Blanco: secciones luminosas (autoridad, clientes, paneles, formularios). */
+.tone-white {
+  --bg: var(--white);
+  --bg-2: var(--white-2);
+  --fg: var(--fg-light);
+  --muted: var(--muted-light);
+  --line: var(--line-light);
+  --accent: var(--lila);
+  --accent-fg: #ffffff;
+  --logo-ink: color-mix(in oklab, var(--fg-light) 72%, transparent);
+}
+
+.tone-ink {
+  --bg: var(--ink);
+  --bg-2: var(--ink-2);
+  --fg: var(--fg-ink);
+  --muted: var(--muted-ink);
+  --line: var(--line-ink);
+  --accent: var(--lila-light);
+  --accent-fg: var(--ink);
+  --logo-ink: color-mix(in oklab, var(--fg-ink) 70%, transparent);
+}
+
+.tone-lila {
+  --bg: var(--lila-deep);
+  --bg-2: color-mix(in oklab, var(--lila-deep) 85%, black);
+  --fg: var(--on-lila);
+  --muted: var(--muted-lila);
+  --line: color-mix(in oklab, white 28%, transparent);
+  --accent: var(--on-lila);
+  --accent-fg: var(--lila-deep);
+  --logo-ink: var(--on-lila);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-dot: var(--dot);
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --ease-out: var(--ease-out);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 96px;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--lila);
+    color: #ffffff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 1360px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* Titulares: peso ligero; el énfasis usa el mismo font en semibold. */
+  .display {
+    font-weight: 200;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+  .display strong {
+    font-weight: 600;
+  }
+  .display em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* Punto amarillo de la marca, firma tipográfica al final de titulares clave. */
+  .brand-dot {
+    display: inline-block;
+    width: 0.16em;
+    height: 0.16em;
+    margin-left: 0.06em;
+    border-radius: 999px;
+    background: var(--dot);
+    vertical-align: baseline;
+  }
+
+  /* Logos monocromos (máscaras generadas por scripts/process-logos.mjs). */
+  .logo-mask {
+    background-color: var(--logo-ink);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    transition: background-color 0.3s var(--ease-out);
+  }
+  a:hover .logo-mask,
+  .logo-mask:hover {
+    background-color: var(--accent);
+  }
+
+  .prose-body p + p {
+    margin-top: 1.1em;
+  }
+}
+
+/*
+  Movimiento. Todo es CSS para que el HTML del servidor sea siempre visible:
+  - .rise: entrada del hero al cargar (secuencia vía --d).
+  - .hero-bg: la fotografía del hero se asienta lentamente.
+  - .reveal: entrada al hacer scroll con animation-timeline: view() cuando hay soporte.
+*/
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.45em);
+  }
+}
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+}
+
+/* Campo de líneas de los fondos oscuros (InkField): se concentra a la derecha,
+   lejos del texto, y aparece con un fundido suave. */
+.ink-field {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 30%, black 70%);
+  mask-image: linear-gradient(to right, transparent 0%, rgb(0 0 0 / 0.35) 30%, black 70%);
+}
+/* Variante tenue para secciones oscuras: las líneas viven en la zona vacía (arriba a la
+   derecha, junto a títulos alineados a la izquierda) y se desvanecen hacia el contenido. */
+.ink-field--quiet {
+  -webkit-mask-image: radial-gradient(ellipse 70% 75% at 88% 12%, black 0%, rgb(0 0 0 / 0.45) 45%, transparent 80%);
+  mask-image: radial-gradient(ellipse 70% 75% at 88% 12%, black 0%, rgb(0 0 0 / 0.45) 45%, transparent 80%);
+}
+
+/* Marco lila del panel de servicios (Home): se dibuja lado por lado al hacer scroll,
+   con el mismo trazo que la línea de "Nuestro modelo". */
+.panel-frame {
+  view-timeline-name: --panel;
+}
+.frame-top { transform-origin: left center; }
+.frame-right { transform-origin: center top; }
+.frame-bottom { transform-origin: right center; }
+.frame-left { transform-origin: center bottom; }
+@keyframes frame-x { from { transform: scaleX(0); } }
+@keyframes frame-y { from { transform: scaleY(0); } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .frame-top, .frame-right, .frame-bottom, .frame-left {
+      animation-timeline: --panel;
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .frame-top { animation-name: frame-x; animation-range: entry 10% entry 45%; }
+    .frame-right { animation-name: frame-y; animation-range: entry 40% entry 75%; }
+    .frame-bottom { animation-name: frame-x; animation-range: entry 70% cover 45%; }
+    .frame-left { animation-name: frame-y; animation-range: cover 40% cover 55%; }
+  }
+}
+
+@keyframes ink-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ink-field {
+    animation: ink-in 2.2s var(--ease-out) 0.3s both;
+  }
+}
+
+/* Nuestro modelo (Home): la línea se dibuja uniendo las etapas, los números suben
+   desde su máscara y luego aparece cada texto, en el orden del método. */
+.method {
+  view-timeline-name: --method;
+}
+@keyframes method-line {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes method-num {
+  from {
+    transform: translateY(105%);
+  }
+}
+@keyframes method-text {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+.method-line {
+  transform-origin: left center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .method-line,
+    .method-num,
+    .method-text {
+      animation-timeline: --method;
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .method-line {
+      animation-name: method-line;
+      animation-range: cover 6% cover 34%;
+    }
+    .method-num {
+      animation-name: method-num;
+      animation-range: cover calc(8% + var(--i) * 7%) cover calc(26% + var(--i) * 7%);
+    }
+    .method-text {
+      animation-name: method-text;
+      animation-range: cover calc(12% + var(--i) * 7%) cover calc(30% + var(--i) * 7%);
+    }
+  }
+}
+
+/* Carrusel infinito de logos (Nuestros clientes): bordes desvanecidos, pausa con hover
+   o con el botón (data-paused). Estático con movimiento reducido. */
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+.marquee {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: marquee 110s linear infinite;
+  }
+  .marquee:hover .marquee-track,
+  .marquee[data-paused] .marquee-track {
+    animation-play-state: paused;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee,
+  .marquee-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 2rem;
+  }
+  .marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .marquee-track[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+/* Barra de avance del titular rotativo (la duración llega inline). */
+@keyframes hero-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.hero-progress {
+  transform-origin: left center;
+  animation: hero-progress linear both;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.9s var(--ease-out) both;
+    animation-delay: calc(var(--d, 0) * 1s);
+  }
+  .hero-bg {
+    animation: settle 2.4s var(--ease-out) both;
+  }
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal var(--ease-out) both;
+      animation-timeline: view();
+      /* Rango en px: igual de rápido para bloques bajos o muy altos. */
+      animation-range: entry calc(var(--d, 0) * 160px) entry calc(240px + var(--d, 0) * 160px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Fotografía de contenido: un poco más contenida en modo oscuro para no encandilar. */
+@media (prefers-color-scheme: dark) {
+  main img:not([aria-hidden]):not([alt=""]) {
+    filter: brightness(0.82) contrast(1.04);
+  }
 }

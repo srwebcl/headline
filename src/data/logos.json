@@ -1,0 +1,290 @@
+{
+  "labchile-teva": {
+    "name": "Laboratorio Chile / Teva",
+    "src": "/logos/labchile-teva.png",
+    "width": 489,
+    "height": 140
+  },
+  "abbott": {
+    "name": "Abbott",
+    "src": "/logos/abbott.png",
+    "width": 559,
+    "height": 140
+  },
+  "merck": {
+    "name": "Merck",
+    "src": "/logos/merck.png",
+    "width": 883,
+    "height": 140
+  },
+  "adium": {
+    "name": "Adium",
+    "src": "/logos/adium.png",
+    "width": 503,
+    "height": 140
+  },
+  "virbac": {
+    "name": "Virbac",
+    "src": "/logos/virbac.png",
+    "width": 296,
+    "height": 140
+  },
+  "zoetis": {
+    "name": "Zoetis",
+    "src": "/logos/zoetis.png",
+    "width": 371,
+    "height": 140
+  },
+  "janssen": {
+    "name": "Janssen",
+    "src": "/logos/janssen.png",
+    "width": 328,
+    "height": 140
+  },
+  "jjmd": {
+    "name": "Johnson & Johnson Medical Device",
+    "src": "/logos/jjmd.png",
+    "width": 567,
+    "height": 140
+  },
+  "grunenthal": {
+    "name": "Grünenthal",
+    "src": "/logos/grunenthal.png",
+    "width": 273,
+    "height": 140
+  },
+  "organon": {
+    "name": "Organon",
+    "src": "/logos/organon.png",
+    "width": 913,
+    "height": 140
+  },
+  "sanderson": {
+    "name": "Sanderson",
+    "src": "/logos/sanderson.png",
+    "width": 817,
+    "height": 140
+  },
+  "boehringer": {
+    "name": "Boehringer Ingelheim",
+    "src": "/logos/boehringer.png",
+    "width": 468,
+    "height": 140
+  },
+  "csl-behring": {
+    "name": "CSL Behring",
+    "src": "/logos/csl-behring.png",
+    "width": 673,
+    "height": 140
+  },
+  "cien": {
+    "name": "CIEN",
+    "src": "/logos/cien.png",
+    "width": 382,
+    "height": 140
+  },
+  "axon": {
+    "name": "Axon Pharma",
+    "src": "/logos/axon.png",
+    "width": 898,
+    "height": 140
+  },
+  "ausenco": {
+    "name": "Ausenco",
+    "src": "/logos/ausenco.png",
+    "width": 747,
+    "height": 140
+  },
+  "jej": {
+    "name": "JEJ",
+    "src": "/logos/jej.png",
+    "width": 326,
+    "height": 140
+  },
+  "gardilcic": {
+    "name": "Constructora Gardilcic",
+    "src": "/logos/gardilcic.png",
+    "width": 524,
+    "height": 140
+  },
+  "sierra-gorda": {
+    "name": "Sierra Gorda",
+    "src": "/logos/sierra-gorda.png",
+    "width": 454,
+    "height": 140
+  },
+  "mas-errazuriz": {
+    "name": "Mas Errázuriz",
+    "src": "/logos/mas-errazuriz.png",
+    "width": 713,
+    "height": 140
+  },
+  "geovita": {
+    "name": "Geovita",
+    "src": "/logos/geovita.png",
+    "width": 678,
+    "height": 140
+  },
+  "joy-global": {
+    "name": "Joy Global",
+    "src": "/logos/joy-global.png",
+    "width": 1389,
+    "height": 140
+  },
+  "yamana": {
+    "name": "Yamana Gold",
+    "src": "/logos/yamana.png",
+    "width": 306,
+    "height": 140
+  },
+  "irc": {
+    "name": "IRC",
+    "src": "/logos/irc.png",
+    "width": 163,
+    "height": 140
+  },
+  "fundamenta": {
+    "name": "Fundamenta",
+    "src": "/logos/fundamenta.png",
+    "width": 637,
+    "height": 140
+  },
+  "tecsa": {
+    "name": "Tecsa",
+    "src": "/logos/tecsa.png",
+    "width": 712,
+    "height": 140
+  },
+  "paz": {
+    "name": "Paz Froimovich",
+    "src": "/logos/paz.png",
+    "width": 140,
+    "height": 140
+  },
+  "henkel": {
+    "name": "Henkel",
+    "src": "/logos/henkel.png",
+    "width": 251,
+    "height": 140
+  },
+  "ascenty": {
+    "name": "Ascenty",
+    "src": "/logos/ascenty.png",
+    "width": 602,
+    "height": 140
+  },
+  "dynatrace": {
+    "name": "Dynatrace",
+    "src": "/logos/dynatrace.png",
+    "width": 789,
+    "height": 140
+  },
+  "xerox": {
+    "name": "Xerox",
+    "src": "/logos/xerox.png",
+    "width": 640,
+    "height": 140
+  },
+  "vertiv": {
+    "name": "Vertiv",
+    "src": "/logos/vertiv.png",
+    "width": 568,
+    "height": 140
+  },
+  "micron": {
+    "name": "Micron",
+    "src": "/logos/micron.png",
+    "width": 676,
+    "height": 140
+  },
+  "arcserve": {
+    "name": "Arcserve",
+    "src": "/logos/arcserve.png",
+    "width": 984,
+    "height": 140
+  },
+  "latamwin": {
+    "name": "Latamwin",
+    "src": "/logos/latamwin.png",
+    "width": 579,
+    "height": 140
+  },
+  "kepler": {
+    "name": "Kepler Data Recovery",
+    "src": "/logos/kepler.png",
+    "width": 477,
+    "height": 140
+  },
+  "union-europea": {
+    "name": "Delegación de la Unión Europea",
+    "src": "/logos/union-europea.png",
+    "width": 163,
+    "height": 140
+  },
+  "bcn": {
+    "name": "Biblioteca del Congreso Nacional",
+    "src": "/logos/bcn.png",
+    "width": 509,
+    "height": 140
+  },
+  "itpo": {
+    "name": "ITPO, Indian Trade Promotion Organisation",
+    "src": "/logos/itpo.png",
+    "width": 378,
+    "height": 140
+  },
+  "embajada-india": {
+    "name": "Embajada de la India en Chile",
+    "src": "/logos/embajada-india.png",
+    "width": 492,
+    "height": 140
+  },
+  "oktoberfest": {
+    "name": "Oktoberfest Chile",
+    "src": "/logos/oktoberfest.png",
+    "width": 242,
+    "height": 140
+  },
+  "expo-mujer": {
+    "name": "Expo Mujer",
+    "src": "/logos/expo-mujer.png",
+    "width": 250,
+    "height": 140
+  },
+  "feria-naciones": {
+    "name": "Feria de las Naciones",
+    "src": "/logos/feria-naciones.png",
+    "width": 400,
+    "height": 140
+  },
+  "expo-reciclaje": {
+    "name": "Expo Reciclaje",
+    "src": "/logos/expo-reciclaje.png",
+    "width": 271,
+    "height": 140
+  },
+  "leaders-league": {
+    "name": "Leaders League",
+    "src": "/logos/leaders-league.png",
+    "width": 462,
+    "height": 140
+  },
+  "sello-transforma": {
+    "name": "Sello Transforma",
+    "src": "/logos/sello-transforma.png",
+    "width": 140,
+    "height": 140
+  },
+  "amcham": {
+    "name": "AmCham Chile",
+    "src": "/logos/amcham.png",
+    "width": 1150,
+    "height": 140
+  },
+  "pr-latam": {
+    "name": "PR LATAM",
+    "src": "/logos/pr-latam.png",
+    "width": 536,
+    "height": 140
+  }
+}

@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sitio web Headline
 
-## Getting Started
+Next.js 16 (App Router, 100% estático) + Tailwind v4. Diseño editorial inspirado en parla.cl; contenido según
+el documento maestro *HEADLINE, Arquitectura y copywriting del sitio web* (no incluido en el repo).
 
-First, run the development server:
+Requiere Node 20+.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local   # completar RESEND_API_KEY para el formulario
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # build de producción
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Dónde está cada cosa
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Qué | Dónde |
+|---|---|
+| Todo el texto (capacidades, casos, equipo, clientes, contacto) | `src/data/content.ts` |
+| Colores, tipografía, tonos de bloque (claro / oscuro / lila), animaciones | `src/app/globals.css` |
+| Logos de clientes y reconocimientos (máscaras monocromas) | `public/logos/`, generados con `node scripts/process-logos.mjs` (requiere la carpeta de logos originales `../Logos Clientes`, fuera del repo) |
+| Logo Headline (color y versión para fondo oscuro) | `public/brand/` |
+| Fotografía (provisoria, Unsplash vía Picsum, uso libre) | `public/images/` |
+| Formulario de contacto (server action + Resend) | `src/app/contacto/` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Agregar contenido
 
-## Learn More
+- **Insight:** agregar un objeto al arreglo `insights` en `content.ts` (imagen en `public/insights/`). Aparece en Home, `/insights`, su página y el sitemap. Los 6 actuales vienen de headline.cl/blog.
+- **Equipo:** en `team` (10 personas) reemplazar los 8 espacios `pending: true` por `name`, `role` y `photo` (retrato vertical 4:5 en `public/team/`). Las fotos de las socias se agregan con `photo` en `leadership`.
+- **Redirecciones:** las URLs del sitio actual (`/la-agencia`, `/blog`, `/post/...`, etc.) redirigen con 301 a las nuevas; ver `next.config.ts`.
+- **Logo nuevo:** copiarlo a la carpeta de clientes, sumarlo a `LOGOS` en `scripts/process-logos.mjs`, correr el script y usar su slug en `industries`.
 
-To learn more about Next.js, take a look at the following resources:
+## Pendientes antes de publicar (checklist del documento, sección 21)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Buscar `TODO` en el código. Principales:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Validar autorización de uso de logos (faltan Snap, Clínica Bersant y Focco).
+- Confirmar oficina (el sitio actual dice 915 y 916), WhatsApp corporativo y dominio en `site.url`.
+- Retratos de las socias y nombre, cargo y foto de los 8 integrantes del equipo ampliado.
+- Fecha/fuente del claim Marca Ciudadana / Merco (caso Laboratorio Chile).
+- Reemplazar fotografía provisoria por fotografía documental propia.
+- Configurar `RESEND_API_KEY` (ver `.env.example`) y revisar la política de privacidad con asesoría legal.

@@ -42,7 +42,7 @@ export default async function CapabilityPage({ params }: PageProps<"/que-hacemos
       <section className="py-20 md:py-28">
         <div className="wrap grid gap-14 lg:grid-cols-12">
           {/* Texto justificado; el primer párrafo en lila como entrada, con filete lila a la izquierda. */}
-          <Reveal className="prose-body border-l-2 border-accent pl-6 text-justify text-lg leading-relaxed text-muted [hyphens:auto] md:pl-8 lg:col-span-7 [&>p:first-child]:text-xl [&>p:first-child]:font-normal [&>p:first-child]:leading-snug [&>p:first-child]:text-accent md:[&>p:first-child]:text-[1.6rem]">
+          <Reveal className="prose-body border-l-2 border-accent pl-6 text-left text-lg leading-relaxed text-muted [hyphens:none] [text-wrap:pretty] md:pl-8 md:text-justify lg:col-span-7 [&>p:first-child]:text-xl [&>p:first-child]:font-normal [&>p:first-child]:leading-snug [&>p:first-child]:text-accent md:[&>p:first-child]:text-left md:[&>p:first-child]:text-[1.6rem]">
             {c.body.map((p) => (
               <p key={p}>{p}</p>
             ))}

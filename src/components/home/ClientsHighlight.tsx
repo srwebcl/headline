@@ -22,7 +22,7 @@ export function ClientsHighlight() {
             <Dot />
         </h2>
         <p className="mx-auto mt-5 max-w-[60ch] text-lg leading-relaxed text-muted">
-          Salud, minería, construcción, tecnología e instituciones.
+          Salud, minería, energía, tecnología, construcción, consumo e instituciones.
         </p>
         <div className="mx-auto mt-14 max-w-[1180px]">
           <LogoMarquee slugs={allLogos} label="Clientes de Headline" />

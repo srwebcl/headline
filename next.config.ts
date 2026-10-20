@@ -32,6 +32,8 @@ const nextConfig: NextConfig = {
     return [
       ...legacyPages.map(([source, destination]) => ({ source, destination, permanent: true })),
       ...legacyPosts,
+      // Los casos ya no tienen página propia: cada uno vive como tarjeta en /casos.
+      { source: "/casos/:slug", destination: "/casos", permanent: true },
     ];
   },
 };

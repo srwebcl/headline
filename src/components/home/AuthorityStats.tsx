@@ -7,7 +7,7 @@ type Stat = { value: string; label: string };
 /**
  * Destacados de "Quiénes somos". Al entrar en pantalla:
  * - los recuadros suben en secuencia (negro / lila alternados),
- * - una línea amarilla se dibuja en la parte superior de cada uno,
+ * - una línea lila se dibuja en la parte superior de cada uno,
  * - las cifras cuentan desde 0 hasta su valor (el texto se actualiza por ref, sin re-render).
  * El HTML del servidor trae los valores finales (SEO / sin JS). Con movimiento reducido no hay animación.
  */
@@ -60,7 +60,7 @@ export function AuthorityStats({ stats }: { stats: Stat[] }) {
           style={{ "--i": i } as React.CSSProperties}
           className={`stat ${i % 2 === 0 ? "tone-ink" : "tone-lila"} relative flex min-h-[210px] flex-col justify-between overflow-hidden bg-bg p-6 text-left text-fg md:p-7`}
         >
-          <span aria-hidden className="stat-bar absolute inset-x-0 top-0 h-[3px] bg-[var(--dot)]" />
+          <span aria-hidden className="stat-bar absolute inset-x-0 top-0 h-0.5 bg-[var(--lila-light)]" />
           <p className="text-[clamp(3.2rem,5vw,4.6rem)] font-semibold leading-none tracking-tight text-accent tabular-nums">
             {h.value.startsWith("+") && "+"}
             <span

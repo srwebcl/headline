@@ -28,8 +28,8 @@ export const nav = [
   { label: "Qué hacemos", href: "/que-hacemos" },
   { label: "Nuestro modelo", href: "/nuestro-modelo" },
   { label: "Clientes", href: "/clientes" },
-  { label: "Casos", href: "/casos" },
-  { label: "Insights", href: "/insights" },
+  { label: "Casos de Éxito", href: "/casos" },
+  { label: "Blog", href: "/insights" },
 ];
 
 export const CTA = { label: "Conversemos", href: "/contacto" };
@@ -198,18 +198,61 @@ export const capabilities: Capability[] = [
 /* Modelo                                                              */
 /* ------------------------------------------------------------------ */
 
-export const model = [
+export type ModelDeliverable = {
+  code: string;
+  title: string;
+  description: string;
+};
+
+export type ModelStep = {
+  num: string;
+  name: string;
+  short: string;
+  goal: string;
+  description: string;
+  items: string[];
+  deliverables: ModelDeliverable[];
+};
+
+export const model: ModelStep[] = [
   {
     num: "01",
     name: "Escuchar",
     short: "Entender contexto, expectativas, diagnóstico y stakeholders.",
     goal: "Comprender el entorno antes de definir la respuesta.",
+    description:
+      "Ninguna estrategia eficaz nace de supuestos. En Headline iniciamos cada proceso con una inmersión rigurosa en la realidad de la organización: analizamos los objetivos del negocio, recogemos las expectativas del equipo directivo, auditamos las comunicaciones vigentes y mapeamos a los líderes de opinión y grupos de interés prioritarios para fundamentar cada decisión con inteligencia estratégica.",
     items: [
-      "Contexto",
-      "Expectativas de los directivos",
+      "Contexto y expectativas directivas",
       "Diagnóstico de comunicaciones",
       "KOL / mapa de stakeholders",
-      "Recomendaciones",
+      "Recomendaciones estratégicas",
+    ],
+    deliverables: [
+      {
+        code: "01.1",
+        title: "Contexto y expectativas directivas",
+        description:
+          "Entrevistas en profundidad con líderes y directores para alinear la comunicación con los objetivos y prioridades estratégicas del negocio.",
+      },
+      {
+        code: "01.2",
+        title: "Diagnóstico integral de comunicaciones",
+        description:
+          "Auditoría de canales, coherencia del relato corporativo, tono editorial y análisis de la percepción histórica de la marca.",
+      },
+      {
+        code: "01.3",
+        title: "Mapa de stakeholders y KOL",
+        description:
+          "Identificación y priorización de grupos de interés, autoridades regulatorias, líderes gremiales y actores clave del ecosistema.",
+      },
+      {
+        code: "01.4",
+        title: "Recomendaciones estratégicas",
+        description:
+          "Hallazgos prioritarios, detección de riesgos latentes y oportunidades de diferenciación para la toma de decisiones.",
+      },
     ],
   },
   {
@@ -217,23 +260,119 @@ export const model = [
     name: "Planificar",
     short: "Definir estrategia, pilares, mensajes, acciones, objetivos y KPIs.",
     goal: "Transformar los hallazgos en una estrategia accionable.",
+    description:
+      "La inteligencia de entorno se convierte en un plan estructurado y con sentido de negocio. Definimos la narrativa corporativa, articulamos pilares temáticos que sustentan la reputación y construimos mensajes adaptados a cada audiencia. Cada iniciativa se planifica con un cronograma táctico, voceros definidos y metas claras que orientan los recursos hacia resultados medibles.",
     items: [
       "Diseño de un plan estratégico de comunicaciones",
-      "Construcción de pilares y mensajes claves.",
+      "Construcción de pilares y mensajes clave",
       "Creación del plan de acción",
       "Definición de objetivos y KPIs",
+    ],
+    deliverables: [
+      {
+        code: "02.1",
+        title: "Plan estratégico de comunicaciones",
+        description:
+          "Hoja de ruta integral que conecta los desafíos corporativos con los requerimientos de relacionamiento y posicionamiento.",
+      },
+      {
+        code: "02.2",
+        title: "Pilares y mensajes clave",
+        description:
+          "Construcción del relato central, argumentos diferenciadores y matrices de mensajes segmentadas por audiencia.",
+      },
+      {
+        code: "02.3",
+        title: "Plan de acción y calendario",
+        description:
+          "Cronograma de hitos, campañas institucionales, planes de contenido y selección estratégica de canales de difusión.",
+      },
+      {
+        code: "02.4",
+        title: "Definición de objetivos y KPIs",
+        description:
+          "Establecimiento de indicadores de gestión, cobertura cualitativa, posicionamiento y cumplimiento de metas.",
+      },
     ],
   },
   {
     num: "03",
     name: "Visibilizar",
-    short: "Activar el plan, movilizar embajadores, implementar acciones y evaluar impacto.",
-    goal: "Activar la estrategia y evaluar su impacto.",
+    short: "Activar el plan, movilizar embajadores y desplegar acciones de comunicación.",
+    goal: "Activar la estrategia y visibilizar los mensajes ante audiencias clave.",
+    description:
+      "Desplegamos el plan con consistencia en todos los puntos de contacto. Movilizamos a líderes corporativos como voceros autorizados, activamos programas de embajadores institucionales en plataformas de influencia profesional y gestionamos una presencia sólida en medios y debates públicos. Convertimos los mensajes estratégicos en conversaciones de impacto que generan credibilidad y reputación.",
     items: [
-      "Socialización del plan",
+      "Socialización interna del plan",
       "Programa de embajadores / LinkedIn",
-      "Implementación de acciones",
-      "Evaluación del impacto",
+      "Implementación de acciones y campañas",
+      "Despliegue de vocerías y medios",
+    ],
+    deliverables: [
+      {
+        code: "03.1",
+        title: "Socialización interna del plan",
+        description:
+          "Alineamiento de equipos y voceros para asegurar coherencia cultural y comunicacional en toda la organización.",
+      },
+      {
+        code: "03.2",
+        title: "Programa de embajadores y LinkedIn",
+        description:
+          "Estrategia de posicionamiento de ejecutivos y líderes de opinión en redes profesionales para amplificar la voz de la compañía.",
+      },
+      {
+        code: "03.3",
+        title: "Implementación de acciones y campañas",
+        description:
+          "Ejecución de iniciativas de contenidos, eventos corporativos, relaciones públicas y proyectos con propósito institucional.",
+      },
+      {
+        code: "03.4",
+        title: "Despliegue de vocerías y medios",
+        description:
+          "Gestión proactiva de prensa, tribunas de opinión especializadas y posicionamiento en temas clave de la agenda pública.",
+      },
+    ],
+  },
+  {
+    num: "04",
+    name: "Evaluar",
+    short: "Medir resultados, evaluar cumplimiento de KPIs y calibrar el impacto.",
+    goal: "Medir el impacto de las acciones y retroalimentar la estrategia.",
+    description:
+      "Nuestro modelo opera como un ciclo de retroalimentación continua. Evaluamos el cumplimiento de los KPIs, monitoreamos las conversaciones y medimos la evolución de la percepción pública de la marca. Esta información permite calibrar periódicamente la estrategia, optimizar la toma de decisiones y responder oportunamente a los cambios en el entorno.",
+    items: [
+      "Medición de objetivos y KPIs",
+      "Monitoreo de reputación y medios",
+      "Análisis de efectividad e impacto",
+      "Calibración y mejora continua",
+    ],
+    deliverables: [
+      {
+        code: "04.1",
+        title: "Medición de objetivos y KPIs",
+        description:
+          "Evaluación cuantitativa y cualitativa del alcance, cumplimiento de hitos y rendimiento de cada iniciativa.",
+      },
+      {
+        code: "04.2",
+        title: "Monitoreo de reputación y medios",
+        description:
+          "Seguimiento en tiempo real de cobertura, share of voice, tono editorial y evolución de la conversación digital.",
+      },
+      {
+        code: "04.3",
+        title: "Análisis de efectividad e impacto",
+        description:
+          "Informes de inteligencia reputacional para determinar la incidencia real de la comunicación en los objetivos del negocio.",
+      },
+      {
+        code: "04.4",
+        title: "Calibración y mejora continua",
+        description:
+          "Ajuste continuo de mensajes, canales y prioridades para asegurar que la estrategia evolucione junto al entorno.",
+      },
     ],
   },
 ];
@@ -243,7 +382,6 @@ export const model = [
 /* ------------------------------------------------------------------ */
 
 // TODO(checklist): validar autorización de uso de logos y escritura oficial.
-// Snap y Clínica Bersant figuran en el documento pero no tienen logo en la carpeta.
 export const industries = [
   {
     slug: "salud",
@@ -251,32 +389,63 @@ export const industries = [
     logos: [
       "labchile-teva", "abbott", "merck", "boehringer", "janssen", "jjmd", "organon", "grunenthal",
       "zoetis", "csl-behring", "adium", "virbac", "sanderson", "axon", "cien",
+      "astrazeneca", "gsk", "o-boticario", "snab", "stiefel", "fundacion-san-cristobal", "fundacion-aire", "garden-house", "sochidiab",
     ],
   },
   {
     slug: "mineria-industria",
-    name: "Minería e industria",
-    logos: ["sierra-gorda", "yamana", "joy-global", "ausenco", "gardilcic", "jej", "mas-errazuriz", "geovita"],
+    name: "Minería, industria e infraestructura",
+    logos: [
+      "sierra-gorda", "yamana", "joy-global", "ausenco", "gardilcic", "jej", "mas-errazuriz", "geovita",
+      "aeropuerto-diego-aracena", "sk-comsa", "comin", "eminic", "buffer", "aerotas",
+    ],
   },
   {
-    slug: "construccion-inmobiliario",
-    name: "Construcción e inmobiliario",
-    logos: ["tecsa", "henkel", "irc", "fundamenta", "paz"],
+    slug: "energia",
+    name: "Energía",
+    logos: ["engie", "solarity", "cce"],
   },
   {
     slug: "tecnologia",
     name: "Tecnología",
-    logos: ["xerox", "micron", "vertiv", "dynatrace", "arcserve", "ascenty", "kepler", "latamwin"],
+    logos: [
+      "adobe", "xerox", "micron", "vertiv", "dynatrace", "arcserve", "ascenty", "kepler", "latamwin",
+      "nubox", "atrapalo", "comscore", "atentus", "instituto-3ie", "finfast", "xentic",
+    ],
+  },
+  {
+    slug: "construccion-inmobiliario",
+    name: "Construcción e inmobiliario",
+    logos: [
+      "tecsa", "henkel", "irc", "fundamenta", "paz",
+      "absalon", "tres-l", "engel-volkers", "construtec", "basco", "grupo-isa", "ferbocar", "nexo",
+    ],
+  },
+  {
+    slug: "automotriz",
+    name: "Automotriz",
+    logos: ["scania", "infiniti", "gama-leasing"],
+  },
+  {
+    slug: "consumo-servicios",
+    name: "Consumo y servicios",
+    logos: [
+      "baker-mckenzie", "sodexo", "canal-13", "triumph", "flores", "emma", "disal", "kdm",
+      "puerto-caldera", "muelles-de-penco", "brunapoli",
+    ],
   },
   {
     slug: "instituciones",
     name: "Instituciones",
-    logos: ["union-europea", "bcn", "itpo", "embajada-india"],
+    logos: ["union-europea", "bcn", "itpo", "embajada-india", "municipalidad-iquique", "pnuma", "focco"],
   },
   {
     slug: "ferias-entretenimiento",
     name: "Ferias y entretenimiento",
-    logos: ["oktoberfest", "expo-mujer", "feria-naciones", "expo-reciclaje"],
+    logos: [
+      "oktoberfest", "expo-mujer", "feria-naciones", "expo-reciclaje",
+      "expo-india", "diwali", "grupo-security", "seleccion-croacia",
+    ],
   },
 ];
 
@@ -293,6 +462,8 @@ export type Case = {
   actions: string[];
   result?: string;
   note?: string;
+  image: string;
+  imageAlt: string;
 };
 
 // TODO(checklist): confirmar que cada caso puede publicarse con nombre y verificar resultados y fechas.
@@ -302,6 +473,8 @@ export const cases: Case[] = [
     client: "TECSA",
     area: "Posicionamiento y gestión de riesgos",
     title: "Posicionamiento y gestión de riesgos del Grupo TECSA",
+    image: "/cases/tecsa.jpg",
+    imageAlt: "Ingenieros y directivos revisando planos en obra de gran envergadura de TECSA",
     challenge:
       "Fortalecer el valor de la marca a través de los años, gestionando oportunamente riesgos y potenciando oportunidades del contexto. Apoyar, desde las comunicaciones estratégicas, las metas comerciales y reputacionales del grupo.",
     actions: [
@@ -316,6 +489,8 @@ export const cases: Case[] = [
     client: "Congreso Nacional / BCN",
     area: "Modernización y vinculación ciudadana",
     title: "Modernización del Congreso Nacional y vinculación ciudadana",
+    image: "/cases/congreso-nacional.jpg",
+    imageAlt: "Equipo de asesores y parlamentarios analizando datos y modernización en el Congreso Nacional",
     challenge:
       "Transformar la gestión parlamentaria incorporando tecnología y procedimientos para agilizar el estudio de proyectos y la tramitación de leyes. Al mismo tiempo, favorecer la vinculación ciudadana y la comprensión de las leyes por parte de la ciudadanía.",
     actions: [
@@ -330,6 +505,8 @@ export const cases: Case[] = [
     client: "Chile-India / ITPO",
     area: "Promoción de negocios",
     title: "Promoción de negocios Chile-India",
+    image: "/cases/chile-india.jpg",
+    imageAlt: "Cumbre bilateral y rueda de negocios internacional entre delegaciones de Chile e India",
     challenge:
       "Favorecer la llegada de empresas de India a Chile, principalmente en tecnología y manufactura, y promover el intercambio entre ambos países a través de ITPO.",
     actions: [
@@ -343,6 +520,8 @@ export const cases: Case[] = [
     client: "AEH",
     area: "Grupos de interés y acceso a tratamiento",
     title: "Acceso a tratamiento para el Angioedema Hereditario",
+    image: "/cases/angioedema-hereditario.jpg",
+    imageAlt: "Mesa multisectorial de salud analizando acceso a tratamientos y Ley Ricarte Soto",
     challenge:
       "Lograr que el tratamiento biológico de alto costo para esta enfermedad rara fuera financiado mediante instrumentos estatales.",
     actions: [
@@ -357,6 +536,8 @@ export const cases: Case[] = [
     client: "Puerto Caldera",
     area: "Sustentabilidad y vinculación con la comunidad",
     title: "Puerto Caldera, plataforma portuaria de Atacama",
+    image: "/cases/puerto-caldera.jpg",
+    imageAlt: "Terminal portuario y grúas de carga en Puerto Caldera, Región de Atacama",
     challenge:
       "Posicionarlo como principal plataforma portuaria de Atacama para empresas del norte de Chile y Argentina, considerando sus condiciones climáticas y continuidad operacional.",
     actions: [
@@ -371,6 +552,8 @@ export const cases: Case[] = [
     client: "Laboratorio Chile / Teva",
     area: "Construcción de reputación",
     title: "Laboratorio Chile: una marca con alta aprobación ciudadana",
+    image: "/cases/laboratorio-chile.jpg",
+    imageAlt: "Especialistas en control de calidad en planta farmacéutica de Laboratorio Chile",
     challenge:
       "Construir una marca con alta aprobación ciudadana, reconocida por su trabajo por la salud de los chilenos y su contribución al crecimiento del país.",
     actions: [
@@ -387,12 +570,16 @@ export const cases: Case[] = [
     client: "Constructora Gardilcic",
     area: "Comunicaciones estratégicas para el crecimiento",
     title: "Comunicaciones estratégicas para el crecimiento de Constructora Gardilcic",
+    image: "/cases/gardilcic.jpg",
+    imageAlt: "Ingenieros de Constructora Gardilcic en faena de minería subterránea en Chile",
     challenge:
       "Proteger y fortalecer su imagen en grupos de interés, incorporando las comunicaciones estratégicas en todas sus áreas.",
     actions: [
       "Plan anual de comunicaciones con diagnóstico de contexto, proyección de riesgos y relacionamiento con grupos de interés.",
       "Comunicación permanente con colaboradores y capacitaciones de comunicación efectiva, comunicación en crisis y simulacros.",
     ],
+    result:
+      "Consolidación de una cultura preventiva, protección de la reputación corporativa y alineamiento comunicacional en faenas mineras.",
   },
 ];
 
@@ -665,3 +852,12 @@ export const insights: Insight[] = [
     ]
   }
 ];
+
+export const contactServices = [
+  "Posicionamiento y reputación corporativa",
+  "Prevención y gestión de crisis",
+  "Relaciones institucionales y vinculación con grupos de interés",
+  "Comunicación interna",
+  "Vocerías y habilidades comunicacionales",
+  "Otro motivo",
+] as const;

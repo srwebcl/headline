@@ -15,10 +15,11 @@ const HEIGHT = 140;
 
 const C = "Logos Clientes ";
 const R = "otros logos - reconocimiento";
+const N = "Material Nuevo/Logos restantes (clientes)";
 
 /** [slug, nombre visible, archivo, opciones] */
 const LOGOS = [
-  // Salud
+  // --- Salud ---
   ["labchile-teva", "Laboratorio Chile / Teva", `${C}/01 Salud/logo-labchile-teva.webp`],
   ["abbott", "Abbott", `${C}/01 Salud/Abbott_Laboratories_logo.svg`],
   ["merck", "Merck", `${C}/01 Salud/merck.jpg`],
@@ -34,7 +35,17 @@ const LOGOS = [
   ["csl-behring", "CSL Behring", `${C}/01 Salud/CSLBehring_RGB_highres.jpg`],
   ["cien", "CIEN", `${C}/01 Salud/05cc77_c90f5949e558409a9e620c778864ed5a~mv2.png`],
   ["axon", "Axon Pharma", `${C}/01 Salud/logo-axon 1 png.webp`],
-  // Minería e industrial
+  ["astrazeneca", "AstraZeneca", `${N}/Salud/astrazeneca.png`],
+  ["gsk", "GlaxoSmithKline", `${N}/Salud/Glaxo-SmithKline-PLC_company.png`],
+  ["o-boticario", "O Boticário", `${N}/Salud/O Boticario.webp`],
+  ["snab", "Snab", `${N}/Salud/Snab.png`],
+  ["stiefel", "Stiefel", `${N}/Salud/Stiefel.png`],
+  ["fundacion-san-cristobal", "Fundación Médica San Cristóbal", `${N}/Salud/clinica-fundacion-medica-san-cristobal-1582156729.png`],
+  ["fundacion-aire", "Fundación Aire", `${N}/Salud/fundación aire.png`],
+  ["garden-house", "Garden House", `${N}/Salud/garden house.png`],
+  ["sochidiab", "SOCHIDIAB", `${N}/Salud/sochidiab.jpg`],
+
+  // --- Minería, industria e infraestructura ---
   ["ausenco", "Ausenco", `${C}/02 Minería e Industrial/ausenco-logo.webp`],
   ["jej", "JEJ", `${C}/02 Minería e Industrial/logo-blanco-300x129.png`, { lightOnTransparent: true }],
   ["gardilcic", "Constructora Gardilcic", `${C}/02 Minería e Industrial/Gardilcic.png`],
@@ -43,13 +54,31 @@ const LOGOS = [
   ["geovita", "Geovita", `${C}/02 Minería e Industrial/6885_96.557.400-K.png`],
   ["joy-global", "Joy Global", `${C}/02 Minería e Industrial/Joy_Global_Logo.svg.webp`],
   ["yamana", "Yamana Gold", `${C}/02 Minería e Industrial/Logo_Yamana_Gold.svg`],
-  // Construcción e inmobiliario
+  ["aeropuerto-diego-aracena", "Consorcio Aeropuerto Diego Aracena", `${N}/Industrial minería infraestructura/consorcio aeropuerto diego de Aracena.png`],
+  ["sk-comsa", "SK Comsa", `${N}/Industrial minería infraestructura/SK COMSA.jpg`],
+  ["comin", "Comin SAC", `${N}/Industrial minería infraestructura/comin_sac_logo.jpg`],
+  ["eminic", "EMINIC", `${N}/Industrial minería infraestructura/EMINIC-logo-azul.png`],
+  ["buffer", "Buffer", `${N}/Industrial minería infraestructura/Buffer.png`],
+  ["aerotas", "Aerotas", `${N}/Industrial minería infraestructura/Aerotas.jpg`],
+
+  // --- Construcción e inmobiliario ---
   ["irc", "IRC", `${C}/03 Construcción e inmobiliario/IRC.jpg`],
   ["fundamenta", "Fundamenta", `${C}/03 Construcción e inmobiliario/Logo-fundamenta.webp`],
   ["tecsa", "Tecsa", `${C}/03 Construcción e inmobiliario/tecsa.jpg`],
   ["paz", "Paz Froimovich", `${C}/03 Construcción e inmobiliario/Paz.png`],
   ["henkel", "Henkel", `${C}/03 Construcción e inmobiliario/Henkel-Logo.svg.webp`],
-  // Tecnología
+  ["absalon", "Absalón", `${N}/Construcción inmobiliaria falta/absalon espinosa.jpg`, { crop: 8 }],
+  ["tres-l", "Inmobiliaria 3L", `${N}/Construcción inmobiliaria falta/3L.png`],
+  ["engel-volkers", "Engel & Völkers", `${N}/Construcción inmobiliaria falta/Engel & Volkers.png`],
+  ["construtec", "Construtec", `${N}/Construcción inmobiliaria falta/Construtec.png`, { darkBg: true }],
+  ["basco", "Basco Arquitectura", `${N}/Construcción inmobiliaria falta/basco.png`],
+  ["grupo-isa", "Grupo ISA", `${N}/Construcción inmobiliaria falta/grupo Isa.png`],
+  ["ferbocar", "Ferbocar", `${N}/Construcción inmobiliaria falta/Ferbocar.jpg`],
+  ["nexo", "Nexo Inmobiliaria", `${N}/Construcción inmobiliaria falta/nexo.jpg`],
+
+  // --- Tecnología ---
+  // Adobe primero en la lista como solicitó la agencia
+  ["adobe", "Adobe", `${N}/Tecnología /adobe, poner de los primeros.png`],
   ["ascenty", "Ascenty", `${C}/04 Tecnología/ascenty.png`],
   ["dynatrace", "Dynatrace", `${C}/04 Tecnología/Dynatrace.webp`],
   ["xerox", "Xerox", `${C}/04 Tecnología/Xerox_logo.svg`],
@@ -58,25 +87,75 @@ const LOGOS = [
   ["arcserve", "Arcserve", `${C}/04 Tecnología/Arcserve.jpg`],
   ["latamwin", "Latamwin", `${C}/04 Tecnología/clientes02.png`],
   ["kepler", "Kepler Data Recovery", `${C}/04 Tecnología/logo_sobreblanco_bajada_ALTA.png`],
-  // Institucional
+  ["nubox", "Nubox", `${N}/Tecnología /Nubox.png`],
+  ["atrapalo", "Atrápalo", `${N}/Tecnología /Atrapalo.cl.jpg`],
+  ["comscore", "Comscore", `${N}/Tecnología /comscore.png`],
+  ["atentus", "Atentus", `${N}/Tecnología /atentus.jpg`],
+  ["instituto-3ie", "Instituto 3IE", `${N}/Tecnología /3ie.jpg`],
+  ["finfast", "Finfast", `${N}/Tecnología /finfast.png`],
+  ["xentic", "Xentic", `${N}/Tecnología /xentic.png`],
+
+  // --- Energía ---
+  ["engie", "Engie", `${N}/Energía /Engie.png`],
+  ["solarity", "Solarity", `${N}/Energía /Solariity.png`],
+  ["cce", "CCE Generación", `${N}/Energía /CCE.jpeg`],
+
+  // --- Automotriz ---
+  ["scania", "Scania", `${N}/automotriz /Scania.png`],
+  ["infiniti", "Infiniti", `${N}/automotriz /Infiniti.png`],
+  ["gama-leasing", "Gama Leasing", `${N}/automotriz /Gama Leasing.png`, { lightOnTransparent: true }],
+
+  // --- Consumo y servicios ---
+  ["baker-mckenzie", "Baker McKenzie", `${N}/Consumo de servicios/Backet Mackenzie.webp`],
+  ["sodexo", "Sodexo", `${N}/Consumo de servicios/Sodexo.png`],
+  ["canal-13", "Canal 13", `${N}/Consumo de servicios/Canal 13.png`],
+  ["triumph", "Triumph", `${N}/Consumo de servicios/Triumph.png`],
+  ["flores", "Flores", `${N}/Consumo de servicios/Flores.png`],
+  ["emma", "Emma The Sleep Company", `${N}/Consumo de servicios/Emma.jpg`],
+  ["disal", "Disal", `${N}/Consumo de servicios/Disal.png`],
+  ["kdm", "KDM Empresas", `${N}/Consumo de servicios/KDM grupo Urbaser Daner.png`],
+  ["puerto-caldera", "Puerto Caldera", `${N}/Consumo de servicios/puerto caldera.jpg`],
+  ["muelles-de-penco", "Muelles de Penco", `${N}/Consumo de servicios/muelles_de_penco_s_a_logo.jpg`],
+  ["brunapoli", "Brunapoli", `${N}/Consumo de servicios/Brunapoli.jpg`],
+
+  // --- Institucional ---
   ["union-europea", "Delegación de la Unión Europea", `${C}/05 institucional/images.png`, { lumOnly: true }],
   ["bcn", "Biblioteca del Congreso Nacional", `${C}/05 institucional/biblioteca congreso nacional.png`],
   ["itpo", "ITPO, Indian Trade Promotion Organisation", `${C}/05 institucional/india-trade-promotion-organisation-itpo-logo-vector-2023.png`],
   ["embajada-india", "Embajada de la India en Chile", `${C}/05 institucional/Embajada de la India en Chile.png`],
-  // Ferias y entretenimiento
+  ["municipalidad-iquique", "Ilustre Municipalidad de Iquique", `${N}/Industrial minería infraestructura/iquique.png`, { lightOnTransparent: true }],
+  ["pnuma", "PNUMA", `${N}/Instituciones /PNUMA.jpg`],
+  ["focco", "Focco", `${N}/logo focco.png`],
+
+  // --- Ferias y entretenimiento ---
   ["oktoberfest", "Oktoberfest Chile", `${C}/06 Ferias y entretencion/oktoberfest.webp`],
   ["expo-mujer", "Expo Mujer", `${C}/06 Ferias y entretencion/expo mujer.png`],
   ["feria-naciones", "Feria de las Naciones", `${C}/06 Ferias y entretencion/Feria de las Naciones.jpg`],
   ["expo-reciclaje", "Expo Reciclaje", `${C}/06 Ferias y entretencion/expo_reciclables_logo_neu_14416.webp`],
-  // Reconocimientos y alianzas
+  ["expo-india", "Expo India", `${N}/Eventos/Expoindia.jpg`],
+  ["diwali", "Festival Diwali", `${N}/Eventos/Diwali.png`],
+  ["grupo-security", "Grupo Security", `${N}/Eventos/Grupo Security.png`],
+  ["seleccion-croacia", "Federación Croata de Fútbol", `${N}/Eventos/croatia-national-team-logo-footylogos-1200.webp`],
+
+  // --- Reconocimientos y alianzas ---
   ["leaders-league", "Leaders League", `${R}/LOGO leaders-league.png`],
   ["sello-transforma", "Sello Transforma", `${R}/Logo-Sello-Transforma-2024-292x300.png`],
   ["amcham", "AmCham Chile", `${R}/amcham-chile- logo.webp`, { lumOnly: true, floor: 0.3 }],
   ["pr-latam", "PR LATAM", `${R}/LOGO-PR-LATAM-COLOR-3.webp`],
 ];
 
-async function toMask(file, { lightOnTransparent = false, lumOnly = false, floor = 0.08 } = {}) {
-  const input = await sharp(path.join(ROOT, file), { density: 300 })
+async function toMask(file, { lightOnTransparent = false, lumOnly = false, floor = 0.08, darkBg = false, crop = 0 } = {}) {
+  let pipeline = sharp(path.join(ROOT, file), { density: 300 });
+  if (crop > 0) {
+    const meta = await pipeline.metadata();
+    pipeline = sharp(path.join(ROOT, file), { density: 300 }).extract({
+      left: crop,
+      top: crop,
+      width: meta.width - crop * 2,
+      height: meta.height - crop * 2,
+    });
+  }
+  const input = await pipeline
     .resize({ height: 800, withoutEnlargement: false, fit: "inside" })
     .ensureAlpha()
     .raw()
@@ -90,9 +169,14 @@ async function toMask(file, { lightOnTransparent = false, lumOnly = false, floor
   for (let i = 0; i < px; i++) {
     const r = data[i * 4], g = data[i * 4 + 1], b = data[i * 4 + 2], a = data[i * 4 + 3] / 255;
     const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-    // Fondo blanco (o transparente) = vacío; tinta = oscuridad o saturación.
     const sat = Math.max(r, g, b) - Math.min(r, g, b);
-    const ink = lightOnTransparent ? lum : lumOnly ? 255 - lum : Math.max(255 - lum, sat * 0.9);
+    let ink;
+    if (darkBg) {
+      const diffFromBg = Math.sqrt(Math.pow(r - 19, 2) + Math.pow(g - 19, 2) + Math.pow(b - 19, 2));
+      ink = Math.min(255, diffFromBg * 1.5 + sat);
+    } else {
+      ink = lightOnTransparent ? lum : lumOnly ? 255 - lum : Math.max(255 - lum, sat * 0.9);
+    }
     const v = ink * a;
     alpha[i] = v;
     if (v > max) max = v;
@@ -126,7 +210,7 @@ for (const [slug, name, file, opts] of LOGOS) {
   const img = await toMask(file, opts);
   const { width, height } = await img.toFile(path.join(OUT, `${slug}.png`));
   manifest[slug] = { name, src: `/logos/${slug}.png`, width, height };
-  console.log(`${slug.padEnd(18)} ${width}x${height}`);
+  console.log(`${slug.padEnd(25)} ${width}x${height}`);
 }
 
 await writeFile(MANIFEST, JSON.stringify(manifest, null, 2) + "\n");

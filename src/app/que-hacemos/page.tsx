@@ -101,7 +101,7 @@ export default function QueHacemosPage() {
         </div>
       </section>
 
-      <BlendImage src="/images/reunion.webp" alt="Mesa de trabajo con cuadernos y notas" />
+      <BlendImage src="/images/que-hacemos.webp" alt="Equipo de Headline en reunión de trabajo" />
 
       <ClosingCta title="Conversemos sobre tu desafío." />
     </>

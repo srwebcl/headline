@@ -6,11 +6,12 @@ import { CapabilitiesExplorer } from "@/components/home/CapabilitiesExplorer";
 import { ClientsHighlight } from "@/components/home/ClientsHighlight";
 import { HomeHero } from "@/components/home/HomeHero";
 import { InsightsCarousel } from "@/components/home/InsightsCarousel";
+import { MethodSection } from "@/components/home/MethodSection";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ClosingCta } from "@/components/ui/ClosingCta";
 import { InkField } from "@/components/ui/InkField";
 import { Reveal } from "@/components/ui/Reveal";
-import { capabilities, cases, insightCategories, insights, model } from "@/data/content";
+import { capabilities, cases, insightCategories, insights } from "@/data/content";
 import { Dot } from "@/components/ui/Dot";
 
 /*
@@ -23,7 +24,7 @@ export default function HomePage() {
       <HomeHero />
       <Authority />
       <Capabilities />
-      <Method />
+      <MethodSection />
       <Cases />
       <ClientsHighlight />
       <Insights />
@@ -64,53 +65,6 @@ function Capabilities() {
   );
 }
 
-/* Método: tres columnas en bloque oscuro (números finos, como Parla). */
-function Method() {
-  return (
-    <section className="tone-ink relative isolate overflow-clip bg-bg py-20 text-fg md:py-28">
-      <InkField density={24} intensity={0.55} speed={0.6} interactive={false} className="ink-field--quiet -z-10" />
-      <div className="wrap">
-        <Reveal className="max-w-[820px]">
-          <p className="eyebrow">Nuestro modelo</p>
-          <h2 className="display mt-5 text-[clamp(2.1rem,4.4vw,4rem)]">
-            Una mirada estratégica que parte por <em>entender</em>
-            <Dot />
-          </h2>
-          <p className="mt-6 max-w-[60ch] text-lg leading-relaxed text-muted">
-            Cada desafío requiere comprender el contexto antes de definir una respuesta. Nuestro modelo integra diagnóstico,
-            planificación, activación y evaluación para convertir la comunicación en una herramienta de gestión.
-          </p>
-        </Reveal>
-
-        {/* Entrada ligada al scroll (.method en globals.css): la línea une las etapas y los números suben en orden. */}
-        <ol className="method relative mt-16 grid md:grid-cols-3">
-          {model.map((step, i) => (
-            <li
-              key={step.num}
-              style={{ "--i": i } as React.CSSProperties}
-              className="border-t border-line py-10 md:border-l md:border-t-0 md:px-10 md:pb-4 md:pt-10 md:first:border-l-0 md:first:pl-0"
-            >
-              <span className="block [clip-path:inset(0)]">
-                <span className="method-num block text-[clamp(3.5rem,6vw,5.5rem)] font-thin leading-none text-accent">{step.num}</span>
-              </span>
-              <div className="method-text">
-                <h3 className="mt-8 text-sm font-semibold uppercase tracking-[0.14em]">{step.name}</h3>
-                <p className="mt-4 max-w-[34ch] leading-relaxed text-muted">{step.short}</p>
-              </div>
-            </li>
-          ))}
-          {/* Va al final para no alterar el :first-child de las etapas. */}
-          <span aria-hidden className="method-line absolute inset-x-0 top-0 hidden h-px bg-accent md:block" />
-        </ol>
-
-        <ButtonLink href="/nuestro-modelo" variant="outline" className="mt-12">
-          Conoce nuestro modelo
-        </ButtonLink>
-      </div>
-    </section>
-  );
-}
-
 /* Casos: 4 destacados en grilla 2x2 de alto uniforme; acentos oscuro y lila en diagonal. */
 function Cases() {
   const featured: { slug: string; tone: string }[] = [
@@ -141,7 +95,7 @@ function Cases() {
             return (
               <Reveal as="li" key={slug} delay={(i % 2) * 0.06} className={tone}>
                 <Link
-                  href={`/casos/${c.slug}`}
+                  href={`/casos#${c.slug}`}
                   className={`group flex h-full min-h-[260px] flex-col justify-between bg-bg p-8 text-fg transition-colors duration-300 md:min-h-[320px] md:p-10 ${
                     tone === "tone-white" ? "hover:bg-bg-2" : ""
                   }`}

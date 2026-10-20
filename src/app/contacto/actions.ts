@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { site } from "@/data/content";
+import { site, contactServices } from "@/data/content";
 
 const schema = z.object({
   nombre: z.string().trim().min(2, "Ingresa tu nombre y apellido."),
@@ -11,9 +11,15 @@ const schema = z.object({
   telefono: z
     .string()
     .trim()
-    .max(30)
-    .regex(/^[+\d\s()-]*$/, "Ingresa un teléfono válido.")
-    .optional(),
+    .min(1, "Ingresa tu número de teléfono.")
+    .refine(
+      (v) => {
+        const digits = v.replace(/\D/g, "");
+        return (digits.length === 11 && digits.startsWith("569")) || (digits.length === 9 && digits.startsWith("9"));
+      },
+      "Ingresa un teléfono válido en formato +56 9 xxxx xxxx."
+    ),
+  servicio: z.string().trim().min(1, "Selecciona un servicio de interés."),
   mensaje: z.string().trim().min(10, "Cuéntanos brevemente tu desafío (mínimo 10 caracteres).").max(4000),
 });
 
@@ -26,7 +32,7 @@ export type ContactState = {
 
 export async function sendContact(_prev: ContactState, formData: FormData): Promise<ContactState> {
   const raw = Object.fromEntries(
-    ["nombre", "empresa", "cargo", "email", "telefono", "mensaje"].map((k) => [k, String(formData.get(k) ?? "")]),
+    ["nombre", "empresa", "cargo", "email", "telefono", "servicio", "mensaje"].map((k) => [k, String(formData.get(k) ?? "")]),
   );
 
   // Honeypot: los bots suelen completar todos los campos.
@@ -67,13 +73,14 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
       from: process.env.CONTACT_FROM_EMAIL ?? "Sitio Headline <web@headline.cl>",
       to: [to],
       reply_to: data.email,
-      subject: `Nuevo contacto web: ${data.nombre} (${data.empresa})`,
+      subject: `Nuevo contacto web: ${data.nombre} (${data.empresa}) - ${data.servicio}`,
       text: [
         `Nombre: ${data.nombre}`,
         `Empresa: ${data.empresa}`,
         `Cargo: ${data.cargo || "-"}`,
         `Correo: ${data.email}`,
-        `Teléfono: ${data.telefono || "-"}`,
+        `Teléfono: ${data.telefono}`,
+        `Servicio de interés: ${data.servicio}`,
         "",
         data.mensaje,
       ].join("\n"),

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight } from "@phosphor-icons/react/ssr";
+import Image from "next/image";
 import { ClosingCta } from "@/components/ui/ClosingCta";
 import { PageHero } from "@/components/ui/PageHero";
 import { InkField } from "@/components/ui/InkField";
@@ -28,42 +27,64 @@ export default function CasosPage() {
         }
       />
 
+      {/* Grid de casos con fotografía limpia y diseño angular fiel al sistema de diseño Headline */}
       <section className="py-16 md:py-24">
-        <ul className="wrap">
-          {cases.map((c, i) => (
-            <Reveal as="li" key={c.slug} delay={0.04} className="border-b border-line first:border-t">
-              <Link
-                href={`/casos/${c.slug}`}
-                className="group relative isolate grid gap-x-10 gap-y-4 overflow-hidden px-4 py-10 md:px-8 lg:grid-cols-12 lg:items-center lg:py-14"
-              >
-                {/* Hover: barrido lila; cliente en blanco, número en amarillo y la flecha avanza. */}
-                <span
-                  aria-hidden
-                  className="absolute inset-0 -z-10 origin-left scale-x-0 bg-[var(--lila-deep)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100"
-                />
-                <span className="text-[clamp(1.8rem,2.6vw,2.3rem)] font-bold leading-none tracking-tight text-accent transition-colors duration-300 group-hover:text-[var(--dot)] lg:col-span-1">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="lg:col-span-4">
-                  <h2 className="text-[clamp(1.35rem,2vw,1.75rem)] font-semibold leading-tight tracking-tight transition-colors duration-300 group-hover:text-white">
-                    {c.client}
-                  </h2>
-                  <p className="mt-2 text-[13px] font-medium uppercase tracking-[0.12em] text-muted transition-colors duration-300 group-hover:text-white/75">
-                    {c.area}
-                  </p>
+        <div className="wrap">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            {cases.map((c, i) => (
+              <Reveal as="article" key={c.slug} delay={0.04 * i}>
+                {/* id: los enlaces del Home llevan a cada caso dentro de esta página (/casos#slug). */}
+                <div id={c.slug} className="group flex h-full scroll-mt-28 flex-col border border-line bg-bg transition-shadow duration-300 hover:shadow-[0_30px_60px_-40px_rgb(24_23_27/0.45)]">
+                  {/* Fotografía de portada limpia con relación 16:10 y bordes rectos */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-bg-2 border-b border-line">
+                    <Image
+                      src={c.image}
+                      alt={c.imageAlt || c.title}
+                      fill
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+
+                  {/* Cuerpo editorial de la tarjeta sin bordes redondeados */}
+                  <div className="flex flex-1 flex-col justify-between p-6 sm:p-8">
+                    <div>
+                      {/* Cliente */}
+                      <h2 className="text-[clamp(1.4rem,2vw,1.85rem)] font-bold tracking-tight text-fg">
+                        {c.client}
+                      </h2>
+
+                      {/* Subtítulo / Tesis del caso con barra lateral acentuada estilo Parla */}
+                      <p className="mt-4 border-l-2 border-accent pl-3.5 text-[15px] font-medium leading-snug text-fg/90">
+                        {c.title}
+                      </p>
+
+                      {/* Desafío estratégico */}
+                      <p className="mt-4 text-[14.5px] leading-relaxed text-muted">
+                        {c.challenge}
+                      </p>
+
+                      {/* Recuadro de resultado clave con color de fondo distinguible y bordes rectos */}
+                      {c.result && (
+                        <div className="relative isolate mt-6 overflow-hidden bg-[color-mix(in_oklab,var(--lila)_14%,var(--bg))] p-5 text-[14px] leading-relaxed text-fg">
+                          {/* Hover de la tarjeta: el recuadro se llena de morado (barrido desde la izquierda). */}
+                          <span
+                            aria-hidden
+                            className="absolute inset-0 -z-10 origin-left scale-x-0 bg-[var(--lila-deep)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+                          />
+                          <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-wider text-[var(--lila-deep)] transition-colors duration-300 group-hover:text-[var(--dot)]">
+                            Resultado clave
+                          </span>
+                          <p className="font-light leading-relaxed text-fg/90 transition-colors duration-300 group-hover:text-white">{c.result}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <p className="max-w-[60ch] leading-relaxed text-muted transition-colors duration-300 group-hover:text-white/85 lg:col-span-6">
-                  {c.challenge}
-                </p>
-                <ArrowUpRight
-                  aria-hidden
-                  size={22}
-                  className="hidden justify-self-end text-accent transition-[color,transform] duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[var(--dot)] lg:col-span-1 lg:block"
-                />
-              </Link>
-            </Reveal>
-          ))}
-        </ul>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="tone-ink relative isolate overflow-clip bg-bg py-20 text-fg md:py-28">

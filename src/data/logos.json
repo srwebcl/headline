@@ -89,6 +89,60 @@
     "width": 898,
     "height": 140
   },
+  "astrazeneca": {
+    "name": "AstraZeneca",
+    "src": "/logos/astrazeneca.png",
+    "width": 559,
+    "height": 140
+  },
+  "gsk": {
+    "name": "GlaxoSmithKline",
+    "src": "/logos/gsk.png",
+    "width": 413,
+    "height": 140
+  },
+  "o-boticario": {
+    "name": "O Boticário",
+    "src": "/logos/o-boticario.png",
+    "width": 242,
+    "height": 140
+  },
+  "snab": {
+    "name": "Snab",
+    "src": "/logos/snab.png",
+    "width": 425,
+    "height": 140
+  },
+  "stiefel": {
+    "name": "Stiefel",
+    "src": "/logos/stiefel.png",
+    "width": 405,
+    "height": 140
+  },
+  "fundacion-san-cristobal": {
+    "name": "Fundación Médica San Cristóbal",
+    "src": "/logos/fundacion-san-cristobal.png",
+    "width": 305,
+    "height": 140
+  },
+  "fundacion-aire": {
+    "name": "Fundación Aire",
+    "src": "/logos/fundacion-aire.png",
+    "width": 544,
+    "height": 140
+  },
+  "garden-house": {
+    "name": "Garden House",
+    "src": "/logos/garden-house.png",
+    "width": 163,
+    "height": 140
+  },
+  "sochidiab": {
+    "name": "SOCHIDIAB",
+    "src": "/logos/sochidiab.png",
+    "width": 157,
+    "height": 140
+  },
   "ausenco": {
     "name": "Ausenco",
     "src": "/logos/ausenco.png",
@@ -137,6 +191,42 @@
     "width": 306,
     "height": 140
   },
+  "aeropuerto-diego-aracena": {
+    "name": "Consorcio Aeropuerto Diego Aracena",
+    "src": "/logos/aeropuerto-diego-aracena.png",
+    "width": 478,
+    "height": 140
+  },
+  "sk-comsa": {
+    "name": "SK Comsa",
+    "src": "/logos/sk-comsa.png",
+    "width": 583,
+    "height": 140
+  },
+  "comin": {
+    "name": "Comin SAC",
+    "src": "/logos/comin.png",
+    "width": 604,
+    "height": 140
+  },
+  "eminic": {
+    "name": "EMINIC",
+    "src": "/logos/eminic.png",
+    "width": 321,
+    "height": 140
+  },
+  "buffer": {
+    "name": "Buffer",
+    "src": "/logos/buffer.png",
+    "width": 331,
+    "height": 140
+  },
+  "aerotas": {
+    "name": "Aerotas",
+    "src": "/logos/aerotas.png",
+    "width": 308,
+    "height": 140
+  },
   "irc": {
     "name": "IRC",
     "src": "/logos/irc.png",
@@ -165,6 +255,60 @@
     "name": "Henkel",
     "src": "/logos/henkel.png",
     "width": 251,
+    "height": 140
+  },
+  "absalon": {
+    "name": "Absalón",
+    "src": "/logos/absalon.png",
+    "width": 678,
+    "height": 140
+  },
+  "tres-l": {
+    "name": "Inmobiliaria 3L",
+    "src": "/logos/tres-l.png",
+    "width": 213,
+    "height": 140
+  },
+  "engel-volkers": {
+    "name": "Engel & Völkers",
+    "src": "/logos/engel-volkers.png",
+    "width": 520,
+    "height": 140
+  },
+  "construtec": {
+    "name": "Construtec",
+    "src": "/logos/construtec.png",
+    "width": 525,
+    "height": 140
+  },
+  "basco": {
+    "name": "Basco Arquitectura",
+    "src": "/logos/basco.png",
+    "width": 475,
+    "height": 140
+  },
+  "grupo-isa": {
+    "name": "Grupo ISA",
+    "src": "/logos/grupo-isa.png",
+    "width": 439,
+    "height": 140
+  },
+  "ferbocar": {
+    "name": "Ferbocar",
+    "src": "/logos/ferbocar.png",
+    "width": 440,
+    "height": 140
+  },
+  "nexo": {
+    "name": "Nexo Inmobiliaria",
+    "src": "/logos/nexo.png",
+    "width": 286,
+    "height": 140
+  },
+  "adobe": {
+    "name": "Adobe",
+    "src": "/logos/adobe.png",
+    "width": 535,
     "height": 140
   },
   "ascenty": {
@@ -215,6 +359,150 @@
     "width": 477,
     "height": 140
   },
+  "nubox": {
+    "name": "Nubox",
+    "src": "/logos/nubox.png",
+    "width": 585,
+    "height": 140
+  },
+  "atrapalo": {
+    "name": "Atrápalo",
+    "src": "/logos/atrapalo.png",
+    "width": 584,
+    "height": 140
+  },
+  "comscore": {
+    "name": "Comscore",
+    "src": "/logos/comscore.png",
+    "width": 852,
+    "height": 140
+  },
+  "atentus": {
+    "name": "Atentus",
+    "src": "/logos/atentus.png",
+    "width": 225,
+    "height": 140
+  },
+  "instituto-3ie": {
+    "name": "Instituto 3IE",
+    "src": "/logos/instituto-3ie.png",
+    "width": 133,
+    "height": 140
+  },
+  "finfast": {
+    "name": "Finfast",
+    "src": "/logos/finfast.png",
+    "width": 171,
+    "height": 140
+  },
+  "xentic": {
+    "name": "Xentic",
+    "src": "/logos/xentic.png",
+    "width": 370,
+    "height": 140
+  },
+  "engie": {
+    "name": "Engie",
+    "src": "/logos/engie.png",
+    "width": 393,
+    "height": 140
+  },
+  "solarity": {
+    "name": "Solarity",
+    "src": "/logos/solarity.png",
+    "width": 698,
+    "height": 140
+  },
+  "cce": {
+    "name": "CCE Generación",
+    "src": "/logos/cce.png",
+    "width": 342,
+    "height": 140
+  },
+  "scania": {
+    "name": "Scania",
+    "src": "/logos/scania.png",
+    "width": 268,
+    "height": 140
+  },
+  "infiniti": {
+    "name": "Infiniti",
+    "src": "/logos/infiniti.png",
+    "width": 358,
+    "height": 140
+  },
+  "gama-leasing": {
+    "name": "Gama Leasing",
+    "src": "/logos/gama-leasing.png",
+    "width": 540,
+    "height": 140
+  },
+  "baker-mckenzie": {
+    "name": "Baker McKenzie",
+    "src": "/logos/baker-mckenzie.png",
+    "width": 405,
+    "height": 140
+  },
+  "sodexo": {
+    "name": "Sodexo",
+    "src": "/logos/sodexo.png",
+    "width": 436,
+    "height": 140
+  },
+  "canal-13": {
+    "name": "Canal 13",
+    "src": "/logos/canal-13.png",
+    "width": 178,
+    "height": 140
+  },
+  "triumph": {
+    "name": "Triumph",
+    "src": "/logos/triumph.png",
+    "width": 157,
+    "height": 140
+  },
+  "flores": {
+    "name": "Flores",
+    "src": "/logos/flores.png",
+    "width": 994,
+    "height": 140
+  },
+  "emma": {
+    "name": "Emma The Sleep Company",
+    "src": "/logos/emma.png",
+    "width": 573,
+    "height": 140
+  },
+  "disal": {
+    "name": "Disal",
+    "src": "/logos/disal.png",
+    "width": 388,
+    "height": 140
+  },
+  "kdm": {
+    "name": "KDM Empresas",
+    "src": "/logos/kdm.png",
+    "width": 311,
+    "height": 140
+  },
+  "puerto-caldera": {
+    "name": "Puerto Caldera",
+    "src": "/logos/puerto-caldera.png",
+    "width": 491,
+    "height": 140
+  },
+  "muelles-de-penco": {
+    "name": "Muelles de Penco",
+    "src": "/logos/muelles-de-penco.png",
+    "width": 295,
+    "height": 140
+  },
+  "brunapoli": {
+    "name": "Brunapoli",
+    "src": "/logos/brunapoli.png",
+    "width": 140,
+    "height": 140
+  },
   "union-europea": {
     "name": "Delegación de la Unión Europea",
     "src": "/logos/union-europea.png",
@@ -239,6 +527,24 @@
     "width": 492,
     "height": 140
   },
+  "municipalidad-iquique": {
+    "name": "Ilustre Municipalidad de Iquique",
+    "src": "/logos/municipalidad-iquique.png",
+    "width": 265,
+    "height": 140
+  },
+  "pnuma": {
+    "name": "PNUMA",
+    "src": "/logos/pnuma.png",
+    "width": 182,
+    "height": 140
+  },
+  "focco": {
+    "name": "Focco",
+    "src": "/logos/focco.png",
+    "width": 323,
+    "height": 140
+  },
   "oktoberfest": {
     "name": "Oktoberfest Chile",
     "src": "/logos/oktoberfest.png",
@@ -261,6 +567,30 @@
     "name": "Expo Reciclaje",
     "src": "/logos/expo-reciclaje.png",
     "width": 271,
+    "height": 140
+  },
+  "expo-india": {
+    "name": "Expo India",
+    "src": "/logos/expo-india.png",
+    "width": 206,
+    "height": 140
+  },
+  "diwali": {
+    "name": "Festival Diwali",
+    "src": "/logos/diwali.png",
+    "width": 205,
+    "height": 140
+  },
+  "grupo-security": {
+    "name": "Grupo Security",
+    "src": "/logos/grupo-security.png",
+    "width": 140,
+    "height": 140
+  },
+  "seleccion-croacia": {
+    "name": "Federación Croata de Fútbol",
+    "src": "/logos/seleccion-croacia.png",
+    "width": 111,
     "height": 140
   },
   "leaders-league": {

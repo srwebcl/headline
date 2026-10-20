@@ -28,8 +28,9 @@ const terms = ["comunicaciones", "crisis", "reputación corporativa"];
 const ease = [0.16, 1, 0.3, 1] as const;
 const DURATION = 3.8; // segundos por frase
 
-function Ending({ last }: { last: boolean }) {
-  return last ? <span className="brand-dot" aria-hidden /> : <>.</>;
+// Todas las frases cierran con el punto amarillo de la marca (igual que el resto de los títulos).
+function Ending() {
+  return <span className="brand-dot" aria-hidden />;
 }
 
 export function HeroStatement() {
@@ -61,10 +62,10 @@ export function HeroStatement() {
 
       {/* Versión estática para movimiento reducido: el formato aprobado de tres líneas. */}
       <div aria-hidden className="display hidden text-[clamp(2.6rem,6.2vw,5.6rem)] leading-[1.02] motion-reduce:block">
-        {phrases.map((p, i) => (
+        {phrases.map((p) => (
           <span key={p.key} className="block pb-1">
             {p.verb} <em>{p.key}</em>
-            <Ending last={i === phrases.length - 1} />
+            <Ending />
           </span>
         ))}
       </div>
@@ -87,7 +88,7 @@ export function HeroStatement() {
                 <Fragment key="verb">{active.verb}</Fragment>,
                 <Fragment key="key">
                   <em>{active.key}</em>
-                  <Ending last={index === phrases.length - 1} />
+                  <Ending />
                 </Fragment>,
               ].map((line, i) => (
                 <motion.span

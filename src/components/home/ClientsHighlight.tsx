@@ -2,6 +2,7 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { LogoMarquee } from "@/components/home/LogoMarquee";
 import { Reveal } from "@/components/ui/Reveal";
 import { industries } from "@/data/content";
+import { Dot } from "@/components/ui/Dot";
 
 // Todos los clientes, intercalando industrias para que el carrusel no las agrupe.
 const allLogos = (() => {
@@ -17,10 +18,11 @@ export function ClientsHighlight() {
       <Reveal className="wrap text-center">
         <p className="eyebrow">Nuestros clientes</p>
         <h2 id="clientes-title" className="display mx-auto mt-5 max-w-[900px] text-[clamp(2.1rem,4.4vw,4rem)] leading-[1.06]">
-          Industrias donde la confianza es <em>fundamental</em>.
+          Industrias donde la confianza es <em>fundamental</em>
+            <Dot />
         </h2>
         <p className="mx-auto mt-5 max-w-[60ch] text-lg leading-relaxed text-muted">
-          Salud, minería, construcción, tecnología, instituciones y ferias.
+          Salud, minería, construcción, tecnología e instituciones.
         </p>
         <div className="mx-auto mt-14 max-w-[1180px]">
           <LogoMarquee slugs={allLogos} label="Clientes de Headline" />

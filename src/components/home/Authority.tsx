@@ -1,18 +1,20 @@
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/ssr";
+import { AuthorityStats } from "@/components/home/AuthorityStats";
 import { Reveal } from "@/components/ui/Reveal";
+import { Dot } from "@/components/ui/Dot";
 
 /**
  * Autoridad (Quiénes somos): primera sección después del hero, sobre fondo blanco.
  * Titular centrado + trayectoria y reconocimientos en una franja, y salida a /nosotros.
  * Copy del documento maestro (Home: bloque de autoridad; Nosotros: reconocimientos).
  */
-// +350 clientes: cifra validada por Headline. 6 industrias y 2 reconocimientos: documento maestro.
+// Cifras entregadas por Headline.
 const highlights = [
-  { value: "+20", label: "Años de experiencia" },
-  { value: "+350", label: "Clientes nacionales y multinacionales" },
-  { value: "6", label: "Industrias: salud, minería, construcción, tecnología, instituciones y ferias" },
-  { value: "2", label: "Reconocimientos: Leaders League y Sello Transforma" },
+  { value: "+20", label: "Años de experiencia." },
+  { value: "+350", label: "Clientes nacionales y multinacionales." },
+  { value: "+130", label: "Crisis abordadas con éxito." },
+  { value: "+100", label: "Campañas de awareness en diversos ámbitos." },
 ];
 
 export function Authority() {
@@ -22,27 +24,18 @@ export function Authority() {
         <Reveal className="mx-auto max-w-[980px] text-center">
           <p className="eyebrow">Quiénes somos</p>
           <h2 id="autoridad-title" className="display mt-5 text-[clamp(2.2rem,4.4vw,4rem)] leading-[1.04]">
-            Más de dos décadas acompañando decisiones que <em>importan</em>.
+            Más de dos décadas acompañando decisiones que <em>importan</em>
+            <Dot />
           </h2>
           <p className="mx-auto mt-6 max-w-[62ch] text-lg leading-relaxed text-muted">
-            Somos una consultoría estratégica que integra las comunicaciones al negocio de sus clientes para enfrentar escenarios
-            complejos, anticipar riesgos y construir relaciones de confianza.
+            Somos una consultora estratégica que integra las comunicaciones al negocio de sus clientes para impulsar sus objetivos,
+            aprovechar oportunidades y construir relaciones de confianza.
           </p>
         </Reveal>
 
         <Reveal delay={0.1} className="mx-auto mt-12 max-w-[1080px]">
-          {/* Cuatro destacados en negro y lila (los colores de la web), alternados. */}
-          <ul className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-            {highlights.map((h, i) => (
-              <li
-                key={h.label}
-                className={`${i % 2 === 0 ? "tone-ink" : "tone-lila"} flex min-h-[180px] flex-col justify-between bg-bg p-6 text-left text-fg md:p-7`}
-              >
-                <p className="text-[clamp(2.6rem,4vw,3.4rem)] font-extralight leading-none tracking-tight text-accent">{h.value}</p>
-                <p className="mt-6 max-w-[22ch] text-[15px] leading-snug text-muted">{h.label}</p>
-              </li>
-            ))}
-          </ul>
+          {/* Cuatro destacados en negro y lila, con entrada animada y conteo de cifras. */}
+          <AuthorityStats stats={highlights} />
           <p className="mt-10 text-center">
             <Link
               href="/nosotros"

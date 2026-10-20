@@ -5,7 +5,8 @@ import { useEffect, useRef } from "react";
 export const HERO_PAUSE_EVENT = "hero:pause";
 
 /**
- * Video de fondo del hero (ejecutivos frente a la ciudad: el "entorno").
+ * Video de fondo del hero: tres escenas de equipos trabajando (estrategia, análisis, colaboración)
+ * unidas con fundidos en un solo loop.
  * - Se renderiza con póster y sin autoplay: el póster es lo primero que se ve (LCP)
  *   y el video empieza sólo en el cliente.
  * - No se reproduce con prefers-reduced-motion ni con ahorro de datos (queda el póster).
@@ -62,12 +63,12 @@ export function HeroVideo({ className = "" }: { className?: string }) {
       loop
       playsInline
       preload="metadata"
-      poster="/images/hero-oficina-poster.webp"
+      poster="/images/hero-equipo-poster.webp"
       className={`pointer-events-none h-full w-full object-cover ${className}`}
     >
-      <source src="/video/hero-oficina-movil.mp4" type="video/mp4" media="(max-width: 767px)" />
-      <source src="/video/hero-oficina.webm" type="video/webm" />
-      <source src="/video/hero-oficina.mp4" type="video/mp4" />
+      <source src="/video/hero-equipo-movil.mp4" type="video/mp4" media="(max-width: 767px)" />
+      <source src="/video/hero-equipo.webm" type="video/webm" />
+      <source src="/video/hero-equipo.mp4" type="video/mp4" />
     </video>
   );
 }

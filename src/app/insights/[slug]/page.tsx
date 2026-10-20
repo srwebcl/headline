@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, LinkedinLogo } from "@phosphor-icons/react/ssr";
 import { ClosingCta } from "@/components/ui/ClosingCta";
 import { insightCategories, insights, site } from "@/data/content";
+import { Dotted } from "@/components/ui/Dot";
 
 export const dynamicParams = false;
 
@@ -44,7 +45,7 @@ export default async function InsightPage({ params }: PageProps<"/insights/[slug
             <ArrowLeft aria-hidden size={14} /> Insights
           </Link>
           <p className="eyebrow mt-10">{category?.name}</p>
-          <h1 className="display mt-4 text-[clamp(2.2rem,4.6vw,4rem)]">{post.title}</h1>
+          <h1 className="display title-in mt-4 text-[clamp(2.2rem,4.6vw,4rem)]"><Dotted>{post.title}</Dotted></h1>
           <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-y border-line py-4 text-sm text-muted">
             <span>
               {post.author}, <time dateTime={post.date}>{dateFmt.format(new Date(post.date))}</time>. {post.readingMinutes} min de lectura

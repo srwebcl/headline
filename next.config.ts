@@ -5,11 +5,15 @@ import { insights } from "./src/data/content";
 // redirigen de forma permanente a su equivalente para conservar el SEO.
 const legacyPages: [string, string][] = [
   ["/inicio", "/"],
+  ["/inicio/codigo-etica", "/codigo-de-etica"],
   ["/la-agencia", "/nosotros"],
   ["/lo-que-hacemos", "/que-hacemos"],
   ["/nuestros-clientes", "/clientes"],
   ["/casos-de-exito", "/casos"],
   ["/blog", "/insights"],
+  // Capacidades renombradas (URLs anteriores del sitio nuevo).
+  ["/que-hacemos/gestion-prevencion-riesgos", "/que-hacemos/prevencion-gestion-crisis"],
+  ["/que-hacemos/relaciones-institucionales", "/que-hacemos/relaciones-institucionales-grupos-interes"],
 ];
 
 const legacyPosts = insights.flatMap((post) => {

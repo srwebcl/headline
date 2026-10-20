@@ -76,6 +76,7 @@
 }
 
 .tone-paper {
+  --dot-color: var(--lila);
   --bg: var(--paper);
   --bg-2: var(--paper-2);
   --fg: var(--fg-paper);
@@ -88,6 +89,7 @@
 
 /* Claro: color original de la barra de navegación (blanco cálido; casi negro en modo oscuro). */
 .tone-light {
+  --dot-color: var(--dot);
   --bg: var(--light);
   --bg-2: var(--light-2);
   --fg: var(--fg-light);
@@ -99,6 +101,7 @@
 
 /* Blanco: secciones luminosas (autoridad, clientes, paneles, formularios). */
 .tone-white {
+  --dot-color: var(--dot);
   --bg: var(--white);
   --bg-2: var(--white-2);
   --fg: var(--fg-light);
@@ -110,6 +113,7 @@
 }
 
 .tone-ink {
+  --dot-color: var(--dot);
   --bg: var(--ink);
   --bg-2: var(--ink-2);
   --fg: var(--fg-ink);
@@ -121,6 +125,7 @@
 }
 
 .tone-lila {
+  --dot-color: var(--dot);
   --bg: var(--lila-deep);
   --bg-2: color-mix(in oklab, var(--lila-deep) 85%, black);
   --fg: var(--on-lila);
@@ -206,7 +211,8 @@
     height: 0.16em;
     margin-left: 0.06em;
     border-radius: 999px;
-    background: var(--dot);
+    /* Amarillo de marca; en fondos grises (.tone-paper) pasa a morado para que se note. */
+    background: var(--dot-color, var(--dot));
     vertical-align: baseline;
   }
 
@@ -267,31 +273,6 @@
 .ink-field--quiet {
   -webkit-mask-image: radial-gradient(ellipse 70% 75% at 88% 12%, black 0%, rgb(0 0 0 / 0.45) 45%, transparent 80%);
   mask-image: radial-gradient(ellipse 70% 75% at 88% 12%, black 0%, rgb(0 0 0 / 0.45) 45%, transparent 80%);
-}
-
-/* Marco lila del panel de servicios (Home): se dibuja lado por lado al hacer scroll,
-   con el mismo trazo que la línea de "Nuestro modelo". */
-.panel-frame {
-  view-timeline-name: --panel;
-}
-.frame-top { transform-origin: left center; }
-.frame-right { transform-origin: center top; }
-.frame-bottom { transform-origin: right center; }
-.frame-left { transform-origin: center bottom; }
-@keyframes frame-x { from { transform: scaleX(0); } }
-@keyframes frame-y { from { transform: scaleY(0); } }
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .frame-top, .frame-right, .frame-bottom, .frame-left {
-      animation-timeline: --panel;
-      animation-fill-mode: both;
-      animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
-    }
-    .frame-top { animation-name: frame-x; animation-range: entry 10% entry 45%; }
-    .frame-right { animation-name: frame-y; animation-range: entry 40% entry 75%; }
-    .frame-bottom { animation-name: frame-x; animation-range: entry 70% cover 45%; }
-    .frame-left { animation-name: frame-y; animation-range: cover 40% cover 55%; }
-  }
 }
 
 @keyframes ink-in {
@@ -386,6 +367,88 @@
   }
   .marquee-track[aria-hidden="true"] {
     display: none;
+  }
+}
+
+/* Ken Burns lento para fotografías de fondo (hero de servicios). */
+@keyframes kenburns {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.16) translate3d(-2.5%, -1.5%, 0);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .kenburns {
+    animation: kenburns 28s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+}
+
+/* Destacados de "Quiénes somos" (AuthorityStats): sólo se ocultan si JS los preparó (data-state). */
+.stats .stat,
+.stats .stat-bar {
+  transition:
+    opacity 0.8s var(--ease-out),
+    transform 0.9s var(--ease-out);
+  transition-delay: calc(var(--i) * 140ms);
+}
+.stats .stat-bar {
+  transform-origin: left center;
+  transition-delay: calc(var(--i) * 140ms + 350ms);
+}
+.stats[data-state="ready"] .stat {
+  opacity: 0;
+  transform: translateY(48px) scale(0.96);
+}
+.stats[data-state="ready"] .stat-bar {
+  transform: scaleX(0);
+}
+
+/* Entrada de los títulos de los heros: cortina de abajo hacia arriba + leve desplazamiento. */
+@keyframes title-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(-0.1em -0.2em -0.3em -0.2em);
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .title-in {
+    animation: title-in 1.1s var(--ease-out) both;
+    animation-delay: calc(var(--d, 0.15) * 1s);
+  }
+  .fade-up {
+    animation: fade-up 0.9s var(--ease-out) both;
+    animation-delay: calc(var(--d, 0) * 1s);
+  }
+}
+
+/* Etapas de /nuestro-modelo: el número sube desde su máscara y el contenido aparece al entrar cada etapa. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .step .step-num {
+      animation: method-num cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 70%;
+    }
+    .step .step-text {
+      animation: method-text cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-timeline: view();
+      animation-range: entry 20% entry 85%;
+    }
   }
 }
 

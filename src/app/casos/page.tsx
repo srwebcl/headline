@@ -6,6 +6,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { InkField } from "@/components/ui/InkField";
 import { Reveal } from "@/components/ui/Reveal";
 import { cases, citizenProjects } from "@/data/content";
+import { Dot, Dotted } from "@/components/ui/Dot";
 
 export const metadata: Metadata = {
   title: "Casos de éxito",
@@ -21,7 +22,8 @@ export default function CasosPage() {
         label="Casos"
         title={
           <>
-            Desafíos complejos que exigieron estrategia, relacionamiento y <em>capacidad de ejecución</em>.
+            Desafíos complejos que exigieron estrategia, relacionamiento y <em>capacidad de ejecución</em>
+            <Dot />
           </>
         }
       />
@@ -30,14 +32,34 @@ export default function CasosPage() {
         <ul className="wrap">
           {cases.map((c, i) => (
             <Reveal as="li" key={c.slug} delay={0.04} className="border-b border-line first:border-t">
-              <Link href={`/casos/${c.slug}`} className="group grid gap-x-10 gap-y-4 py-10 transition-colors hover:bg-bg-2 md:px-6 lg:grid-cols-12 lg:py-14">
-                <span className="text-sm font-light text-accent lg:col-span-1">{String(i + 1).padStart(2, "0")}</span>
+              <Link
+                href={`/casos/${c.slug}`}
+                className="group relative isolate grid gap-x-10 gap-y-4 overflow-hidden px-4 py-10 md:px-8 lg:grid-cols-12 lg:items-center lg:py-14"
+              >
+                {/* Hover: barrido lila; cliente en blanco, número en amarillo y la flecha avanza. */}
+                <span
+                  aria-hidden
+                  className="absolute inset-0 -z-10 origin-left scale-x-0 bg-[var(--lila-deep)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100"
+                />
+                <span className="text-[clamp(1.8rem,2.6vw,2.3rem)] font-bold leading-none tracking-tight text-accent transition-colors duration-300 group-hover:text-[var(--dot)] lg:col-span-1">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <div className="lg:col-span-4">
-                  <h2 className="text-[clamp(1.6rem,2.6vw,2.2rem)] font-semibold leading-tight tracking-tight group-hover:text-accent">{c.client}</h2>
-                  <p className="mt-2 text-[13px] font-medium uppercase tracking-[0.12em] text-muted">{c.area}</p>
+                  <h2 className="text-[clamp(1.35rem,2vw,1.75rem)] font-semibold leading-tight tracking-tight transition-colors duration-300 group-hover:text-white">
+                    {c.client}
+                  </h2>
+                  <p className="mt-2 text-[13px] font-medium uppercase tracking-[0.12em] text-muted transition-colors duration-300 group-hover:text-white/75">
+                    {c.area}
+                  </p>
                 </div>
-                <p className="max-w-[60ch] leading-relaxed text-muted lg:col-span-6">{c.challenge}</p>
-                <ArrowUpRight aria-hidden size={22} className="hidden justify-self-end text-muted transition-all group-hover:text-accent lg:col-span-1 lg:block" />
+                <p className="max-w-[60ch] leading-relaxed text-muted transition-colors duration-300 group-hover:text-white/85 lg:col-span-6">
+                  {c.challenge}
+                </p>
+                <ArrowUpRight
+                  aria-hidden
+                  size={22}
+                  className="hidden justify-self-end text-accent transition-[color,transform] duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[var(--dot)] lg:col-span-1 lg:block"
+                />
               </Link>
             </Reveal>
           ))}
@@ -48,7 +70,7 @@ export default function CasosPage() {
       <InkField density={24} intensity={0.55} speed={0.6} interactive={false} className="ink-field--quiet -z-10" />
         <div className="wrap">
           <Reveal className="max-w-[760px]">
-            <h2 className="display text-[clamp(2rem,3.8vw,3.4rem)]">Proyectos de vinculación ciudadana.</h2>
+            <h2 className="display text-[clamp(2rem,3.8vw,3.4rem)]"><Dotted>Proyectos de vinculación ciudadana.</Dotted></h2>
           </Reveal>
           <div className="mt-14 grid border-t border-line md:grid-cols-3">
             {citizenProjects.map((p, i) => (
@@ -62,7 +84,10 @@ export default function CasosPage() {
         </div>
       </section>
 
-      <ClosingCta title="Cuéntanos qué desafío enfrenta tu organización." />
+      <ClosingCta
+        title="Cuéntanos qué desafío enfrenta tu organización."
+        body="Analicemos cómo la comunicación puede ayudarte a fortalecer tu reputación, posicionar a tus líderes o enfrentar escenarios complejos."
+      />
     </>
   );
 }

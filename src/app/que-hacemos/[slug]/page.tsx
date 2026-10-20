@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/ssr";
+import { ArrowLeft, ArrowRight, Asterisk } from "@phosphor-icons/react/ssr";
 import { ClosingCta } from "@/components/ui/ClosingCta";
-import { PageHero } from "@/components/ui/PageHero";
+import { ServiceHero } from "@/components/services/ServiceHero";
+import { InkField } from "@/components/ui/InkField";
 import { Reveal } from "@/components/ui/Reveal";
 import { capabilities } from "@/data/content";
+import { Dotted } from "@/components/ui/Dot";
 
 export const dynamicParams = false;
 
@@ -35,39 +37,60 @@ export default async function CapabilityPage({ params }: PageProps<"/que-hacemos
 
   return (
     <>
-      <PageHero label={`${c.num}  ${c.name}`} title={c.title} image={c.image} />
+      <ServiceHero num={c.num} name={c.name} title={c.title} image={c.image} />
 
       <section className="py-20 md:py-28">
         <div className="wrap grid gap-14 lg:grid-cols-12">
-          <Reveal className="prose-body text-lg leading-relaxed text-muted lg:col-span-7 [&>p:first-child]:text-fg [&>p:first-child]:text-xl md:[&>p:first-child]:text-2xl [&>p:first-child]:font-light [&>p:first-child]:leading-snug">
+          {/* Texto justificado; el primer párrafo en lila como entrada, con filete lila a la izquierda. */}
+          <Reveal className="prose-body border-l-2 border-accent pl-6 text-justify text-lg leading-relaxed text-muted [hyphens:auto] md:pl-8 lg:col-span-7 [&>p:first-child]:text-xl [&>p:first-child]:font-normal [&>p:first-child]:leading-snug [&>p:first-child]:text-accent md:[&>p:first-child]:text-[1.6rem]">
             {c.body.map((p) => (
               <p key={p}>{p}</p>
             ))}
           </Reveal>
 
           {c.quote && (
-            <Reveal delay={0.1} as="div" className="lg:col-span-4 lg:col-start-9">
-              <blockquote className="border-l-2 border-accent pl-6 text-xl font-light leading-snug tracking-tight md:text-2xl">
-                {c.quote}
+            <Reveal delay={0.1} as="div" className="lg:col-span-5 lg:col-start-8 xl:col-span-4 xl:col-start-9">
+              {/* Texto destacado en el lila corporativo, con el amarillo de la marca como acento. */}
+              <blockquote className="tone-lila relative bg-bg p-8 text-fg md:p-10">
+                <span aria-hidden className="block h-0.5 w-12 bg-[var(--dot)]" />
+                <p className="mt-6 text-xl font-light leading-snug tracking-tight md:text-[1.4rem]">{c.quote}</p>
               </blockquote>
             </Reveal>
           )}
         </div>
       </section>
 
-      <section className="border-t border-line bg-bg-2 py-20 md:py-28">
+      {/* Soluciones en bloque oscuro con el campo de líneas, como los heros y "Nuestro modelo". */}
+      <section className="tone-ink relative isolate overflow-clip bg-bg py-20 text-fg md:py-28">
+        <InkField density={24} intensity={0.55} speed={0.6} interactive={false} className="ink-field--quiet -z-10" />
         <div className="wrap">
           <Reveal>
-            <h2 className="display text-[clamp(1.9rem,3.4vw,3rem)]">{c.listLabel}</h2>
+            <h2 className="display text-[clamp(1.9rem,3.4vw,3rem)]"><Dotted>{c.listLabel}</Dotted></h2>
           </Reveal>
-          <ol className="mt-12 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-3">
+          {/* Misma viñeta que el Home (asterisco lila); hover con el lila corporativo. */}
+          <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {c.items.map((item, i) => (
-              <Reveal as="li" key={item} delay={(i % 3) * 0.05} className="flex min-h-[132px] flex-col justify-between gap-6 border-b border-r border-line bg-bg p-7">
-                <span className="text-sm font-light text-accent">{String(i + 1).padStart(2, "0")}</span>
-                <span className="text-lg leading-snug">{item}</span>
+              <Reveal
+                as="li"
+                key={item}
+                delay={(i % 3) * 0.05}
+                className="group relative isolate flex min-h-[132px] items-end overflow-hidden border border-line bg-bg-2/80 p-7 backdrop-blur-[2px]"
+              >
+                <span
+                  aria-hidden
+                  className="absolute inset-0 -z-10 origin-bottom scale-y-0 bg-[var(--lila-deep)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-y-100"
+                />
+                {/* Asterisco de marca: gira 360° al pasar el cursor (estático con movimiento reducido). */}
+                <Asterisk
+                  aria-hidden
+                  weight="bold"
+                  size={26}
+                  className="absolute left-7 top-7 text-accent transition-[color,rotate] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-[360deg] group-hover:text-[var(--dot)] motion-reduce:transition-colors motion-reduce:group-hover:rotate-0"
+                />
+                <span className="text-lg leading-snug transition-colors duration-300 group-hover:text-white">{item}</span>
               </Reveal>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 
@@ -94,7 +117,7 @@ export default async function CapabilityPage({ params }: PageProps<"/que-hacemos
         </div>
       </nav>
 
-      <ClosingCta title={c.closing} />
+      <ClosingCta title={c.closing} body={c.closingBody} />
     </>
   );
 }

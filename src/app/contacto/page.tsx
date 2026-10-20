@@ -3,6 +3,7 @@ import { ArrowUpRight } from "@phosphor-icons/react/ssr";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/data/content";
 import { ContactForm } from "./ContactForm";
+import { Dot } from "@/components/ui/Dot";
 
 export const metadata: Metadata = {
   title: "Contacto",
@@ -22,8 +23,9 @@ export default function ContactoPage() {
     <section className="py-16 md:py-24">
       <div className="wrap grid gap-16 lg:grid-cols-12 lg:gap-10">
         <Reveal className="lg:col-span-5">
-          <h1 className="display text-[clamp(2.4rem,4.8vw,4.2rem)]">
-            Conversemos sobre el desafío que enfrenta tu <em>organización</em>.
+          <h1 className="display title-in text-[clamp(2.4rem,4.8vw,4.2rem)]">
+            Conversemos sobre el desafío que enfrenta tu <em>organización</em>
+            <Dot />
           </h1>
           <p className="mt-8 max-w-[46ch] text-lg leading-relaxed text-muted">
             Cuéntanos qué estás enfrentando. Estaremos encantados de conversar sobre cómo la comunicación puede ayudarte a fortalecer

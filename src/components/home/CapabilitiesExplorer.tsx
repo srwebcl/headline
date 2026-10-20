@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useId, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowRight, Plus } from "@phosphor-icons/react";
+import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
+import { ArrowRight, Asterisk, Plus } from "@phosphor-icons/react";
 import type { Capability } from "@/data/content";
 
 type Item = Pick<Capability, "slug" | "num" | "name" | "summary" | "listLabel" | "items">;
@@ -22,6 +22,8 @@ export function CapabilitiesExplorer({ items }: { items: Item[] }) {
   const reduce = useReducedMotion();
   const id = useId();
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const frameRef = useRef<HTMLDivElement>(null);
+  const frameVisible = useInView(frameRef, { once: true, amount: 0.35 });
 
   function onKeyDown(e: React.KeyboardEvent) {
     const last = items.length - 1;
@@ -85,8 +87,8 @@ export function CapabilitiesExplorer({ items }: { items: Item[] }) {
         </div>
 
         <div className="lg:col-span-7">
-          {/* Marco lila: conecta visualmente con la línea de "Nuestro modelo" (.panel-frame en globals.css). */}
-          <div className="panel-frame relative sticky top-28">
+          {/* Marco lila: conecta con la línea de "Nuestro modelo". Se dibuja completo al entrar y al cambiar de capacidad. */}
+          <div ref={frameRef} className="relative sticky top-28">
             <div
               role="tabpanel"
               id={`${id}-panel`}
@@ -105,23 +107,7 @@ export function CapabilitiesExplorer({ items }: { items: Item[] }) {
               </AnimatePresence>
             </div>
 
-            <span aria-hidden className="frame-top pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-accent" />
-            <span aria-hidden className="frame-right pointer-events-none absolute inset-y-0 right-0 w-[2px] bg-accent" />
-            <span aria-hidden className="frame-bottom pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-accent" />
-            <span aria-hidden className="frame-left pointer-events-none absolute inset-y-0 left-0 w-[2px] bg-accent" />
-
-            {/* Destello que recorre el borde superior al cambiar de capacidad. */}
-            {/* Oculto vía CSS con movimiento reducido (no condicionar el render: evita desajustes de hidratación). */}
-            {(
-              <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[2px] overflow-hidden motion-reduce:hidden">
-                <motion.span
-                  key={active}
-                  className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white to-transparent"
-                  initial={{ x: "-100%" }}
-                  animate={{ x: "300%", transition: { duration: 1.1, ease: [0.65, 0, 0.35, 1] } }}
-                />
-              </span>
-            )}
+            <PanelFrame drawKey={active} visible={frameVisible} reduce={!!reduce} />
           </div>
         </div>
       </div>
@@ -167,19 +153,23 @@ function Detail({ item, reduce, compact = false }: { item: Item; reduce: boolean
       {!compact && (
         <motion.span
           aria-hidden
-          className="pointer-events-none absolute -right-3 -top-9 text-[12.5rem] font-extralight leading-none tracking-tighter text-accent/40"
+          className="pointer-events-none absolute -right-2 -top-8 text-[11rem] font-normal leading-none tracking-tighter text-accent/35"
           initial={reduce ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease } }}
         >
           {item.num}
         </motion.span>
       )}
-      {/* pr deja espacio al número de fondo en títulos largos */}
+      {/* pr deja espacio al número de fondo: ni el título ni la bajada lo tocan */}
       {!compact && <h3 className="relative max-w-[22ch] pr-40 text-[2rem] font-light leading-tight tracking-tight">{item.name}</h3>}
-      <p className={`${compact ? "" : "mt-4"} max-w-[52ch] leading-relaxed text-muted`}>{item.summary}</p>
+      <p className={`${compact ? "" : "relative mt-4 pr-44"} max-w-[52ch] leading-relaxed text-muted`}>{item.summary}</p>
 
       <p className="mt-8 text-[13px] font-medium text-fg">{item.listLabel}</p>
-      <ol className={`mt-4 grid gap-x-10 ${compact ? "gap-y-3" : "gap-y-3.5 sm:grid-cols-2"}`}>
+      {/* Orden en columnas: primero hacia abajo y luego a la derecha. */}
+      <ol
+        className={`mt-4 grid gap-x-10 ${compact ? "gap-y-3" : "gap-y-3.5 sm:grid-flow-col sm:grid-cols-2 sm:[grid-template-rows:repeat(var(--rows),auto)]"}`}
+        style={{ "--rows": Math.ceil(item.items.length / 2) } as React.CSSProperties}
+      >
         {item.items.map((s, j) => (
           <motion.li
             key={s}
@@ -187,7 +177,7 @@ function Detail({ item, reduce, compact = false }: { item: Item; reduce: boolean
             initial={reduce ? false : { opacity: 0, x: -6 }}
             animate={{ opacity: 1, x: 0, transition: { duration: 0.4, delay: 0.08 + j * 0.035, ease } }}
           >
-            <span aria-hidden className="mt-[0.6em] h-[3px] w-3.5 shrink-0 bg-accent" />
+            <Asterisk aria-hidden weight="bold" size={17} className="mt-[0.15em] shrink-0 text-accent" />
             <span>{s}</span>
           </motion.li>
         ))}
@@ -197,10 +187,38 @@ function Detail({ item, reduce, compact = false }: { item: Item; reduce: boolean
         href={`/que-hacemos/${item.slug}`}
         className="group mt-10 inline-flex items-center gap-3 border-b border-line py-2 text-[13px] font-medium uppercase tracking-[0.12em] text-fg transition-colors hover:border-accent hover:text-accent"
       >
-        Ver soluciones
+        Ver más
         <span className="sr-only">: {item.name}</span>
         <ArrowRight aria-hidden size={16} className="transition-transform group-hover:translate-x-1" />
       </Link>
     </div>
+  );
+}
+
+/**
+ * Marco lila del panel: los cuatro lados se dibujan en secuencia (arriba → derecha → abajo → izquierda).
+ * `drawKey` reinicia el dibujo al cambiar de capacidad; antes de entrar en pantalla no se muestra.
+ */
+function PanelFrame({ drawKey, visible, reduce }: { drawKey: number; visible: boolean; reduce: boolean }) {
+  const sides = [
+    { cls: "inset-x-0 top-0 h-[2px] origin-left", axis: "scaleX" },
+    { cls: "inset-y-0 right-0 w-[2px] origin-top", axis: "scaleY" },
+    { cls: "inset-x-0 bottom-0 h-[2px] origin-right", axis: "scaleX" },
+    { cls: "inset-y-0 left-0 w-[2px] origin-bottom", axis: "scaleY" },
+  ] as const;
+
+  return (
+    <span key={drawKey} aria-hidden className="pointer-events-none absolute inset-0">
+      {sides.map((side, i) => (
+        <motion.span
+          key={side.cls}
+          className={`absolute bg-accent ${side.cls}`}
+          // Misma estructura en servidor y cliente; con movimiento reducido el marco aparece completo.
+          initial={reduce ? false : { [side.axis]: 0 }}
+          animate={reduce || visible ? { [side.axis]: 1 } : { [side.axis]: 0 }}
+          transition={reduce ? { duration: 0 } : { duration: 0.32, delay: 0.1 + i * 0.3, ease: [0.65, 0, 0.35, 1] }}
+        />
+      ))}
+    </span>
   );
 }

@@ -26,7 +26,7 @@ npm run build      # build de producción
 ## Agregar contenido
 
 - **Insight:** agregar un objeto al arreglo `insights` en `content.ts` (imagen en `public/insights/`). Aparece en Home, `/insights`, su página y el sitemap. Los 6 actuales vienen de headline.cl/blog.
-- **Equipo:** en `team` (10 personas) reemplazar los 8 espacios `pending: true` por `name`, `role` y `photo` (retrato vertical 4:5 en `public/team/`). Las fotos de las socias se agregan con `photo` en `leadership`.
+- **Equipo:** `leadership` (socias, con biografía) y `team` (todo el equipo) en `content.ts`. Retratos verticales 3:4 en `public/team/` (WebP, ~720×960; socias 1050×1400).
 - **Redirecciones:** las URLs del sitio actual (`/la-agencia`, `/blog`, `/post/...`, etc.) redirigen con 301 a las nuevas; ver `next.config.ts`.
 - **Logo nuevo:** copiarlo a la carpeta de clientes, sumarlo a `LOGOS` en `scripts/process-logos.mjs`, correr el script y usar su slug en `industries`.
 
@@ -36,7 +36,6 @@ Buscar `TODO` en el código. Principales:
 
 - Validar autorización de uso de logos (faltan Snap, Clínica Bersant y Focco).
 - Confirmar oficina (el sitio actual dice 915 y 916), WhatsApp corporativo y dominio en `site.url`.
-- Retratos de las socias y nombre, cargo y foto de los 8 integrantes del equipo ampliado.
 - Fecha/fuente del claim Marca Ciudadana / Merco (caso Laboratorio Chile).
 - Reemplazar fotografía provisoria por fotografía documental propia.
 - Configurar `RESEND_API_KEY` (ver `.env.example`) y revisar la política de privacidad con asesoría legal.

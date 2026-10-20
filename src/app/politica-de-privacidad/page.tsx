@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/data/content";
+import { Dotted } from "@/components/ui/Dot";
 
 export const metadata: Metadata = {
   title: "Política de privacidad",
@@ -12,7 +13,7 @@ export default function PrivacidadPage() {
   return (
     <section className="py-16 md:py-24">
       <div className="wrap max-w-[760px]">
-        <h1 className="display text-[clamp(2.2rem,4.4vw,3.6rem)]">Política de privacidad</h1>
+        <h1 className="display title-in text-[clamp(2.2rem,4.4vw,3.6rem)]"><Dotted>Política de privacidad</Dotted></h1>
         <div className="prose-body mt-10 text-lg leading-relaxed text-muted [&_h2]:mb-3 [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-medium [&_h2]:text-fg">
           <p>
             Headline Comunicaciones Estratégicas respeta la privacidad de quienes visitan este sitio. Esta política describe qué

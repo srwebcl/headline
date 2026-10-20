@@ -75,9 +75,14 @@ export function SiteFooter() {
       <div className="wrap">
         <div className="flex flex-col gap-3 border-t border-line py-6 text-[13px] text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Headline Comunicaciones Estratégicas</p>
-          <Link href="/politica-de-privacidad" className="hover:text-fg">
-            Política de privacidad
-          </Link>
+          <div className="flex gap-6">
+            <Link href="/codigo-de-etica" className="hover:text-fg">
+              Código de ética
+            </Link>
+            <Link href="/politica-de-privacidad" className="hover:text-fg">
+              Política de privacidad
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

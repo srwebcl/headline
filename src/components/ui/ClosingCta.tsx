@@ -1,6 +1,7 @@
 import { CTA } from "@/data/content";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Reveal } from "@/components/ui/Reveal";
+import { Dot } from "@/components/ui/Dot";
 
 /**
  * Cierre de página en lila institucional. El titular cambia según el contexto
@@ -25,7 +26,7 @@ export function ClosingCta({
           {label && <p className="eyebrow mb-5">{label}</p>}
           <h2 className="display text-[clamp(2.2rem,4.6vw,4.2rem)]">
             {text}
-            <span className="brand-dot" aria-hidden />
+            <Dot />
           </h2>
         </div>
         <div className="lg:col-span-4">

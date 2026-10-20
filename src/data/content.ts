@@ -23,6 +23,7 @@ export const site = {
 };
 
 export const nav = [
+  { label: "Inicio", href: "/" },
   { label: "Nosotros", href: "/nosotros" },
   { label: "Qué hacemos", href: "/que-hacemos" },
   { label: "Nuestro modelo", href: "/nuestro-modelo" },
@@ -45,9 +46,11 @@ export type Capability = {
   title: string;
   body: string[];
   quote?: string;
-  listLabel: "Soluciones" | "Enfoques";
+  listLabel: "Soluciones";
   items: string[];
   closing: string;
+  /** Texto del bloque de cierre (lado derecho). */
+  closingBody?: string;
   image: { src: string; alt: string };
 };
 
@@ -68,23 +71,25 @@ export const capabilities: Capability[] = [
       "Con conocimiento y experiencia, damos solución a tus problemas y nos enfocamos en generar resultados cuantificables.",
     listLabel: "Soluciones",
     items: [
-      "Auditoría y estudios de percepción / diagnóstico de reputación",
-      "Análisis e información del entorno",
-      "Diseño de narrativa y relato corporativo",
-      "Speaking opportunities",
-      "Relaciones públicas",
-      "Gestión con medios de prensa",
-      "Posicionamiento digital",
-      "Comunicaciones internas",
-      "Entrenamiento de voceros corporativos",
+      "Auditoría y estudios de percepción.",
+      "Análisis e información del entorno.",
+      "Diseño de narrativa y relato corporativo.",
+      "Speaking opportunities.",
+      "Relaciones Públicas.",
+      "Gestión con medios de prensa.",
+      "Posicionamiento digital.",
+      "Comunicaciones internas.",
+      "Entrenamiento de voceros corporativos.",
     ],
     closing: "Conversemos sobre tu desafío.",
-    image: { src: "/images/ciudad-niebla.webp", alt: "Vista aérea de una ciudad entre la niebla" },
+    closingBody:
+      "Cómo la comunicación puede ayudarte a fortalecer tu reputación, posicionar a tus líderes o enfrentar escenarios complejos.",
+    image: { src: "/services/posicionamiento-reputacion.webp", alt: "Equipo en una presentación de posicionamiento con indicadores de medios" },
   },
   {
-    slug: "gestion-prevencion-riesgos",
+    slug: "prevencion-gestion-crisis",
     num: "02",
-    name: "Gestión y prevención de riesgos",
+    name: "Prevención y gestión de crisis",
     summary:
       "Anticipamos escenarios, preparamos equipos y diseñamos respuestas para proteger la confianza y la continuidad de la organización.",
     title: "Anticipar una crisis también es una forma de proteger el negocio.",
@@ -93,45 +98,46 @@ export const capabilities: Capability[] = [
       "Te ayudamos a anticipar riesgos, preparar equipos y responder de manera estratégica cuando enfrentas escenarios de alta exposición.",
     ],
     quote:
-      "Liderado por profesionales especialistas en gestión de riesgos y crisis en organizaciones complejas, incluyendo industria farmacéutica, educación, sector público y minería.",
+      "Liderado por profesionales especialistas en gestión de riesgos y crisis en organizaciones complejas, incluyendo industria farmacéutica, educación, construcción, minería y sector público.",
     listLabel: "Soluciones",
     items: [
-      "Mapa dinámico de riesgos reputacionales",
-      "Programas de prevención de crisis",
-      "Manuales y protocolos de crisis",
-      "Gestión integral de crisis",
-      "Monitoreo y social listening",
-      "Capacitaciones",
-      "Planes de recuperación post crisis",
+      "Mapa dinámico de riesgos reputacionales.",
+      "Programas de prevención de crisis.",
+      "Manuales y protocolos de crisis.",
+      "Gestión integral de crisis.",
+      "Monitoreo y social listening.",
+      "Capacitaciones.",
+      "Planes de recuperación post crisis.",
     ],
     closing: "Preparémonos antes de la próxima crisis.",
-    image: { src: "/images/anticipar.webp", alt: "Camino iluminado en medio de la niebla nocturna" },
+    closingBody:
+      "Revisemos cómo la comunicación puede ayudarte a fortalecer tu reputación, posicionar a tus líderes o enfrentar escenarios complejos.",
+    image: { src: "/services/prevencion-gestion-crisis.webp", alt: "Reunión de análisis de riesgos frente a un panel de monitoreo" },
   },
   {
-    slug: "relaciones-institucionales",
+    slug: "relaciones-institucionales-grupos-interes",
     num: "03",
-    name: "Relaciones institucionales y grupos de interés",
+    name: "Relaciones institucionales y vinculación con grupos de interés",
     summary:
       "Integramos inteligencia de entorno y gestión de stakeholders para fortalecer relaciones y abordar asuntos relevantes para la organización.",
     title: "Comprender a los grupos de interés es clave para avanzar.",
     body: [
-      "Apoyamos a nuestros clientes en el desarrollo de sus relaciones institucionales a largo plazo, integrando sus actividades de negocios con las políticas públicas.",
+      "Apoyamos a nuestros clientes en el desarrollo de sus relaciones institucionales a largo plazo, vinculando sus actividades de negocios con las políticas públicas.",
       "Diseñamos programas para identificar e involucrar a líderes de opinión, promover discusiones sobre temas de interés relacionados con regulaciones o cambios legislativos y abordar causas socialmente relevantes.",
     ],
     quote:
       "Combinamos inteligencia de entorno, gestión de stakeholders y una mirada estratégica orientada a resultados.",
-    listLabel: "Enfoques",
+    listLabel: "Soluciones",
     items: [
-      "Inteligencia de entorno",
-      "Mapeo y priorización de stakeholders",
-      "Relacionamiento institucional",
-      "Líderes de opinión",
-      "Regulación y cambios legislativos",
-      "Vinculación con comunidades",
-      "Conversaciones multisectoriales",
+      "Inteligencia del entorno y seguimiento regulatorio y legislativo.",
+      "Mapeo y priorización de grupos de interés y líderes de opinión.",
+      "Relacionamiento institucional y diálogo multisectorial.",
+      "Vinculación con comunidades.",
     ],
     closing: "Hablemos de tu entorno.",
-    image: { src: "/images/institucional.webp", alt: "Fachada de un edificio institucional" },
+    closingBody:
+      "Revisemos cómo la comunicación puede ayudarte a fortalecer tu reputación, posicionar a tus líderes o enfrentar escenarios complejos.",
+    image: { src: "/services/relaciones-institucionales-grupos-interes.webp", alt: "Sesión de trabajo con un mapa de grupos de interés" },
   },
   {
     slug: "comunicacion-interna",
@@ -139,24 +145,26 @@ export const capabilities: Capability[] = [
     name: "Comunicación interna",
     summary:
       "Alineamos personas, cultura y comunicación para fortalecer el compromiso y convertir a los colaboradores en embajadores de la organización.",
-    title: "El posicionamiento y la confianza también comienzan dentro de la organización.",
+    title: "El posicionamiento y la confianza también se construyen desde dentro de la organización.",
     body: [
-      "La comunicación apoya los planes de engagement de las empresas, la alineación de los equipos, la creación de cultura y la productividad.",
-      "Esto implica un conocimiento profundo de las personas, su rol y lo que los mueve. Te apoyamos para tener una organización irresistible y atraer el mejor talento.",
+      "La comunicación interna fortalece el compromiso de las personas, alinea a los equipos con los objetivos del negocio y contribuye a consolidar la cultura y mejorar la productividad.",
+      "Para lograrlo, buscamos comprender a las personas, sus roles y lo que las motiva. Te acompañamos a fortalecer su vínculo con la organización y a construir un lugar donde quieran trabajar y desarrollarse.",
     ],
     quote:
       "Hoy los colaboradores se convierten en los principales embajadores de la marca frente a distintos públicos de interés. El posicionamiento y la confianza parten por casa.",
     listLabel: "Soluciones",
     items: [
-      "Diagnóstico y encuestas de comunicación interna",
-      "Desarrollo de estrategias y planes",
-      "Operación de sistemas de comunicación y canales internos",
-      "Programa de embajadores de marca",
-      "Capacitación de voceros internos",
-      "Eventos",
+      "Diagnóstico y encuestas de CI.",
+      "Desarrollo de estrategias y planes.",
+      "Operación de sistemas de comunicación y canales internos.",
+      "Programa de Embajadores de marca.",
+      "Capacitación de voceros internos.",
+      "Eventos.",
     ],
     closing: "Fortalece tu comunicación interna.",
-    image: { src: "/images/equipo-trabajo.webp", alt: "Persona trabajando en un escritorio con notebook" },
+    closingBody:
+      "Evaluemos cómo la comunicación puede ayudarte a fortalecer tu reputación, posicionar a tus líderes o enfrentar escenarios complejos.",
+    image: { src: "/services/comunicacion-interna.webp", alt: "Equipo conversando en torno a una mesa de trabajo" },
   },
   {
     slug: "vocerias",
@@ -164,20 +172,25 @@ export const capabilities: Capability[] = [
     name: "Vocerías y habilidades comunicacionales",
     summary:
       "Fortalecemos la capacidad de líderes y equipos para comunicar con claridad, confianza y credibilidad en contextos de alta exposición.",
-    title: "Líderes preparados para comunicar con claridad cuando más importa.",
+    title: "Líderes preparados para comunicar con efectividad cuando más importa.",
     body: [
-      "Fortalecemos las capacidades de comunicación de líderes y equipos para enfrentar entrevistas, presentaciones, crisis y situaciones de alta exposición con confianza, claridad y credibilidad.",
+      "La vocería fortalece el posicionamiento de las organizaciones y la confianza de sus públicos, al conectar los objetivos del negocio con mensajes relevantes y consistentes.",
+      "Preparamos a líderes y voceros para transmitir sus mensajes con efectividad, desenvolverse con seguridad y responder a las exigencias de cada audiencia y contexto.",
     ],
+    quote:
+      "Nuestro equipo combina experiencia en comunicación estratégica y medios con una metodología práctica que incluye simulación de escenarios y retroalimentación personalizada.",
     listLabel: "Soluciones",
     items: [
-      "Media training",
-      "Talleres de comunicación efectiva",
-      "Talleres de LinkedIn",
-      "Talleres de marca personal",
-      "Presentaciones de alto impacto",
+      "Media Training.",
+      "Talleres de comunicación efectiva.",
+      "Talleres de LinkedIn.",
+      "Talleres de Marca personal.",
+      "Presentaciones de alto impacto.",
     ],
-    closing: "Prepara a tus voceros.",
-    image: { src: "/images/escenario.webp", alt: "Escenario iluminado frente a una audiencia" },
+    closing: "Entrena a tu vocero.",
+    closingBody:
+      "Evaluemos cómo la comunicación puede ayudarte a fortalecer tu reputación, posicionar a tus líderes o enfrentar escenarios complejos.",
+    image: { src: "/services/vocerias.webp", alt: "Vocero en un entrenamiento frente a cámara" },
   },
 ];
 
@@ -190,7 +203,7 @@ export const model = [
     num: "01",
     name: "Escuchar",
     short: "Entender contexto, expectativas, diagnóstico y stakeholders.",
-    goal: "Comprender el contexto antes de definir la respuesta.",
+    goal: "Comprender el entorno antes de definir la respuesta.",
     items: [
       "Contexto",
       "Expectativas de los directivos",
@@ -206,7 +219,7 @@ export const model = [
     goal: "Transformar los hallazgos en una estrategia accionable.",
     items: [
       "Diseño de un plan estratégico de comunicaciones",
-      "Definición de pilares y mensajes clave",
+      "Construcción de pilares y mensajes claves.",
       "Creación del plan de acción",
       "Definición de objetivos y KPIs",
     ],
@@ -409,25 +422,27 @@ export type Person = {
   name: string;
   role: string;
   bio?: string[];
-  /** Ruta en /public/team, p. ej. "/team/ana-maria-matulic.webp" (retrato vertical 4:5). */
+  /** Ruta en /public/team, p. ej. "/team/ana-maria-matulic.webp" (retrato vertical 3:4). */
   photo?: string;
   /** true = espacio reservado: falta confirmar nombre, cargo y foto. */
   pending?: boolean;
 };
 
-// TODO(checklist): validar nombres y cargos; agregar retratos en /public/team.
+// Socias, destacadas en /nosotros con retrato grande y biografía.
 export const leadership: Person[] = [
   {
     name: "Ana María Matulic",
     role: "Socia directora y fundadora",
+    photo: "/team/ana-maria-matulic.webp",
     bio: [
-      "Periodista de la Pontificia Universidad Católica de Chile y Magíster en Gestión de Negocios de la Universidad Adolfo Ibáñez.",
-      "Cuenta con más de 25 años de experiencia asesorando a empresas e instituciones en comunicación estratégica, posicionamiento corporativo, asuntos públicos, relacionamiento con stakeholders y gestión de crisis.",
+      "Periodista de la PUC y Magíster en Gestión de Negocios de la UAI. Cuenta con más de 25 años de trayectoria liderando la consultoría en comunicación estratégica, reputación corporativa y gestión de crisis para grandes empresas y organizaciones de industrias reguladas. Con amplia experiencia en el sector salud, construcción y minería.",
+      "Su nivel de relacionamiento abarca la alta dirección, líderes gremiales y tomadores de decisiones a nivel nacional e internacional. Es miembro activo de Focco (Gremio de Comunicadores de Chile), ha actuado como jurado internacional en los prestigiosos Stevie Awards de comunicación estratégica y formó parte del proyecto de modernización del Congreso Nacional (BCN Innova, proyecto BID).",
     ],
   },
   {
     name: "María Ignacia Vargas",
     role: "Directora ejecutiva",
+    photo: "/team/maria-ignacia-vargas.webp",
     bio: [
       "Periodista con estudios en comunicación corporativa. Cuenta con más de 12 años de experiencia liderando el diseño y ejecución de estrategias comunicacionales, orientadas a fortalecer el posicionamiento y el relacionamiento de diversas organizaciones mediante propuestas multiplataforma, con foco en la creación de valor.",
       "Ha trabajado con compañías como Copec, Forestal Arauco, SOFOFA Hub y Roche Pharma, entre otras. Su experiencia incluye manejo de crisis, relacionamiento con stakeholders, gestión de reputación corporativa y posicionamiento estratégico de marca.",
@@ -435,12 +450,20 @@ export const leadership: Person[] = [
   },
 ];
 
-// Equipo completo (10 personas): foto, nombre y cargo, sin biografía.
-// Las socias van primero; luego el equipo ampliado.
-// TODO(checklist): reemplazar los 8 espacios `pending` por nombre, cargo y foto reales.
+// Equipo completo: foto, nombre y cargo (retratos 3:4 en /public/team).
 export const team: Person[] = [
   ...leadership.map(({ name, role, photo }) => ({ name, role, photo })),
-  ...Array.from({ length: 8 }, () => ({ name: "Nombre por confirmar", role: "Cargo por confirmar", pending: true })),
+  { name: "Paula Pérez", role: "Directora de Cuentas", photo: "/team/paula-perez.webp" },
+  { name: "Claudia Caro", role: "Directora de Cuentas", photo: "/team/claudia-caro.webp" },
+  { name: "Consuelo Mejías", role: "Directora de Cuentas", photo: "/team/consuelo-mejias.webp" },
+  { name: "María Fernanda Gil", role: "Directora de Cuentas", photo: "/team/maria-fernanda-gil.webp" },
+  { name: "Valentina Mardones", role: "Ejecutiva de Cuentas", photo: "/team/valentina-mardones.webp" },
+  { name: "Nicolás Gamboa", role: "Ejecutivo de Cuentas", photo: "/team/nicolas-gamboa.webp" },
+  { name: "Pía Bobadilla", role: "Ejecutiva de Cuentas", photo: "/team/pia-bobadilla.webp" },
+  { name: "Maximiliano Aralla", role: "Ejecutivo de Cuentas", photo: "/team/maximiliano-aralla.webp" },
+  { name: "Sergio Baquedano", role: "Ejecutivo de Cuentas", photo: "/team/sergio-baquedano.webp" },
+  { name: "Guido Ferrari", role: "Diseñador Gráfico", photo: "/team/guido-ferrari.webp" },
+  { name: "Yolanda Bahamondez", role: "Administración y Finanzas", photo: "/team/yolanda-bahamondez.webp" },
 ];
 
 export const recognitions = [
@@ -457,9 +480,6 @@ export const recognitions = [
     body: "Obtenido por nuestro compromiso con la inclusión laboral de jóvenes en riesgo social, otorgado por Fundación Proyecto B y Fundación MC.",
   },
 ];
-
-// TODO: agregar Focco cuando esté disponible su logo.
-export const alliances = ["amcham", "pr-latam"];
 
 /* ------------------------------------------------------------------ */
 /* Insights                                                            */

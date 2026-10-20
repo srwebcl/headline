@@ -5,7 +5,8 @@ import { LogoMark } from "@/components/ui/LogoMark";
 import { PageHero } from "@/components/ui/PageHero";
 import { InkField } from "@/components/ui/InkField";
 import { Reveal } from "@/components/ui/Reveal";
-import { alliances, leadership, recognitions, team, type Person } from "@/data/content";
+import { leadership, recognitions, team, type Person } from "@/data/content";
+import { Dot, Dotted } from "@/components/ui/Dot";
 
 export const metadata: Metadata = {
   title: "Nosotros",
@@ -18,13 +19,14 @@ export default function NosotrosPage() {
   return (
     <>
       <PageHero
+        overlap
         label="Nosotros"
         title={
           <>
-            Experiencia, criterio estratégico y conocimiento de <em>industrias complejas</em>.
+            Experiencia, criterio estratégico y conocimiento de <em>industrias complejas</em>
+            <Dot />
           </>
         }
-        image={{ src: "/images/reunion.webp", alt: "Mesa de trabajo con cuadernos y notas" }}
       >
         <p>
           Somos un grupo de profesionales con más de dos décadas de comprobada experiencia en integrar las comunicaciones al
@@ -32,60 +34,87 @@ export default function NosotrosPage() {
         </p>
       </PageHero>
 
-      <section className="py-20 md:py-28">
-        <div className="wrap grid gap-10 lg:grid-cols-12">
-          <Reveal className="lg:col-span-9">
-            <p className="text-[clamp(1.5rem,2.6vw,2.2rem)] font-light leading-snug tracking-tight">
-              Combinamos visión estratégica y conocimiento de industrias complejas para acompañar a organizaciones que enfrentan
-              desafíos reputacionales, comunicacionales y de liderazgo.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Equipo: socias destacadas (retrato + biografía) y luego las 10 personas (foto, nombre, cargo). */}
-      <section className="border-t border-line bg-bg-2 py-20 md:py-28">
+      {/* Foto grupal + titular centrado */}
+      <section className="tone-white bg-bg pb-20 text-fg md:pb-28">
         <div className="wrap">
-          <Reveal className="max-w-[760px]">
-            <h2 className="display text-[clamp(2rem,3.8vw,3.4rem)]">Profesionales que entienden la complejidad del negocio y del entorno.</h2>
+          {/* Montada entre el hero oscuro y la sección blanca; proporción natural (no se recorta el grupo en desktop). */}
+          <Reveal className="relative z-10 -mt-20 aspect-[4/3] overflow-hidden shadow-[0_40px_80px_-40px_rgb(24_23_27/0.55)] sm:aspect-[2400/1065] md:-mt-40">
+            <Image
+              src="/team/equipo-headline.webp"
+              alt="Equipo de Headline Comunicaciones Estratégicas"
+              fill
+              preload
+              sizes="(min-width: 1360px) 1220px, 100vw"
+              className="object-cover object-[50%_35%]"
+            />
+          </Reveal>
+          <Reveal delay={0.08} className="mx-auto mt-16 max-w-[900px] text-center md:mt-20">
+            <h2 className="display text-[clamp(2.1rem,4.2vw,3.8rem)]">
+              Profesionales que entienden la complejidad del negocio y del <em>entorno</em>
+              <Dot />
+            </h2>
           </Reveal>
 
-          <div className="mt-16 grid gap-16 md:grid-cols-2 md:gap-10">
+          {/* Socias: retrato grande + biografía, en filas alternadas */}
+          <div className="mt-20 space-y-20 md:mt-28 md:space-y-28">
             {leadership.map((p, i) => (
-              <Reveal key={p.name} as="article" delay={i * 0.1} className="grid gap-8 border-t border-line pt-8 lg:grid-cols-[minmax(0,220px)_1fr]">
-                <Portrait person={p} sizes="(min-width: 1024px) 220px, 60vw" className="max-w-[320px]" />
-                <div>
-                  <h3 className="text-[clamp(1.7rem,2.6vw,2.2rem)] font-normal leading-tight tracking-tight">{p.name}</h3>
-                  <p className="mt-2 text-[13px] font-medium uppercase tracking-[0.14em] text-accent">{p.role}</p>
-                  <div className="prose-body mt-6 max-w-[56ch] leading-relaxed text-muted">
+              <Reveal key={p.name} as="article" className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
+                <div className={`relative lg:col-span-5 ${i % 2 === 1 ? "lg:order-2 lg:col-start-8" : ""}`}>
+                  {/* Marco lila desplazado: misma línea gráfica del panel de servicios */}
+                  <span
+                    aria-hidden
+                    className={`absolute inset-0 translate-y-4 border-2 border-accent ${i % 2 === 1 ? "-translate-x-4" : "translate-x-4"}`}
+                  />
+                  <Portrait person={p} sizes="(min-width: 1024px) 40vw, 90vw" className="relative" />
+                </div>
+                <div className={`lg:col-span-6 ${i % 2 === 1 ? "lg:order-1 lg:col-start-1" : "lg:col-start-7"}`}>
+                  <p className="text-[13px] font-medium uppercase tracking-[0.16em] text-accent">{p.role}</p>
+                  <h3 className="mt-3 text-[clamp(2.2rem,3.6vw,3.2rem)] font-light leading-[1.05] tracking-tight">{p.name}</h3>
+                  <span aria-hidden className="mt-7 block h-0.5 w-12 bg-accent" />
+                  <div className="prose-body mt-7 max-w-[60ch] text-[17px] leading-relaxed text-muted [&>p:first-child]:text-fg">
                     {p.bio?.map((b) => <p key={b}>{b}</p>)}
                   </div>
                 </div>
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-24 border-t border-line pt-12">
-            <h3 className="text-2xl font-light tracking-tight">Nuestro equipo</h3>
-            <ul className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
-              {team.map((p, i) => (
-                <Reveal as="li" key={`${p.name}-${i}`} delay={(i % 5) * 0.05}>
-                  <Portrait person={p} sizes="(min-width: 1024px) 18vw, (min-width: 640px) 30vw, 45vw" />
-                  <p className={`mt-4 text-[17px] leading-snug ${p.pending ? "text-muted" : ""}`}>{p.name}</p>
-                  <p className="mt-1 text-sm text-muted">{p.role}</p>
-                </Reveal>
-              ))}
-            </ul>
-          </div>
+      {/* Equipo completo */}
+      <section className="py-20 md:py-28">
+        <div className="wrap">
+          <Reveal className="text-center">
+            <p className="eyebrow">Nuestro equipo</p>
+            <h2 className="display mx-auto mt-5 max-w-[760px] text-[clamp(1.9rem,3.4vw,3rem)]">
+              <Dotted>Las personas detrás de cada estrategia</Dotted>
+            </h2>
+          </Reveal>
+          <ul className="mt-14 flex flex-wrap justify-center gap-x-5 gap-y-12">
+            {team.map((p, i) => (
+              <Reveal
+                as="li"
+                key={p.name}
+                delay={(i % 5) * 0.05}
+                className="group w-[calc(50%-10px)] sm:w-[calc(33.333%-14px)] lg:w-[calc(20%-16px)]"
+              >
+                <Portrait person={p} sizes="(min-width: 1024px) 18vw, (min-width: 640px) 30vw, 45vw" zoom />
+                <p className="mt-4 text-[17px] leading-snug">{p.name}</p>
+                <p className="mt-1 text-sm text-muted">{p.role}</p>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* Reconocimientos */}
       <section id="reconocimientos" className="tone-ink relative isolate overflow-clip bg-bg py-20 text-fg md:py-28">
-      <InkField density={24} intensity={0.55} speed={0.6} interactive={false} className="ink-field--quiet -z-10" />
+        <InkField density={24} intensity={0.55} speed={0.6} interactive={false} className="ink-field--quiet -z-10" />
         <div className="wrap">
           <Reveal>
-            <h2 className="display text-[clamp(2rem,3.8vw,3.4rem)]">Reconocimientos</h2>
+            <h2 className="display text-[clamp(2rem,3.8vw,3.4rem)]">
+              <Dotted>Reconocimientos</Dotted>
+            </h2>
           </Reveal>
           <div className="mt-14 grid border-t border-line md:grid-cols-2">
             {recognitions.map((r, i) => (
@@ -107,21 +136,47 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Alianzas */}
-      <section className="py-20 md:py-28">
-        <div className="wrap grid gap-12 lg:grid-cols-12 lg:items-center">
-          <Reveal className="lg:col-span-6">
-            <h2 className="display text-[clamp(1.9rem,3.4vw,3rem)]">La colaboración también es parte de nuestra forma de trabajar.</h2>
-            <p className="mt-8 max-w-[56ch] text-lg leading-relaxed text-muted">
-              Sabemos la importancia de la colaboración y el intercambio de experiencias con empresas de la industria. Participamos
-              activamente en gremios, encuentros de la academia y como parte de Focco, el gremio de los comunicadores en Chile.
+      {/* Alianzas: titular centrado y tres logos con el mismo peso (mismo módulo, misma caja). */}
+      <section className="tone-white relative isolate overflow-clip bg-bg py-24 text-fg md:py-36">
+        {/* Halo lila muy tenue detrás de los logos: da profundidad sin competir con ellos. */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-[62%] -z-10 h-[520px] w-[min(1100px,120vw)] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-[radial-gradient(closest-side,rgb(142_74_155/0.12),transparent)]"
+        />
+        <div className="wrap">
+          <Reveal className="mx-auto max-w-[880px] text-center">
+            <p className="eyebrow">Alianzas</p>
+            <h2 className="display mt-6 text-[clamp(2.3rem,4.8vw,4.4rem)]">
+              La colaboración también es parte de nuestra forma de <em>trabajar</em>
+              <Dot />
+            </h2>
+            <p className="mx-auto mt-8 max-w-[62ch] text-lg leading-relaxed text-muted">
+              Creemos en la colaboración y el intercambio de experiencias como motores de desarrollo para nuestra industria.
+              Participamos activamente en espacios gremiales y encuentros con la academia, y somos parte de Focco, el gremio de los
+              comunicadores en Chile.
             </p>
           </Reveal>
-          <Reveal delay={0.1} className="flex flex-wrap items-center gap-x-14 gap-y-10 lg:col-span-5 lg:col-start-8">
-            {alliances.map((slug) => (
-              <LogoMark key={slug} slug={slug} height={40} maxWidth={200} />
+
+          <ul className="mx-auto mt-16 grid max-w-[1080px] gap-4 sm:grid-cols-3 md:mt-20">
+            {[
+              { src: "/alliances/focco.webp", alt: "Focco", w: 461, h: 200 },
+              { src: "/alliances/amcham.webp", alt: "AmCham Chile", w: 1523, h: 191 },
+              { src: "/alliances/pr-latam.webp", alt: "PR LATAM", w: 213, h: 55 },
+            ].map((logo, i) => (
+              <Reveal as="li" key={logo.alt} delay={0.08 + i * 0.08} className="group relative">
+                <div className="relative flex aspect-[5/2] items-center justify-center overflow-hidden bg-bg-2 px-10 sm:aspect-[4/3] shadow-[0_30px_60px_-40px_rgb(24_23_27/0.35)] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
+                  {/* Misma caja para los tres logos: ninguno domina. */}
+                  <div className="relative h-16 w-full max-w-[220px]">
+                    <Image src={logo.src} alt={logo.alt} fill sizes="220px" className="object-contain" />
+                  </div>
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100"
+                  />
+                </div>
+              </Reveal>
             ))}
-          </Reveal>
+          </ul>
         </div>
       </section>
 
@@ -130,12 +185,18 @@ export default function NosotrosPage() {
   );
 }
 
-/** Retrato en blanco y negro 4:5; si aún no hay foto, deja el espacio reservado con la misma proporción. */
-function Portrait({ person, sizes, className = "" }: { person: Person; sizes: string; className?: string }) {
+/** Retrato 3:4 en color; si aún no hay foto, deja el espacio reservado con la misma proporción. */
+function Portrait({ person, sizes, className = "", zoom = false }: { person: Person; sizes: string; className?: string; zoom?: boolean }) {
   return (
-    <div className={`relative aspect-[4/5] w-full overflow-hidden bg-bg ${className}`}>
+    <div className={`relative aspect-[3/4] w-full overflow-hidden bg-bg-2 ${className}`}>
       {person.photo ? (
-        <Image src={person.photo} alt={`Retrato de ${person.name}`} fill sizes={sizes} className="object-cover grayscale" />
+        <Image
+          src={person.photo}
+          alt={`Retrato de ${person.name}`}
+          fill
+          sizes={sizes}
+          className={`object-cover ${zoom ? "transition-transform duration-700 ease-out group-hover:scale-[1.04]" : ""}`}
+        />
       ) : (
         <div className="absolute inset-0 flex items-end border border-line p-4">
           <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted">Fotografía pendiente</span>

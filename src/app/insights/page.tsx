@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowUpRight } from "@phosphor-icons/react/ssr";
+import { ArrowUpRight, Asterisk } from "@phosphor-icons/react/ssr";
 import { InsightsGrid } from "@/components/insights/InsightsGrid";
+import { ClosingCta } from "@/components/ui/ClosingCta";
+import { InkField } from "@/components/ui/InkField";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { insightCategories, insights, site } from "@/data/content";
+import { Dot, Dotted } from "@/components/ui/Dot";
 
 export const metadata: Metadata = {
   title: "Insights",
@@ -20,7 +23,8 @@ export default function InsightsPage() {
         label="Insights"
         title={
           <>
-            Ideas, análisis y perspectivas para entender un entorno cada vez más <em>complejo</em>.
+            Ideas, análisis y perspectivas para entender un entorno cada vez más <em>complejo</em>
+            <Dot />
           </>
         }
       >
@@ -30,19 +34,30 @@ export default function InsightsPage() {
         </p>
       </PageHero>
 
-      <section className="border-b border-line">
-        <div className="wrap grid md:grid-cols-3">
+      {/* Líneas editoriales */}
+      <section className="py-16 md:py-20">
+        <div className="wrap grid gap-4 md:grid-cols-3">
           {insightCategories.map((cat, i) => (
-            <Reveal key={cat.slug} delay={i * 0.06} className="border-b border-line py-10 md:border-b-0 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0">
-              <h2 className="text-2xl tracking-tight">{cat.name}</h2>
-              <p className="mt-4 leading-relaxed text-muted">{cat.body}</p>
+            <Reveal key={cat.slug} delay={i * 0.06} className="tone-white flex flex-col bg-bg p-7 text-fg md:p-8">
+              <Asterisk aria-hidden weight="bold" size={24} className="text-accent" />
+              <h2 className="mt-5 text-[1.5rem] font-medium tracking-tight">{cat.name}</h2>
+              <p className="mt-3 leading-relaxed text-muted">{cat.body}</p>
             </Reveal>
           ))}
         </div>
       </section>
 
-      <section className="py-20 md:py-28">
+      {/* Artículos: mismo lenguaje que la sección Insights del Home (oscuro con líneas). */}
+      <section className="tone-ink relative isolate overflow-clip bg-bg py-20 text-fg md:py-28">
+        <InkField density={24} intensity={0.55} speed={0.6} interactive={false} className="ink-field--quiet -z-10" />
         <div className="wrap">
+          <Reveal className="mb-10 max-w-[820px]">
+            <p className="eyebrow">Artículos</p>
+            <h2 className="display mt-5 text-[clamp(1.9rem,3.4vw,3rem)]">
+              Ideas para entender mejor el <em>entorno</em>
+              <Dot />
+            </h2>
+          </Reveal>
           {insights.length > 0 ? (
             <InsightsGrid posts={insights} categories={insightCategories} />
           ) : (
@@ -51,7 +66,7 @@ export default function InsightsPage() {
                 <Image src="/images/lectura.webp" alt="Libro abierto sobre una mesa" fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
               </div>
               <div className="lg:col-span-6 lg:col-start-7">
-                <h2 className="display text-[clamp(1.9rem,3.2vw,2.8rem)]">Estamos preparando los primeros análisis.</h2>
+                <h2 className="display text-[clamp(1.9rem,3.2vw,2.8rem)]"><Dotted>Estamos preparando los primeros análisis.</Dotted></h2>
                 <p className="mt-6 max-w-[52ch] text-lg leading-relaxed text-muted">
                   Mientras tanto, compartimos perspectivas sobre reputación, crisis y liderazgo en nuestro LinkedIn.
                 </p>
@@ -69,6 +84,8 @@ export default function InsightsPage() {
           )}
         </div>
       </section>
+
+      <ClosingCta title="Cuéntanos qué desafío enfrenta tu organización." />
     </>
   );
 }

@@ -11,6 +11,7 @@ import { ClosingCta } from "@/components/ui/ClosingCta";
 import { InkField } from "@/components/ui/InkField";
 import { Reveal } from "@/components/ui/Reveal";
 import { capabilities, cases, insightCategories, insights, model } from "@/data/content";
+import { Dot } from "@/components/ui/Dot";
 
 /*
   Home (orden acordado): Hero → Autoridad → Capacidades → Método → Casos → Clientes → Insights → CTA.
@@ -40,11 +41,12 @@ function Capabilities() {
         <Reveal className="max-w-[820px]">
           <p className="eyebrow">Nuestros servicios</p>
           <h2 id="servicios-title" className="display mt-5 text-[clamp(2.1rem,4.4vw,4rem)]">
-            Cinco capacidades para desafíos <em>complejos</em>.
+            Cinco capacidades para desafíos <em>complejos</em>
+            <Dot />
           </h2>
           <p className="mt-6 max-w-[60ch] text-lg leading-relaxed text-muted">
-            Nuestro trabajo integra estrategia, comunicación y conocimiento del entorno para abordar desafíos de reputación, riesgo,
-            relacionamiento, cultura y liderazgo.
+            Diseñamos soluciones a la medida de cada organización, acompañándola en sus desafíos de comunicación y en las distintas
+            etapas de su desarrollo.
           </p>
         </Reveal>
 
@@ -52,9 +54,11 @@ function Capabilities() {
           <CapabilitiesExplorer items={items} />
         </Reveal>
 
-        <ButtonLink href="/que-hacemos" variant="outline" className="mt-12">
-          Conoce nuestras capacidades
-        </ButtonLink>
+        <div className="mt-12 text-center">
+          <ButtonLink href="/que-hacemos" variant="filled">
+            Conoce nuestras capacidades
+          </ButtonLink>
+        </div>
       </div>
     </section>
   );
@@ -69,7 +73,8 @@ function Method() {
         <Reveal className="max-w-[820px]">
           <p className="eyebrow">Nuestro modelo</p>
           <h2 className="display mt-5 text-[clamp(2.1rem,4.4vw,4rem)]">
-            Una mirada estratégica que parte por <em>entender</em>.
+            Una mirada estratégica que parte por <em>entender</em>
+            <Dot />
           </h2>
           <p className="mt-6 max-w-[60ch] text-lg leading-relaxed text-muted">
             Cada desafío requiere comprender el contexto antes de definir una respuesta. Nuestro modelo integra diagnóstico,
@@ -121,7 +126,8 @@ function Cases() {
         <Reveal className="max-w-[820px]">
           <p className="eyebrow">Casos de éxito</p>
           <h2 className="display mt-5 text-[clamp(2.1rem,4.4vw,4rem)]">
-            Desafíos complejos. Estrategias que generan <em>impacto</em>.
+            Desafíos complejos. Estrategias que generan <em>impacto</em>
+            <Dot />
           </h2>
           <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-muted">
             Nuestro trabajo se construye junto a organizaciones que necesitan proteger su reputación, posicionarse frente a sus
@@ -187,7 +193,8 @@ function Insights() {
         <Reveal className="max-w-[820px]">
           <p className="eyebrow">Insights</p>
           <h2 className="display mt-5 text-[clamp(2.1rem,4.4vw,4rem)]">
-            Ideas para entender mejor el <em>entorno</em>.
+            Ideas para entender mejor el <em>entorno</em>
+            <Dot />
           </h2>
           <p className="mt-6 max-w-[58ch] text-lg leading-relaxed text-muted">
             Análisis, tendencias y aprendizajes sobre reputación, liderazgo, gestión de crisis, comunicación estratégica y

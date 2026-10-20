@@ -23,7 +23,7 @@ export function HomeHero() {
         <HeroStatement />
 
         <p className="rise mt-10 max-w-[52ch] text-lg leading-relaxed text-muted md:text-xl" style={d(0.85)}>
-          Desde 2003 acompañamos a empresas e instituciones en desafíos de comunicación, reputación, liderazgo y relacionamiento.
+          Desde 2003 acompañamos a empresas e instituciones en desafíos de comunicación, posicionamiento, liderazgo y relacionamiento.
         </p>
 
         <div className="rise mt-12 flex flex-wrap items-center gap-x-10 gap-y-6" style={d(1)}>

@@ -4,6 +4,7 @@ import { LogoMark } from "@/components/ui/LogoMark";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { industries } from "@/data/content";
+import { Dot } from "@/components/ui/Dot";
 
 export const metadata: Metadata = {
   title: "Clientes",
@@ -19,7 +20,8 @@ export default function ClientesPage() {
         label="Clientes"
         title={
           <>
-            Experiencia en industrias donde la confianza, la reputación y el liderazgo son <em>fundamentales</em>.
+            Experiencia en industrias donde la confianza, la reputación y el liderazgo son <em>fundamentales</em>
+            <Dot />
           </>
         }
       >

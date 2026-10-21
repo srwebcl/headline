@@ -36,9 +36,8 @@ function Ending() {
 export function HeroStatement() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [hover, setHover] = useState(false);
   const active = phrases[index];
-  const running = !paused && !hover;
+  const running = !paused;
 
   return (
     <div>
@@ -61,11 +60,14 @@ export function HeroStatement() {
       <h1 className="sr-only">Anticipamos escenarios. Protegemos reputaciones. Posicionamos organizaciones.</h1>
 
       {/* Versión estática para movimiento reducido: el formato aprobado de tres líneas. */}
-      <div aria-hidden className="display hidden text-[clamp(2.6rem,6.2vw,5.6rem)] leading-[1.02] motion-reduce:block">
+      <div aria-hidden className="display hidden text-[clamp(2.15rem,6.2vw,5.6rem)] leading-[1.04] motion-reduce:block">
         {phrases.map((p) => (
           <span key={p.key} className="block pb-1">
-            {p.verb} <em>{p.key}</em>
-            <Ending />
+            {p.verb}{" "}
+            <span className="inline-block whitespace-nowrap">
+              <em>{p.key}</em>
+              <Ending />
+            </span>
           </span>
         ))}
       </div>
@@ -74,33 +76,24 @@ export function HeroStatement() {
       <div className="motion-reduce:hidden">
         <div
           aria-hidden
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className="rise display grid text-[clamp(2.9rem,7vw,6.4rem)] leading-[1.02]"
+          className="rise display grid text-[clamp(2.15rem,6.6vw,6.4rem)] leading-[1.04] min-h-[2.25em]"
           style={{ "--d": 0.25 } as React.CSSProperties}
         >
-          {/* mode="wait": la frase saliente termina antes de que entre la nueva,
-              así nunca se superponen. Fundido + desplazamiento + desenfoque, sin máscaras
-              (los recortes con overflow fallan en Chrome durante animaciones en GPU). */}
+          {/* AnimatePresence sin saltos: toda la frase entra y sale en un solo bloque unificado,
+              evitando desfases entre líneas y asegurando que el punto (.) quede siempre pegado a la palabra. */}
           <AnimatePresence initial={false} mode="wait">
-            <motion.div key={index} className="[grid-area:1/1]">
-              {[
-                <Fragment key="verb">{active.verb}</Fragment>,
-                <Fragment key="key">
-                  <em>{active.key}</em>
-                  <Ending />
-                </Fragment>,
-              ].map((line, i) => (
-                <motion.span
-                  key={i}
-                  className="block pb-[0.08em]"
-                  initial={{ opacity: 0, y: "0.32em", filter: "blur(10px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.85, delay: i * 0.1, ease } }}
-                  exit={{ opacity: 0, y: "-0.22em", filter: "blur(8px)", transition: { duration: 0.42, delay: i * 0.05, ease: [0.4, 0, 1, 1] } }}
-                >
-                  {line}
-                </motion.span>
-              ))}
+            <motion.div
+              key={index}
+              className="[grid-area:1/1]"
+              initial={{ opacity: 0, y: "0.2em", filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.65, ease } }}
+              exit={{ opacity: 0, y: "-0.15em", filter: "blur(6px)", transition: { duration: 0.35, ease: [0.4, 0, 1, 1] } }}
+            >
+              <span className="block pb-[0.06em]">{active.verb}</span>
+              <span className="inline-block whitespace-nowrap pb-[0.06em]">
+                <em>{active.key}</em>
+                <Ending />
+              </span>
             </motion.div>
           </AnimatePresence>
         </div>

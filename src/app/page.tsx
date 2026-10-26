@@ -11,7 +11,7 @@ import { ButtonLink } from "@/components/ui/ButtonLink";
 import { ClosingCta } from "@/components/ui/ClosingCta";
 import { InkField } from "@/components/ui/InkField";
 import { Reveal } from "@/components/ui/Reveal";
-import { capabilities, cases, insightCategories, insights } from "@/data/content";
+import { capabilities, cases, insightCategories, insights, featuredCases } from "@/data/content";
 import { Dot } from "@/components/ui/Dot";
 
 /*
@@ -28,7 +28,7 @@ export default function HomePage() {
       <Cases />
       <ClientsHighlight />
       <Insights />
-      <ClosingCta label="Contacto" title="Cuéntanos qué desafío enfrenta tu organización." />
+      <ClosingCta label="Contacto" />
     </>
   );
 }
@@ -67,12 +67,9 @@ function Capabilities() {
 
 /* Casos: 4 destacados en grilla 2x2 de alto uniforme; acentos oscuro y lila en diagonal. */
 function Cases() {
-  const featured: { slug: string; tone: string }[] = [
-    { slug: "tecsa", tone: "tone-ink" },
-    { slug: "congreso-nacional", tone: "tone-white" },
-    { slug: "laboratorio-chile", tone: "tone-white" },
-    { slug: "angioedema-hereditario", tone: "tone-lila" },
-  ];
+  // Destacados del Home (featuredCases en content.ts); acentos oscuro y lila en diagonal.
+  const tones = ["tone-ink", "tone-white", "tone-white", "tone-lila"];
+  const featured = featuredCases.map((slug, i) => ({ slug, tone: tones[i % tones.length] }));
 
   return (
     <section className="py-20 md:py-28">
@@ -95,15 +92,36 @@ function Cases() {
             return (
               <Reveal as="li" key={slug} delay={(i % 2) * 0.06} className={tone}>
                 <Link
-                  href={`/casos#${c.slug}`}
-                  className={`group flex h-full min-h-[260px] flex-col justify-between bg-bg p-8 text-fg transition-colors duration-300 md:min-h-[320px] md:p-10 ${
-                    tone === "tone-white" ? "hover:bg-bg-2" : ""
-                  }`}
+                  href={`/casos-de-exito#${c.slug}`}
+                  className="group relative isolate flex h-full min-h-[260px] flex-col justify-between overflow-hidden bg-bg p-8 text-fg md:min-h-[320px] md:p-10"
                 >
+                  {/* Foto del caso integrada al fondo: ocupa el lado derecho y se funde con el color de la
+                      tarjeta hacia el texto. Tratamiento según tono: oscuro (atenuada), blanco (B/N luminosa),
+                      lila (teñida). Al pasar el cursor recupera el color y se acerca levemente. */}
+                  <div
+                    aria-hidden
+                    className="absolute inset-y-0 right-0 -z-20 w-[78%] [mask-image:linear-gradient(to_right,transparent_0%,rgb(0_0_0/0.35)_30%,black_70%)] sm:w-[62%]"
+                  >
+                    <Image
+                      src={c.image}
+                      alt=""
+                      fill
+                      sizes="(min-width: 768px) 30vw, 70vw"
+                      className={`object-cover transition-[filter,opacity,transform] duration-700 ease-out group-hover:scale-[1.04] ${
+                        tone === "tone-ink"
+                          ? "opacity-55 grayscale group-hover:opacity-80 group-hover:grayscale-0"
+                          : tone === "tone-lila"
+                            ? "opacity-45 mix-blend-luminosity group-hover:opacity-70"
+                            : "opacity-75 grayscale group-hover:opacity-100 group-hover:grayscale-0"
+                      }`}
+                    />
+                  </div>
+                  {/* Velo inferior para que el texto se lea siempre sobre la foto. */}
+                  <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(to_top,var(--bg)_0%,color-mix(in_oklab,var(--bg)_70%,transparent)_45%,transparent_80%)]" />
                   <p className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted">{c.area}</p>
                   <div className="mt-10">
                     <h3 className="text-[clamp(1.8rem,2.8vw,2.5rem)] font-semibold leading-[1.05] tracking-tight">{c.client}</h3>
-                    <p className="mt-4 line-clamp-2 max-w-[52ch] leading-relaxed text-muted">{c.challenge}</p>
+                    <p className="mt-4 line-clamp-2 max-w-[52ch] leading-relaxed text-muted">{c.body[0]}</p>
                     <span className="mt-7 inline-flex items-center gap-2 text-[13px] font-medium uppercase tracking-[0.12em] text-accent">
                       Ver caso
                       <ArrowUpRight
@@ -119,7 +137,7 @@ function Cases() {
           })}
         </ul>
 
-        <ButtonLink href="/casos" variant="outline" className="mt-12">
+        <ButtonLink href="/casos-de-exito" variant="outline" className="mt-12">
           Ver casos de éxito
         </ButtonLink>
       </div>

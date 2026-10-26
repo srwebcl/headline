@@ -98,7 +98,7 @@ export default async function InsightPage({ params }: PageProps<"/insights/[slug
           </div>
         </nav>
       )}
-      <ClosingCta title="Cuéntanos qué desafío enfrenta tu organización." />
+      <ClosingCta />
     </>
   );
 }

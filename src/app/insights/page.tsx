@@ -85,7 +85,7 @@ export default function InsightsPage() {
         </div>
       </section>
 
-      <ClosingCta title="Cuéntanos qué desafío enfrenta tu organización." />
+      <ClosingCta />
     </>
   );
 }

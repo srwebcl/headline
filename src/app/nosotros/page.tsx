@@ -19,7 +19,6 @@ export default function NosotrosPage() {
   return (
     <>
       <PageHero
-        overlap
         label="Nosotros"
         title={
           <>
@@ -34,21 +33,26 @@ export default function NosotrosPage() {
         </p>
       </PageHero>
 
-      {/* Foto grupal + titular centrado */}
+      {/* Foto grupal a todo el ancho, fundida arriba con el hero oscuro y abajo con la sección blanca. */}
+      <div className="relative isolate aspect-[1689/931] max-h-[780px] w-full overflow-hidden bg-[var(--ink)]">
+        <Image
+          src="/team/equipo-headline-2026.webp"
+          alt="Equipo de Headline Comunicaciones Estratégicas"
+          fill
+          preload
+          sizes="100vw"
+          className="kenburns -z-10 object-cover object-[50%_30%]"
+        />
+        <div
+          aria-hidden
+          className="tone-white absolute inset-0 bg-[linear-gradient(180deg,var(--ink)_0%,color-mix(in_oklab,var(--ink)_45%,transparent)_12%,transparent_28%,transparent_70%,color-mix(in_oklab,var(--bg)_60%,transparent)_88%,var(--bg)_100%)]"
+        />
+      </div>
+
+      {/* Titular centrado + socias */}
       <section className="tone-white bg-bg pb-20 text-fg md:pb-28">
         <div className="wrap">
-          {/* Montada entre el hero oscuro y la sección blanca; proporción natural (no se recorta el grupo en desktop). */}
-          <Reveal className="relative z-10 -mt-20 aspect-[4/3] overflow-hidden shadow-[0_40px_80px_-40px_rgb(24_23_27/0.55)] sm:aspect-[2400/1065] md:-mt-40">
-            <Image
-              src="/team/equipo-headline.webp"
-              alt="Equipo de Headline Comunicaciones Estratégicas"
-              fill
-              preload
-              sizes="(min-width: 1360px) 1220px, 100vw"
-              className="object-cover object-[50%_35%]"
-            />
-          </Reveal>
-          <Reveal delay={0.08} className="mx-auto mt-16 max-w-[900px] text-center md:mt-20">
+          <Reveal className="mx-auto max-w-[900px] pt-6 text-center md:pt-10">
             <h2 className="display text-[clamp(2.1rem,4.2vw,3.8rem)]">
               Profesionales que entienden la complejidad del negocio y del <em>entorno</em>
               <Dot />
@@ -180,7 +184,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      <ClosingCta title="Conversemos sobre tu desafío." />
+      <ClosingCta />
     </>
   );
 }

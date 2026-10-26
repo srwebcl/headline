@@ -616,5 +616,65 @@
     "src": "/logos/pr-latam.png",
     "width": 536,
     "height": 140
+  },
+  "afp-uno": {
+    "name": "AFP Uno",
+    "src": "/logos/afp-uno.png",
+    "width": 422,
+    "height": 140
+  },
+  "grupo-planeta": {
+    "name": "Grupo Planeta",
+    "src": "/logos/grupo-planeta.png",
+    "width": 143,
+    "height": 140
+  },
+  "metecno": {
+    "name": "Metecno Chile",
+    "src": "/logos/metecno.png",
+    "width": 597,
+    "height": 140
+  },
+  "chilemat": {
+    "name": "ChileMat",
+    "src": "/logos/chilemat.png",
+    "width": 310,
+    "height": 140
+  },
+  "coanil": {
+    "name": "Fundación Coanil",
+    "src": "/logos/coanil.png",
+    "width": 295,
+    "height": 140
+  },
+  "conama": {
+    "name": "Comisión Nacional del Medio Ambiente",
+    "src": "/logos/conama.png",
+    "width": 126,
+    "height": 140
+  },
+  "coprin": {
+    "name": "Coprin",
+    "src": "/logos/coprin.png",
+    "width": 510,
+    "height": 140
+  },
+  "mujeres-empresarias": {
+    "name": "Mujeres Empresarias",
+    "src": "/logos/mujeres-empresarias.png",
+    "width": 247,
+    "height": 140
+  },
+  "olimpiadas-especiales": {
+    "name": "Olimpiadas Especiales Chile",
+    "src": "/logos/olimpiadas-especiales.png",
+    "width": 443,
+    "height": 140
+  },
+  "paccari": {
+    "name": "Paccari",
+    "src": "/logos/paccari.png",
+    "width": 197,
+    "height": 140
   }
 }

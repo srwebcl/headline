@@ -436,20 +436,31 @@
   }
 }
 
-/* Etapas de /nuestro-modelo: el número sube desde su máscara y el contenido aparece al entrar cada etapa. */
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .step .step-num {
-      animation: method-num cubic-bezier(0.16, 1, 0.3, 1) both;
-      animation-timeline: view();
-      animation-range: entry 10% entry 70%;
-    }
-    .step .step-text {
-      animation: method-text cubic-bezier(0.16, 1, 0.3, 1) both;
-      animation-timeline: view();
-      animation-range: entry 20% entry 85%;
-    }
-  }
+/* Ciclo del modelo (ModelCycle): paleta oscura por defecto y clara con .model-cycle--light
+   (panel de /nuestro-modelo). En claro el acento pasa de amarillo a lila para mantener el contraste. */
+.model-cycle {
+  --mc-ring: #514257;
+  --mc-ring-dashed: #4b3d50;
+  --mc-ring-inner: #332c38;
+  --mc-core: #201b24;
+  --mc-core-line: #4a3a50;
+  --mc-core-glow: rgb(189 123 201 / 0.07);
+  --mc-divider: #4a414e;
+  --mc-hi: var(--dot);
+  --mc-hi-line: #5b5420;
+  --mc-hi-glow: rgb(242 227 0 / 0.09);
+}
+.model-cycle--light {
+  --mc-ring: color-mix(in oklab, var(--lila) 32%, var(--bg));
+  --mc-ring-dashed: color-mix(in oklab, var(--lila) 24%, var(--bg));
+  --mc-ring-inner: color-mix(in oklab, var(--lila) 14%, var(--bg));
+  --mc-core: var(--white);
+  --mc-core-line: color-mix(in oklab, var(--lila) 30%, var(--bg));
+  --mc-core-glow: rgb(142 74 155 / 0.12);
+  --mc-divider: var(--line);
+  --mc-hi: var(--lila);
+  --mc-hi-line: color-mix(in oklab, var(--lila) 40%, var(--bg));
+  --mc-hi-glow: rgb(142 74 155 / 0.14);
 }
 
 /* Barra de avance del titular rotativo (la duración llega inline). */

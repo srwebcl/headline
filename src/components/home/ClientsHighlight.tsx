@@ -1,17 +1,23 @@
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { LogoMarquee } from "@/components/home/LogoMarquee";
 import { Reveal } from "@/components/ui/Reveal";
-import { industries } from "@/data/content";
 import { Dot } from "@/components/ui/Dot";
 
-// Todos los clientes, intercalando industrias para que el carrusel no las agrupe.
-const allLogos = (() => {
-  const lists = industries.map((i) => i.logos);
-  const max = Math.max(...lists.map((l) => l.length));
-  return Array.from({ length: max }, (_, k) => lists.map((l) => l[k]).filter(Boolean)).flat();
-})();
+// Clientes destacados del carrusel, en el orden definido por la agencia.
+const homeLogos = [
+  "labchile-teva",
+  "abbott",
+  "merck",
+  "zoetis",
+  "adobe",
+  "ascenty",
+  "henkel",
+  "scania",
+  "afp-uno",
+  "grupo-planeta",
+];
 
-/** Clientes: carrusel infinito con todos los logos y salida a /clientes. */
+/** Clientes: carrusel infinito con los logos destacados y salida a /clientes. */
 export function ClientsHighlight() {
   return (
     <section aria-labelledby="clientes-title" className="tone-white bg-bg py-16 text-fg md:py-24">
@@ -25,7 +31,7 @@ export function ClientsHighlight() {
           Salud, minería, energía, tecnología, construcción, consumo e instituciones.
         </p>
         <div className="mx-auto mt-14 max-w-[1180px]">
-          <LogoMarquee slugs={allLogos} label="Clientes de Headline" />
+          <LogoMarquee slugs={homeLogos} label="Clientes de Headline" />
         </div>
         <ButtonLink href="/clientes" className="mt-10">
           Ver todos los clientes

@@ -14,14 +14,20 @@ export function Dot() {
 /**
  * Para títulos que llegan como texto (datos, props): quita el punto final y agrega el punto
  * de marca. Los títulos que terminan en "?" o "!" se dejan como están.
+ * La última palabra va unida al punto para que éste nunca quede solo en una línea.
  */
 export function Dotted({ children }: { children: string }) {
   const text = children.trim();
   if (/[?!]$/.test(text)) return <>{text}</>;
+  const clean = text.replace(/\.$/, "");
+  const cut = clean.lastIndexOf(" ") + 1;
   return (
     <>
-      {text.replace(/\.$/, "")}
-      <Dot />
+      {clean.slice(0, cut)}
+      <span className="whitespace-nowrap">
+        {clean.slice(cut)}
+        <Dot />
+      </span>
     </>
   );
 }

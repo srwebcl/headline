@@ -103,7 +103,7 @@ export default function QueHacemosPage() {
 
       <BlendImage src="/images/que-hacemos.webp" alt="Equipo de Headline en reunión de trabajo" />
 
-      <ClosingCta title="Conversemos sobre tu desafío." />
+      <ClosingCta />
     </>
   );
 }

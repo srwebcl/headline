@@ -28,7 +28,7 @@ export const nav = [
   { label: "Qué hacemos", href: "/que-hacemos" },
   { label: "Nuestro modelo", href: "/nuestro-modelo" },
   { label: "Clientes", href: "/clientes" },
-  { label: "Casos de Éxito", href: "/casos" },
+  { label: "Casos de Éxito", href: "/casos-de-exito" },
   { label: "Blog", href: "/insights" },
 ];
 
@@ -48,9 +48,6 @@ export type Capability = {
   quote?: string;
   listLabel: "Soluciones";
   items: string[];
-  closing: string;
-  /** Texto del bloque de cierre (lado derecho). */
-  closingBody?: string;
   image: { src: string; alt: string };
 };
 
@@ -81,9 +78,6 @@ export const capabilities: Capability[] = [
       "Comunicaciones internas.",
       "Entrenamiento de voceros corporativos.",
     ],
-    closing: "Conversemos sobre tu desafío.",
-    closingBody:
-      "Cómo la comunicación puede ayudarte a fortalecer tu reputación, posicionar a tus líderes o enfrentar escenarios complejos.",
     image: { src: "/services/posicionamiento-reputacion.webp", alt: "Equipo en una presentación de posicionamiento con indicadores de medios" },
   },
   {
@@ -109,9 +103,6 @@ export const capabilities: Capability[] = [
       "Capacitaciones.",
       "Planes de recuperación post crisis.",
     ],
-    closing: "Preparémonos antes de la próxima crisis.",
-    closingBody:
-      "Revisemos cómo la comunicación puede ayudarte a fortalecer tu reputación, posicionar a tus líderes o enfrentar escenarios complejos.",
     image: { src: "/services/prevencion-gestion-crisis.webp", alt: "Reunión de análisis de riesgos frente a un panel de monitoreo" },
   },
   {
@@ -134,10 +125,7 @@ export const capabilities: Capability[] = [
       "Relacionamiento institucional y diálogo multisectorial.",
       "Vinculación con comunidades.",
     ],
-    closing: "Hablemos de tu entorno.",
-    closingBody:
-      "Revisemos cómo la comunicación puede ayudarte a fortalecer tu reputación, posicionar a tus líderes o enfrentar escenarios complejos.",
-    image: { src: "/services/relaciones-institucionales-grupos-interes.webp", alt: "Sesión de trabajo con un mapa de grupos de interés" },
+    image: { src: "/services/relaciones-institucionales-2026.webp", alt: "Reunión de trabajo frente a un mapa de grupos de interés: sector público, clientes, comunidad, medios, socios e inversionistas" },
   },
   {
     slug: "comunicacion-interna",
@@ -161,9 +149,6 @@ export const capabilities: Capability[] = [
       "Capacitación de voceros internos.",
       "Eventos.",
     ],
-    closing: "Fortalece tu comunicación interna.",
-    closingBody:
-      "Evaluemos cómo la comunicación puede ayudarte a fortalecer tu reputación, posicionar a tus líderes o enfrentar escenarios complejos.",
     image: { src: "/services/comunicacion-interna.webp", alt: "Equipo conversando en torno a una mesa de trabajo" },
   },
   {
@@ -187,9 +172,6 @@ export const capabilities: Capability[] = [
       "Talleres de Marca personal.",
       "Presentaciones de alto impacto.",
     ],
-    closing: "Entrena a tu vocero.",
-    closingBody:
-      "Evaluemos cómo la comunicación puede ayudarte a fortalecer tu reputación, posicionar a tus líderes o enfrentar escenarios complejos.",
     image: { src: "/services/vocerias.webp", alt: "Vocero en un entrenamiento frente a cámara" },
   },
 ];
@@ -393,17 +375,13 @@ export const industries = [
     ],
   },
   {
-    slug: "mineria-industria",
-    name: "Minería, industria e infraestructura",
+    slug: "mineria-energia-industria",
+    name: "Minería, energía e industria",
     logos: [
       "sierra-gorda", "yamana", "joy-global", "ausenco", "gardilcic", "jej", "mas-errazuriz", "geovita",
-      "aeropuerto-diego-aracena", "sk-comsa", "comin", "eminic", "buffer", "aerotas",
+      "aeropuerto-diego-aracena", "sk-comsa", "comin", "eminic", "buffer", "aerotas", "kdm", "metecno",
+      "chilemat", "engie", "solarity", "cce", "puerto-caldera",
     ],
-  },
-  {
-    slug: "energia",
-    name: "Energía",
-    logos: ["engie", "solarity", "cce"],
   },
   {
     slug: "tecnologia",
@@ -422,29 +400,20 @@ export const industries = [
     ],
   },
   {
-    slug: "automotriz",
-    name: "Automotriz",
-    logos: ["scania", "infiniti", "gama-leasing"],
-  },
-  {
-    slug: "consumo-servicios",
-    name: "Consumo y servicios",
+    slug: "organizaciones",
+    name: "Organizaciones",
     logos: [
-      "baker-mckenzie", "sodexo", "canal-13", "triumph", "flores", "emma", "disal", "kdm",
-      "puerto-caldera", "muelles-de-penco", "brunapoli",
+      "union-europea", "bcn", "itpo", "embajada-india", "pnuma", "canal-13", "coanil", "conama", "coprin",
+      "mujeres-empresarias", "olimpiadas-especiales",
     ],
   },
   {
-    slug: "instituciones",
-    name: "Instituciones",
-    logos: ["union-europea", "bcn", "itpo", "embajada-india", "municipalidad-iquique", "pnuma", "focco"],
-  },
-  {
-    slug: "ferias-entretenimiento",
-    name: "Ferias y entretenimiento",
+    slug: "servicios-consumo-entretencion",
+    name: "Servicios, consumo, retail y entretención",
     logos: [
-      "oktoberfest", "expo-mujer", "feria-naciones", "expo-reciclaje",
-      "expo-india", "diwali", "grupo-security", "seleccion-croacia",
+      "scania", "infiniti", "gama-leasing", "baker-mckenzie", "sodexo", "triumph", "flores", "emma", "disal", "kdm",
+      "muelles-de-penco", "brunapoli", "oktoberfest", "expo-mujer", "feria-naciones", "expo-reciclaje", "expo-india",
+      "diwali", "grupo-security", "afp-uno", "grupo-planeta", "paccari", "seleccion-croacia",
     ],
   },
 ];
@@ -456,149 +425,191 @@ export const industries = [
 export type Case = {
   slug: string;
   client: string;
+  /** Tipo de trabajo (p. ej. "Posicionamiento B2B"). */
   area: string;
-  title: string;
-  challenge: string;
-  actions: string[];
-  result?: string;
-  note?: string;
+  /** Título opcional cuando el cliente no basta (p. ej. Congreso Nacional). */
+  title?: string;
+  /** Párrafos del caso: el primero es el contexto/desafío; el último se destaca en la tarjeta. */
+  body: string[];
   image: string;
   imageAlt: string;
+  /** "contain" para piezas con texto o logos (no se recortan). */
+  imageFit?: "contain";
 };
 
-// TODO(checklist): confirmar que cada caso puede publicarse con nombre y verificar resultados y fechas.
+// Casos definitivos: casos_de_exitos.md (entregado por Headline). Orden de presentación en /casos-de-exito.
 export const cases: Case[] = [
   {
-    slug: "tecsa",
-    client: "TECSA",
-    area: "Posicionamiento y gestión de riesgos",
-    title: "Posicionamiento y gestión de riesgos del Grupo TECSA",
-    image: "/cases/tecsa.jpg",
-    imageAlt: "Ingenieros y directivos revisando planos en obra de gran envergadura de TECSA",
-    challenge:
-      "Fortalecer el valor de la marca a través de los años, gestionando oportunamente riesgos y potenciando oportunidades del contexto. Apoyar, desde las comunicaciones estratégicas, las metas comerciales y reputacionales del grupo.",
-    actions: [
-      "Asesoramos al VP y primera línea en la gestión de riesgos y posicionamiento frente a sus distintos grupos de interés, con el fin de facilitar la operación de las distintas unidades de negocio y el logro de objetivos.",
-      "Monitoreo permanente del entorno, proyección de escenarios críticos, mapeo de riesgos por unidad de negocio, capacitación y procedimientos de abordaje, gestión del mapa de grupos de interés y proyectos de vinculación con las comunidades en proyectos de impacto.",
+    "slug": "laboratorio-chile",
+    "client": "Laboratorio Chile / Teva",
+    "area": "Posicionamiento de marca",
+    "body": [
+      "En una industria marcada por la desconfianza, la compañía busca ser reconocida por su aporte a la salud de los chilenos y al desarrollo del país, construyendo una relación de confianza con la ciudadanía.",
+      "Para ello, trabajamos en su posicionamiento ante distintos grupos de interés, con foco en acceso y calidad, promoviendo el diálogo con actores del sector y la educación de los pacientes. Este trabajo ha contribuido a fortalecer su reconocimiento y confianza en Chile. Por tercer año consecutivo, la compañía se ubica entre los primeros lugares de Marca Ciudadana y Merco."
     ],
-    result:
-      "Se construyó una marca fuerte y valorada por los distintos stakeholders, desarrolladora de grandes proyectos de infraestructura, edificación e inmobiliario de Chile y la región.",
+    "image": "/cases/laboratorio-chile.webp",
+    "imageAlt": "Equipo de Laboratorio Chile / Teva en la premiación Humanizando la Salud 2024"
   },
   {
-    slug: "congreso-nacional",
-    client: "Congreso Nacional / BCN",
-    area: "Modernización y vinculación ciudadana",
-    title: "Modernización del Congreso Nacional y vinculación ciudadana",
-    image: "/cases/congreso-nacional.jpg",
-    imageAlt: "Equipo de asesores y parlamentarios analizando datos y modernización en el Congreso Nacional",
-    challenge:
-      "Transformar la gestión parlamentaria incorporando tecnología y procedimientos para agilizar el estudio de proyectos y la tramitación de leyes. Al mismo tiempo, favorecer la vinculación ciudadana y la comprensión de las leyes por parte de la ciudadanía.",
-    actions: [
-      "Diseño del plan para postularlo a fondos BID.",
-      "Implementación y desarrollo que implicó diagnóstico y las distintas etapas contempladas en el proyecto de vinculación y relacionamiento con grupos de interés clave.",
+    "slug": "ascenty",
+    "client": "Ascenty",
+    "area": "Posicionamiento B2B",
+    "body": [
+      "Trabajamos en el posicionamiento de Ascenty en Chile, fortaleciendo su reconocimiento como proveedor de infraestructura de data centers y su relación con grupos de interés clave.",
+      "En coordinación con su equipo regional, desarrollamos una estrategia de comunicaciones corporativas que combina la difusión de sus inversiones y proyectos, el posicionamiento de voceros y el relacionamiento con medios y otras audiencias, tanto en Chile como en instancias internacionales. Así, acercamos la industria de los centros de datos a sus grupos de interés y visibilizamos su aporte al desarrollo tecnológico, la economía y la conectividad del país."
     ],
-    result:
-      "Desarrollo exitoso del proyecto, con herramientas concretas de acceso a la comunidad, incorporación de software libre en la operación interna, agilización de procesos internos y de estudios comparados, pupitres electrónicos, entre otros.",
+    "image": "/cases/ascenty.webp",
+    "imageAlt": "Equipo de Ascenty en sus instalaciones en Chile"
   },
   {
-    slug: "chile-india",
-    client: "Chile-India / ITPO",
-    area: "Promoción de negocios",
-    title: "Promoción de negocios Chile-India",
-    image: "/cases/chile-india.jpg",
-    imageAlt: "Cumbre bilateral y rueda de negocios internacional entre delegaciones de Chile e India",
-    challenge:
-      "Favorecer la llegada de empresas de India a Chile, principalmente en tecnología y manufactura, y promover el intercambio entre ambos países a través de ITPO.",
-    actions: [
-      "Diseño de un programa de cuatro años que incluyó un mega evento comercial anual, ruedas de negocios, charlas y presentaciones, encuentros one to one y generación de artículos de interés en el área de negocios.",
+    "slug": "scania",
+    "client": "Scania",
+    "area": "Posicionamiento B2B",
+    "body": [
+      "Como socio estratégico en comunicaciones de Scania Chile, acompañamos a la compañía en el fortalecimiento de su reputación corporativa y el posicionamiento de sus soluciones para el transporte y otras industrias. La asesoría abarca su oferta de camiones, buses y motores marinos, con foco en innovación, eficiencia y sustentabilidad.",
+      "Desarrollamos una estrategia que integra la comunicación de hitos y lanzamientos, el relacionamiento con la prensa y la vinculación con actores de la industria, incluyendo experiencias internacionales para periodistas en Brasil y Suecia. También desarrollamos proyectos como el libro conmemorativo de los 30 años de Scania en Chile, que recoge su historia y contribución al transporte nacional, reforzando su trayectoria y relación con grupos de interés clave."
     ],
-    result:
-      "Generación de alianzas entre empresas, aumento de ventas de ciertos segmentos y visibilización de oportunidades de inversión e intercambio.",
+    "image": "/cases/scania.webp",
+    "imageAlt": "Equipo de Scania Chile junto a un camión de la marca"
   },
   {
-    slug: "angioedema-hereditario",
-    client: "AEH",
-    area: "Grupos de interés y acceso a tratamiento",
-    title: "Acceso a tratamiento para el Angioedema Hereditario",
-    image: "/cases/angioedema-hereditario.jpg",
-    imageAlt: "Mesa multisectorial de salud analizando acceso a tratamientos y Ley Ricarte Soto",
-    challenge:
-      "Lograr que el tratamiento biológico de alto costo para esta enfermedad rara fuera financiado mediante instrumentos estatales.",
-    actions: [
-      "Diseño de un plan de gestión de grupos de interés para relacionarse con autoridades competentes del Ministerio de Salud y obtener financiamiento en el segundo decreto de la Ley Ricarte Soto.",
-      "Las etapas incluyeron desarrollo de relato objetivo de costos, identificación de aliados, trabajo con la Comisión de Salud del Senado, asociaciones médicas, academia y líderes de opinión; creación de una asociación de pacientes; relacionamiento institucional; intercambio de experiencias internacionales y mesas de trabajo multisectoriales.",
+    "slug": "abbott",
+    "client": "Abbott",
+    "area": "Educación al paciente y relacionamiento",
+    "body": [
+      "Acompañamos a Abbott en su posicionamiento de marca y en sus planes estratégicos anuales, bajo el concepto One Abbott. Nuestro foco está en la presencia sostenida en medios de amplio alcance y el desarrollo de campañas educativas sobre influenza, test de antígenos de COVID-19, TDAH y menopausia, entre otros temas.",
+      "Este trabajo integra el relacionamiento con médicos especialistas, pacientes y periodistas de salud y ciencia, junto con instancias de capacitación que conectan el conocimiento médico con la labor informativa de los medios y la educación de los pacientes."
     ],
-    result:
-      "Incorporación del tratamiento de AEH en el segundo decreto de la Ley Ricarte Soto. Hoy los pacientes tienen acceso.",
+    "image": "/cases/abbott.webp",
+    "imageAlt": "Equipo de Abbott en una actividad corporativa"
   },
   {
-    slug: "puerto-caldera",
-    client: "Puerto Caldera",
-    area: "Sustentabilidad y vinculación con la comunidad",
-    title: "Puerto Caldera, plataforma portuaria de Atacama",
-    image: "/cases/puerto-caldera.jpg",
-    imageAlt: "Terminal portuario y grúas de carga en Puerto Caldera, Región de Atacama",
-    challenge:
-      "Posicionarlo como principal plataforma portuaria de Atacama para empresas del norte de Chile y Argentina, considerando sus condiciones climáticas y continuidad operacional.",
-    actions: [
-      "Plan de posicionamiento, gestión de stakeholders y trabajo para lograr la adherencia de la comunidad y autoridades locales.",
-      "Proyectos colaborativos pro crecimiento local, comunicación permanente con la comunidad y medios locales, redes sociales y fortalecimiento de vocerías institucionales.",
+    "slug": "csl-behring-aeh",
+    "client": "CSL Behring",
+    "area": "Asuntos públicos",
+    "body": [
+      "El desafío fue lograr financiamiento estatal para un tratamiento biológico de alto costo para el angioedema hereditario (AEH), una enfermedad rara.",
+      "Diseñamos una estrategia orientada a favorecer el diagnóstico, visibilizar el impacto de la enfermedad y promover su cobertura ante las autoridades. El trabajo integró el relacionamiento con grupos de interés, la articulación de vocerías, el impulso de una asociación de pacientes y la difusión de sus experiencias. Estas acciones contribuyeron a la incorporación de Berinert en el segundo decreto de la Ley Ricarte Soto, permitiendo el acceso de los pacientes al tratamiento bajo esta cobertura."
     ],
-    result:
-      "Se logró fortalecer la marca, apoyar sus metas comerciales y gestionar riesgos que podían afectar su operación.",
+    "image": "/cases/csl-behring-aeh.webp",
+    "imageAlt": "Plataforma educativa de CSL Behring sobre enfermedades raras",
+    "imageFit": "contain"
   },
   {
-    slug: "laboratorio-chile",
-    client: "Laboratorio Chile / Teva",
-    area: "Construcción de reputación",
-    title: "Laboratorio Chile: una marca con alta aprobación ciudadana",
-    image: "/cases/laboratorio-chile.jpg",
-    imageAlt: "Especialistas en control de calidad en planta farmacéutica de Laboratorio Chile",
-    challenge:
-      "Construir una marca con alta aprobación ciudadana, reconocida por su trabajo por la salud de los chilenos y su contribución al crecimiento del país.",
-    actions: [
-      "Plan de posicionamiento, vinculación con la comunidad y gestión de grupos de interés.",
-      "Acciones para minimizar eventos críticos que pudieran afectar reputación y confianza.",
-      "Conversaciones multisectoriales sobre acceso a medicamentos e iniciativas con actores relevantes del mundo de la salud.",
+    "slug": "henkel",
+    "client": "Henkel",
+    "area": "Posicionamiento de marca y unidades de negocio",
+    "body": [
+      "Desde hace varios años acompañamos a la marca en Chile en el fortalecimiento de su liderazgo en innovación y sustentabilidad, visibilizando su aporte al desarrollo de distintas industrias. Nuestra asesoría integra el posicionamiento de voceros y la comunicación de sus iniciativas corporativas, innovaciones y lanzamientos.",
+      "También desarrollamos campañas para dar a conocer sus adhesivos industriales y de consumo masivo, combinando gestión de prensa, colaboración con influencers y actividades en terreno. Este trabajo se complementa con el monitoreo permanente del entorno para anticipar y alertar sobre situaciones que puedan afectar a la compañía."
     ],
-    // TODO(checklist): publicar como claim histórico con fecha y fuente (Marca Ciudadana / Merco).
-    result:
-      "La compañía se transformó en una de las marcas más confiables y respetadas en el ámbito de la salud en Chile, y apareció por tercer año consecutivo en los primeros lugares de Marca Ciudadana y Merco.",
+    "image": "/cases/henkel.webp",
+    "imageAlt": "Equipo de Henkel en sus oficinas en Chile"
   },
   {
-    slug: "gardilcic",
-    client: "Constructora Gardilcic",
-    area: "Comunicaciones estratégicas para el crecimiento",
-    title: "Comunicaciones estratégicas para el crecimiento de Constructora Gardilcic",
-    image: "/cases/gardilcic.jpg",
-    imageAlt: "Ingenieros de Constructora Gardilcic en faena de minería subterránea en Chile",
-    challenge:
-      "Proteger y fortalecer su imagen en grupos de interés, incorporando las comunicaciones estratégicas en todas sus áreas.",
-    actions: [
-      "Plan anual de comunicaciones con diagnóstico de contexto, proyección de riesgos y relacionamiento con grupos de interés.",
-      "Comunicación permanente con colaboradores y capacitaciones de comunicación efectiva, comunicación en crisis y simulacros.",
+    "slug": "gardilcic",
+    "client": "Constructora Gardilcic",
+    "area": "Comunicaciones estratégicas y gestión de riesgos",
+    "body": [
+      "Desde hace varios años asesoramos a la alta dirección en la protección y el fortalecimiento de su reputación ante sus grupos de interés, integrando las comunicaciones estratégicas en las distintas áreas de la organización y alineándolas con sus objetivos de negocio.",
+      "Desarrollamos un plan anual que combina el análisis del contexto y la anticipación de riesgos con acciones de relacionamiento, comunicación interna y preparación de equipos. A través de capacitaciones en comunicación efectiva, gestión de crisis y simulacros, fortalecemos las capacidades de la organización para responder ante escenarios complejos y mantener una comunicación coherente con sus distintas audiencias."
     ],
-    result:
-      "Consolidación de una cultura preventiva, protección de la reputación corporativa y alineamiento comunicacional en faenas mineras.",
+    "image": "/cases/gardilcic.webp",
+    "imageAlt": "Jornada de capacitación con el equipo de Constructora Gardilcic"
   },
+  {
+    "slug": "fundamenta",
+    "client": "Inmobiliaria Fundamenta",
+    "area": "Comunicación interna y alineamiento",
+    "body": [
+      "En 2014 iniciamos una asesoría comunicacional para fortalecer la alineación y motivación de los equipos en torno a una cultura compartida y con propósito. Durante varios años diseñamos e implementamos campañas de cultura, valores y marca, junto con un sistema de comunicación abierto y participativo, adaptando plataformas y contenidos al crecimiento de la empresa y a los cambios del entorno.",
+      "Este trabajo contribuyó a consolidar el rol del área de Personas en el cumplimiento de los objetivos de la organización y a alcanzar sus mejores resultados en clima laboral, comunicación interna y engagement."
+    ],
+    "image": "/cases/fundamenta.webp",
+    "imageAlt": "Publicación del boletín interno de Fundamenta",
+    "imageFit": "contain"
+  },
+  {
+    "slug": "puerto-caldera",
+    "client": "Puerto Caldera",
+    "area": "Sustentabilidad y vinculación",
+    "body": [
+      "Nuestra misión fue posicionar al puerto como la principal plataforma portuaria de Atacama para las empresas del norte de Chile y Argentina, destacando sus condiciones climáticas favorables para la continuidad operacional. La asesoría también contempló la gestión de cuestionamientos ambientales y riesgos que pudieran afectar su operación y sus objetivos de desarrollo.",
+      "Trabajamos con líderes de opinión y autoridades locales en torno a un plan de crecimiento y mejoramiento del sector. Mantuvimos una comunicación permanente con la comunidad mediante medios locales y redes sociales, acercando a la empresa a sus inquietudes y prioridades."
+    ],
+    "image": "/cases/puerto-caldera.webp",
+    "imageAlt": "Pieza de la iniciativa Arriba Caldera con la comunidad",
+    "imageFit": "contain"
+  },
+  {
+    "slug": "tecsa",
+    "client": "Grupo Tecsa",
+    "area": "Posicionamiento y gestión de riesgos",
+    "body": [
+      "Acompañamos al Grupo Tecsa en el fortalecimiento de su marca, la gestión oportuna de riesgos y la identificación de oportunidades del entorno. Apoyamos los planes estratégicos de la Dirección mediante el relacionamiento y la comunicación con grupos de interés vinculados a proyectos de infraestructura, energía, desarrollo inmobiliario e industria.",
+      "Esta asesoría abarcó proyectos como el Aeropuerto Diego de Aracena, las centrales hidroeléctricas Chacayes y La Confluencia, la Central Bocamina, la Autopista Costanera Norte, el Casino Monticello, el Mall Paseo Estación Central y Clínica Alemana, entre otros."
+    ],
+    "image": "/cases/tecsa.webp",
+    "imageAlt": "Inauguración de un proyecto del Grupo Tecsa"
+  },
+  {
+    "slug": "india-itpo",
+    "client": "Embajada de la India en Chile / ITPO",
+    "area": "Promoción de negocios Chile - India",
+    "body": [
+      "Impulsamos un programa de relaciones públicas para facilitar la llegada de empresas de la India a Chile, principalmente en tecnología y manufactura, y promover el intercambio comercial entre ambos países junto al organismo de promoción comercial de la India (ITPO).",
+      "Durante cuatro años desarrollamos ruedas de negocios, encuentros empresariales, presentaciones ante cámaras y gremios, y contenidos para medios de negocios. Entre las iniciativas de mayor visibilidad estuvo la realización de tres versiones de EXPOINDIA, una vitrina abierta al público para acercar la cultura, los productos y la gastronomía de la India a Chile."
+    ],
+    "image": "/cases/india-itpo.webp",
+    "imageAlt": "Publicación en prensa sobre la relación Chile-India y Expo India",
+    "imageFit": "contain"
+  },
+  {
+    "slug": "congreso-nacional",
+    "client": "Congreso Nacional / BCN",
+    "area": "Articulación pública-privada",
+    "title": "Modernización del Congreso Nacional y vinculación ciudadana",
+    "body": [
+      "Participamos en un proyecto país orientado a modernizar la gestión parlamentaria mediante tecnología y procedimientos que agilizaran el estudio de proyectos y la tramitación de leyes. La iniciativa también buscó fortalecer la vinculación con la ciudadanía y facilitar la comprensión de la labor legislativa.",
+      "BCN INNOVA, eje de este proyecto del BID, facilita el acceso de la comunidad a las leyes y a los proyectos en tramitación, acercando la información legislativa a las personas."
+    ],
+    "image": "/cases/congreso-nacional.webp",
+    "imageAlt": "Logo de la Biblioteca del Congreso Nacional de Chile",
+    "imageFit": "contain"
+  },
+  {
+    "slug": "brunapoli",
+    "client": "Brunapoli",
+    "area": "Creación de marca",
+    "body": [
+      "El desafío fue crear una marca distintiva inspirada en Bruna, abuela del fundador y oriunda de Nápoles, Italia. Así nació Brunapoli, nombre de la cadena de pizzerías que se instaló en Chile y la región. Desarrollamos su logotipo, identidad visual, manual de marca y la aplicación de esta identidad en los locales, incorporando el corno como elemento identificatorio.",
+      "Organizamos el lanzamiento del primer local en Lo Barnechea y desarrollamos encuentros con periodistas gastronómicos para dar a conocer la marca y su propuesta de pizza italiana."
+    ],
+    "image": "/cases/brunapoli.webp",
+    "imageAlt": "Logotipo de Brunapoli, Vivere la pizza",
+    "imageFit": "contain"
+  }
 ];
+
+// Casos destacados del Home.
+export const featuredCases = ["laboratorio-chile", "scania", "abbott", "ascenty"];
 
 export const citizenProjects = [
   {
-    name: "Proyecto Aula",
-    partner: "Boehringer Ingelheim",
-    body: "Aporte a la educación en salud animal y humana en sectores vulnerables, trabajando con colegios y comunidades.",
+    "name": "Proyecto Aula",
+    "partner": "Boehringer Ingelheim",
+    "body": "Apoyamos una iniciativa de educación en salud animal y humana dirigida a comunidades vulnerables. Durante el primer año, trabajamos en colegios de San Pedro de Melipilla junto a la comunidad, acercando estos contenidos al entorno escolar."
   },
   {
-    name: "Proyecto ANGELS",
-    partner: "Acción ACV",
-    body: "Desde 2016, articulación de un proyecto multisectorial de visibilización de síntomas para evitar muertes e impactos negativos. Incluyó trabajo con el sistema público de salud, médicos y pacientes, capacitaciones, difusión, activaciones territoriales y una app de ayuda.",
+    "name": "Proyecto ANGELS",
+    "partner": "Acción ACV",
+    "body": "Desde 2016, apoyamos la articulación de un proyecto multisectorial para promover el reconocimiento oportuno de los síntomas del accidente cerebrovascular (ACV) y contribuir a reducir sus consecuencias. En conjunto con el sistema público de salud, médicos y pacientes, desarrollamos una campaña de educación y difusión que incluyó una aplicación de ayuda, capacitaciones online y actividades en terreno."
   },
   {
-    name: "Hidrógeno verde y su poder",
-    partner: "Fundación Chile y Delegación de la Unión Europea",
-    body: "Trabajo conjunto para posicionar el tema a través de distintos canales.",
-  },
+    "name": "Hidrógeno verde y su poder",
+    "partner": "Fundación Chile & DUE",
+    "body": "Junto a Fundación Chile y la Delegación de la Unión Europea (DUE), trabajamos en el posicionamiento del hidrógeno verde, acercando el tema a distintas audiencias mediante una estrategia de comunicación en diversos canales."
+  }
 ];
 
 /* ------------------------------------------------------------------ */
@@ -637,9 +648,8 @@ export const leadership: Person[] = [
   },
 ];
 
-// Equipo completo: foto, nombre y cargo (retratos 3:4 en /public/team).
+// Resto del equipo: foto, nombre y cargo (retratos 3:4 en /public/team). Las socias van aparte (leadership).
 export const team: Person[] = [
-  ...leadership.map(({ name, role, photo }) => ({ name, role, photo })),
   { name: "Paula Pérez", role: "Directora de Cuentas", photo: "/team/paula-perez.webp" },
   { name: "Claudia Caro", role: "Directora de Cuentas", photo: "/team/claudia-caro.webp" },
   { name: "Consuelo Mejías", role: "Directora de Cuentas", photo: "/team/consuelo-mejias.webp" },
@@ -647,10 +657,10 @@ export const team: Person[] = [
   { name: "Valentina Mardones", role: "Ejecutiva de Cuentas", photo: "/team/valentina-mardones.webp" },
   { name: "Nicolás Gamboa", role: "Ejecutivo de Cuentas", photo: "/team/nicolas-gamboa.webp" },
   { name: "Pía Bobadilla", role: "Ejecutiva de Cuentas", photo: "/team/pia-bobadilla.webp" },
-  { name: "Maximiliano Aralla", role: "Ejecutivo de Cuentas", photo: "/team/maximiliano-aralla.webp" },
+  { name: "Maximiliano Araya", role: "Ejecutivo de Cuentas", photo: "/team/maximiliano-araya.webp" },
   { name: "Sergio Baquedano", role: "Ejecutivo de Cuentas", photo: "/team/sergio-baquedano.webp" },
   { name: "Guido Ferrari", role: "Diseñador Gráfico", photo: "/team/guido-ferrari.webp" },
-  { name: "Yolanda Bahamondez", role: "Administración y Finanzas", photo: "/team/yolanda-bahamondez.webp" },
+  { name: "Yolanda Bahamondes", role: "Administración y Finanzas", photo: "/team/yolanda-bahamondes.webp" },
 ];
 
 export const recognitions = [
@@ -663,7 +673,7 @@ export const recognitions = [
   {
     logo: "sello-transforma",
     name: "Sello Transforma",
-    period: "2024 y 2025",
+    period: "2024, 2025 y 2026",
     body: "Obtenido por nuestro compromiso con la inclusión laboral de jóvenes en riesgo social, otorgado por Fundación Proyecto B y Fundación MC.",
   },
 ];

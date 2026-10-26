@@ -67,14 +67,15 @@ export default async function CapabilityPage({ params }: PageProps<"/que-hacemos
           <Reveal>
             <h2 className="display text-[clamp(1.9rem,3.4vw,3rem)]"><Dotted>{c.listLabel}</Dotted></h2>
           </Reveal>
-          {/* Misma viñeta que el Home (asterisco lila); hover con el lila corporativo. */}
+          {/* Misma viñeta que el Home (asterisco lila); hover con el lila corporativo.
+              Asterisco y texto en el mismo flujo: separación fija en todas las tarjetas, sin superponerse. */}
           <ul className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {c.items.map((item, i) => (
               <Reveal
                 as="li"
                 key={item}
                 delay={(i % 3) * 0.05}
-                className="group relative isolate flex min-h-[132px] items-end overflow-hidden border border-line bg-bg-2/80 p-7 backdrop-blur-[2px]"
+                className="group relative isolate flex h-full flex-col gap-5 overflow-hidden border border-line bg-bg-2/80 p-7 backdrop-blur-[2px] sm:min-h-[150px]"
               >
                 <span
                   aria-hidden
@@ -85,7 +86,7 @@ export default async function CapabilityPage({ params }: PageProps<"/que-hacemos
                   aria-hidden
                   weight="bold"
                   size={26}
-                  className="absolute left-7 top-7 text-accent transition-[color,rotate] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-[360deg] group-hover:text-[var(--dot)] motion-reduce:transition-colors motion-reduce:group-hover:rotate-0"
+                  className="shrink-0 text-accent transition-[color,rotate] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-[360deg] group-hover:text-[var(--dot)] motion-reduce:transition-colors motion-reduce:group-hover:rotate-0"
                 />
                 <span className="text-lg leading-snug transition-colors duration-300 group-hover:text-white">{item}</span>
               </Reveal>
@@ -94,30 +95,31 @@ export default async function CapabilityPage({ params }: PageProps<"/que-hacemos
         </div>
       </section>
 
+      {/* Anterior / Siguiente: dos columnas también en móvil, para que queden cuadradas una frente a la otra. */}
       <nav aria-label="Otras capacidades" className="border-t border-line">
-        <div className="wrap grid sm:grid-cols-2">
+        <div className="wrap grid grid-cols-2">
           {prev ? (
-            <Link href={`/que-hacemos/${prev.slug}`} className="group flex flex-col gap-2 border-line py-10 sm:border-r sm:pr-8">
-              <span className="flex items-center gap-2 text-[13px] uppercase tracking-[0.12em] text-muted">
+            <Link href={`/que-hacemos/${prev.slug}`} className="group flex flex-col gap-2 border-r border-line py-8 pr-4 sm:py-10 sm:pr-8">
+              <span className="flex items-center gap-2 text-[12px] uppercase tracking-[0.12em] text-muted sm:text-[13px]">
                 <ArrowLeft aria-hidden size={14} /> Anterior
               </span>
-              <span className="text-xl tracking-tight group-hover:text-accent">{prev.name}</span>
+              <span className="text-base leading-snug tracking-tight transition-colors group-hover:text-accent sm:text-xl">{prev.name}</span>
             </Link>
           ) : (
-            <span className="hidden sm:block sm:border-r sm:border-line" />
+            <span className="border-r border-line" />
           )}
           {next && (
-            <Link href={`/que-hacemos/${next.slug}`} className="group flex flex-col items-end gap-2 border-t border-line py-10 text-right sm:border-t-0 sm:pl-8">
-              <span className="flex items-center gap-2 text-[13px] uppercase tracking-[0.12em] text-muted">
+            <Link href={`/que-hacemos/${next.slug}`} className="group flex flex-col items-end gap-2 py-8 pl-4 text-right sm:py-10 sm:pl-8">
+              <span className="flex items-center gap-2 text-[12px] uppercase tracking-[0.12em] text-muted sm:text-[13px]">
                 Siguiente <ArrowRight aria-hidden size={14} />
               </span>
-              <span className="text-xl tracking-tight group-hover:text-accent">{next.name}</span>
+              <span className="text-base leading-snug tracking-tight transition-colors group-hover:text-accent sm:text-xl">{next.name}</span>
             </Link>
           )}
         </div>
       </nav>
 
-      <ClosingCta title={c.closing} body={c.closingBody} />
+      <ClosingCta />
     </>
   );
 }

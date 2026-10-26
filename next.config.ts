@@ -9,7 +9,6 @@ const legacyPages: [string, string][] = [
   ["/la-agencia", "/nosotros"],
   ["/lo-que-hacemos", "/que-hacemos"],
   ["/nuestros-clientes", "/clientes"],
-  ["/casos-de-exito", "/casos"],
   ["/blog", "/insights"],
   // Capacidades renombradas (URLs anteriores del sitio nuevo).
   ["/que-hacemos/gestion-prevencion-riesgos", "/que-hacemos/prevencion-gestion-crisis"],
@@ -32,8 +31,10 @@ const nextConfig: NextConfig = {
     return [
       ...legacyPages.map(([source, destination]) => ({ source, destination, permanent: true })),
       ...legacyPosts,
-      // Los casos ya no tienen página propia: cada uno vive como tarjeta en /casos.
-      { source: "/casos/:slug", destination: "/casos", permanent: true },
+      // Casos de éxito: la página vive en /casos-de-exito (sin páginas por caso).
+      { source: "/casos", destination: "/casos-de-exito", permanent: true },
+      { source: "/casos/:slug", destination: "/casos-de-exito", permanent: true },
+      { source: "/casos-de-exito/:slug", destination: "/casos-de-exito", permanent: true },
     ];
   },
 };

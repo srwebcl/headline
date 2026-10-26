@@ -4,8 +4,9 @@
 // `mask-image`, así toman el color del tema (gris, lila en hover, modo oscuro).
 //
 // Uso: node scripts/process-logos.mjs
+//      ONLY=slug1,slug2 node scripts/process-logos.mjs  (procesa sólo esos y conserva el resto del manifiesto)
 import sharp from "sharp";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const ROOT = path.resolve(import.meta.dirname, "../..");
@@ -131,6 +132,16 @@ const LOGOS = [
   ["oktoberfest", "Oktoberfest Chile", `${C}/06 Ferias y entretencion/oktoberfest.webp`],
   ["expo-mujer", "Expo Mujer", `${C}/06 Ferias y entretencion/expo mujer.png`],
   ["feria-naciones", "Feria de las Naciones", `${C}/06 Ferias y entretencion/Feria de las Naciones.jpg`],
+  ["metecno", "Metecno Chile", `${C}/02 Mineria Energia e Industria/metecno-chile.svg`],
+  ["chilemat", "ChileMat", `${C}/02 Mineria Energia e Industria/Chilemat.png`, { lightOnTransparent: true }],
+  ["coanil", "Fundación Coanil", `${C}/05 Organizaciones/Coanil.png`],
+  ["conama", "Comisión Nacional del Medio Ambiente", `${C}/05 Organizaciones/Conama.jpg`],
+  ["coprin", "Coprin", `${C}/05 Organizaciones/Coprin.webp`],
+  ["mujeres-empresarias", "Mujeres Empresarias", `${C}/05 Organizaciones/Mujeres empresarias.png`, { lightOnTransparent: true, floor: 0.55 }],
+  ["olimpiadas-especiales", "Olimpiadas Especiales Chile", `${C}/05 Organizaciones/Olimpiadas.avif`],
+  ["paccari", "Paccari", `${C}/06 Ferias y entretencion/Pacari.jpg`],
+  ["afp-uno", "AFP Uno", `${C}/06 Ferias y entretencion/AFP uno.png`],
+  ["grupo-planeta", "Grupo Planeta", `${C}/06 Ferias y entretencion/Grupo planeta.png`],
   ["expo-reciclaje", "Expo Reciclaje", `${C}/06 Ferias y entretencion/expo_reciclables_logo_neu_14416.webp`],
   ["expo-india", "Expo India", `${N}/Eventos/Expoindia.jpg`],
   ["diwali", "Festival Diwali", `${N}/Eventos/Diwali.png`],
@@ -205,8 +216,10 @@ async function toMask(file, { lightOnTransparent = false, lumOnly = false, floor
 await mkdir(OUT, { recursive: true });
 await mkdir(path.dirname(MANIFEST), { recursive: true });
 
-const manifest = {};
+const only = process.env.ONLY?.split(",");
+const manifest = only ? JSON.parse(await readFile(MANIFEST, "utf8")) : {};
 for (const [slug, name, file, opts] of LOGOS) {
+  if (only && !only.includes(slug)) continue;
   const img = await toMask(file, opts);
   const { width, height } = await img.toFile(path.join(OUT, `${slug}.png`));
   manifest[slug] = { name, src: `/logos/${slug}.png`, width, height };

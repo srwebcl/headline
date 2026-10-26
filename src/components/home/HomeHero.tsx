@@ -31,7 +31,7 @@ export function HomeHero() {
             {CTA.label}
           </ButtonLink>
           <ButtonLink href="/nuestro-modelo" variant="text">
-            Conoce nuestro enfoque
+            Conoce nuestro Modelo
           </ButtonLink>
         </div>
       </div>

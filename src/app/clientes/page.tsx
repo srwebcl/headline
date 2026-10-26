@@ -5,12 +5,12 @@ import { LogoMark } from "@/components/ui/LogoMark";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { industries } from "@/data/content";
-import { Dot } from "@/components/ui/Dot";
+import { Dot, Dotted } from "@/components/ui/Dot";
 
 export const metadata: Metadata = {
   title: "Clientes",
   description:
-    "Empresas nacionales y multinacionales de salud, minería, energía, tecnología, construcción, consumo e instituciones que han confiado en Headline.",
+    "Empresas nacionales y multinacionales de salud, minería, energía, tecnología, construcción, servicios, consumo y organizaciones que han confiado en Headline.",
   alternates: { canonical: "/clientes" },
 };
 
@@ -46,15 +46,8 @@ export default function ClientesPage() {
             <Reveal className="lg:col-span-3">
               <div className="lg:sticky lg:top-40">
                 <h2 id={`${ind.slug}-t`} className="text-[clamp(1.75rem,2.3vw,2.35rem)] font-light leading-tight tracking-tight">
-                  {ind.name}
-                  <Dot />
+                  <Dotted>{ind.name}</Dotted>
                 </h2>
-                <p className="mt-3 inline-flex items-center gap-2 text-sm font-medium tracking-[0.02em] text-muted">
-                  <span className="size-1.5 rounded-full bg-accent/70" aria-hidden />
-                  <span>
-                    {ind.logos.length} {ind.logos.length === 1 ? "organización" : "organizaciones"}
-                  </span>
-                </p>
               </div>
             </Reveal>
             <Reveal delay={0.08} className="lg:col-span-9">
@@ -70,7 +63,7 @@ export default function ClientesPage() {
         ))}
       </div>
 
-      <ClosingCta title="Cuéntanos qué desafío enfrenta tu organización." />
+      <ClosingCta />
     </>
   );
 }

@@ -527,22 +527,10 @@
     "width": 492,
     "height": 140
   },
-  "municipalidad-iquique": {
-    "name": "Ilustre Municipalidad de Iquique",
-    "src": "/logos/municipalidad-iquique.png",
-    "width": 265,
-    "height": 140
-  },
   "pnuma": {
     "name": "PNUMA",
     "src": "/logos/pnuma.png",
     "width": 182,
-    "height": 140
-  },
-  "focco": {
-    "name": "Focco",
-    "src": "/logos/focco.png",
-    "width": 323,
     "height": 140
   },
   "oktoberfest": {
@@ -603,18 +591,6 @@
     "name": "Sello Transforma",
     "src": "/logos/sello-transforma.png",
     "width": 140,
-    "height": 140
-  },
-  "amcham": {
-    "name": "AmCham Chile",
-    "src": "/logos/amcham.png",
-    "width": 1150,
-    "height": 140
-  },
-  "pr-latam": {
-    "name": "PR LATAM",
-    "src": "/logos/pr-latam.png",
-    "width": 536,
     "height": 140
   },
   "afp-uno": {

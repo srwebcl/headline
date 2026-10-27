@@ -1,11 +1,31 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import Script from "next/script";
 import { ArrowRight, CaretDown, CheckCircle } from "@phosphor-icons/react";
 import { sendContact, type ContactState } from "./actions";
 import { contactServices } from "@/data/content";
 
 const initial: ContactState = { status: "idle" };
+
+const SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+type Grecaptcha = {
+  ready: (cb: () => void) => void;
+  execute: (siteKey: string, opts: { action: string }) => Promise<string>;
+};
+
+/** Token de reCAPTCHA v3 para la acción "contacto" (vacío si no hay clave o falla la carga). */
+function getRecaptchaToken(): Promise<string> {
+  const g = (window as unknown as { grecaptcha?: Grecaptcha }).grecaptcha;
+  if (!SITE_KEY || !g) return Promise.resolve("");
+  return new Promise((resolve) => {
+    g.ready(() => {
+      g.execute(SITE_KEY, { action: "contacto" }).then(resolve, () => resolve(""));
+    });
+  });
+}
 
 const inputCls =
   "mt-2 block w-full border border-line bg-bg px-4 py-3.5 text-[16px] text-fg transition-colors placeholder:text-muted hover:border-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent aria-[invalid=true]:border-[#b42318] dark:aria-[invalid=true]:border-[#f97066]";
@@ -15,7 +35,7 @@ function formatChileanPhone(value: string): string {
   if (!rawDigits) return "";
 
   // Si el usuario ingresa o pega el código de país 56, lo removemos para formatear uniformemente
-  let digits = rawDigits.startsWith("56") ? rawDigits.slice(2) : rawDigits;
+  const digits = rawDigits.startsWith("56") ? rawDigits.slice(2) : rawDigits;
   if (!digits) return "+56 ";
 
   // Formato: +56 9 xxxx xxxx (máximo 9 dígitos nacionales)
@@ -30,17 +50,22 @@ function formatChileanPhone(value: string): string {
 }
 
 export function ContactForm() {
-  const [state, action, pending] = useActionState(sendContact, initial);
+  // Momento en que el formulario quedó listo: los envíos casi instantáneos son de bots.
+  const readyAt = useRef(0);
+  useEffect(() => {
+    readyAt.current = Date.now();
+  }, []);
+
+  const [state, action, pending] = useActionState(async (prev: ContactState, formData: FormData) => {
+    formData.set("t", String(readyAt.current ? Date.now() - readyAt.current : 0));
+    formData.set("recaptcha", await getRecaptchaToken());
+    return sendContact(prev, formData);
+  }, initial);
   const err = state.errors ?? {};
   const val = state.values ?? {};
 
-  const [phone, setPhone] = useState(val.telefono ?? "");
-
-  useEffect(() => {
-    if (val.telefono !== undefined) {
-      setPhone(val.telefono);
-    }
-  }, [val.telefono]);
+  // El teléfono es controlado, así que conserva su valor entre envíos con error.
+  const [phone, setPhone] = useState("");
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value;
@@ -243,6 +268,34 @@ export function ContactForm() {
         )}
       </div>
 
+      {/* Aceptación de la política de privacidad */}
+      <div className="sm:col-span-2">
+        <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-muted">
+          <input
+            type="checkbox"
+            name="privacidad"
+            value="si"
+            required
+            defaultChecked={val.privacidad === "si"}
+            aria-invalid={err.privacidad ? true : undefined}
+            aria-describedby={err.privacidad ? "privacidad-error" : undefined}
+            className="mt-1 size-4 shrink-0 cursor-pointer accent-[var(--accent)]"
+          />
+          <span>
+            Acepto que Headline use estos datos para responder mi consulta, según su{" "}
+            <Link href="/politica-de-privacidad" className="text-fg underline underline-offset-4 hover:text-accent">
+              política de privacidad
+            </Link>
+            .<span className="text-accent"> *</span>
+          </span>
+        </label>
+        {err.privacidad && (
+          <p id="privacidad-error" className="mt-2 text-sm text-[#b42318] dark:text-[#f97066]">
+            {err.privacidad}
+          </p>
+        )}
+      </div>
+
       {/* Honeypot oculto para bots */}
       <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label htmlFor="sitio_web">No completar</label>
@@ -262,6 +315,24 @@ export function ContactForm() {
           {!pending && <ArrowRight aria-hidden size={16} className="transition-transform group-hover:translate-x-1" />}
         </button>
       </div>
+
+      {SITE_KEY && (
+        <>
+          <Script src={`https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`} strategy="afterInteractive" />
+          {/* Google permite ocultar el sello flotante si se muestra este aviso. */}
+          <p className="text-xs leading-relaxed text-muted sm:col-span-2">
+            Este sitio está protegido por reCAPTCHA y se aplican la{" "}
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-fg">
+              política de privacidad
+            </a>{" "}
+            y los{" "}
+            <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-fg">
+              términos del servicio
+            </a>{" "}
+            de Google.
+          </p>
+        </>
+      )}
     </form>
   );
 }

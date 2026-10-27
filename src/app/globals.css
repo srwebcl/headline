@@ -512,3 +512,8 @@
     filter: brightness(0.82) contrast(1.04);
   }
 }
+
+/* reCAPTCHA v3: el sello flotante se oculta porque el formulario muestra el aviso legal. */
+.grecaptcha-badge {
+  visibility: hidden;
+}

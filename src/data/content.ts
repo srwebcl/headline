@@ -4,7 +4,7 @@
 
 export const site = {
   name: "Headline",
-  url: "https://www.headline.cl", // TODO: confirmar dominio definitivo
+  url: "https://www.headline.cl", // Dominio principal (headline.cl redirige aquí en Vercel).
   tagline: "Consultoría estratégica en comunicaciones, crisis y reputación corporativa.",
   description:
     "Desde 2003 acompañamos a empresas e instituciones en desafíos de comunicación, reputación, liderazgo y relacionamiento.",
@@ -588,29 +588,44 @@ export const cases: Case[] = [
     "image": "/cases/brunapoli.webp",
     "imageAlt": "Logotipo de Brunapoli, Vivere la pizza",
     "imageFit": "contain"
+  },
+  {
+    "slug": "proyecto-aula",
+    "client": "Proyecto Aula",
+    "area": "Vinculación ciudadana",
+    "title": "Boehringer Ingelheim",
+    "body": [
+      "Apoyamos una iniciativa de educación en salud animal y humana dirigida a comunidades vulnerables. Durante el primer año, trabajamos en colegios de San Pedro de Melipilla junto a la comunidad, acercando estos contenidos al entorno escolar."
+    ],
+    "image": "/cases/proyecto-aula.webp",
+    "imageAlt": "Lanzamiento del Proyecto Aula de Boehringer Ingelheim en San Pedro de Melipilla"
+  },
+  {
+    "slug": "proyecto-angels",
+    "client": "Proyecto ANGELS",
+    "area": "Vinculación ciudadana",
+    "title": "Acción ACV",
+    "body": [
+      "Desde 2016, apoyamos la articulación de un proyecto multisectorial para promover el reconocimiento oportuno de los síntomas del accidente cerebrovascular (ACV) y contribuir a reducir sus consecuencias. En conjunto con el sistema público de salud, médicos y pacientes, desarrollamos una campaña de educación y difusión que incluyó una aplicación de ayuda, capacitaciones online y actividades en terreno."
+    ],
+    "image": "/cases/vinculacion-ciudadana.webp",
+    "imageAlt": "Encuentro de un proyecto de vinculación ciudadana"
+  },
+  {
+    "slug": "hidrogeno-verde",
+    "client": "Hidrógeno verde y su poder",
+    "area": "Vinculación ciudadana",
+    "title": "Fundación Chile & DUE",
+    "body": [
+      "Junto a Fundación Chile y la Delegación de la Unión Europea (DUE), trabajamos en el posicionamiento del hidrógeno verde, acercando el tema a distintas audiencias mediante una estrategia de comunicación en diversos canales."
+    ],
+    "image": "/cases/hidrogeno-verde.webp",
+    "imageAlt": "Firma de acuerdos de hidrógeno verde entre Chile y la Unión Europea"
   }
 ];
 
 // Casos destacados del Home.
 export const featuredCases = ["laboratorio-chile", "scania", "abbott", "ascenty"];
-
-export const citizenProjects = [
-  {
-    "name": "Proyecto Aula",
-    "partner": "Boehringer Ingelheim",
-    "body": "Apoyamos una iniciativa de educación en salud animal y humana dirigida a comunidades vulnerables. Durante el primer año, trabajamos en colegios de San Pedro de Melipilla junto a la comunidad, acercando estos contenidos al entorno escolar."
-  },
-  {
-    "name": "Proyecto ANGELS",
-    "partner": "Acción ACV",
-    "body": "Desde 2016, apoyamos la articulación de un proyecto multisectorial para promover el reconocimiento oportuno de los síntomas del accidente cerebrovascular (ACV) y contribuir a reducir sus consecuencias. En conjunto con el sistema público de salud, médicos y pacientes, desarrollamos una campaña de educación y difusión que incluyó una aplicación de ayuda, capacitaciones online y actividades en terreno."
-  },
-  {
-    "name": "Hidrógeno verde y su poder",
-    "partner": "Fundación Chile & DUE",
-    "body": "Junto a Fundación Chile y la Delegación de la Unión Europea (DUE), trabajamos en el posicionamiento del hidrógeno verde, acercando el tema a distintas audiencias mediante una estrategia de comunicación en diversos canales."
-  }
-];
 
 /* ------------------------------------------------------------------ */
 /* Equipo y reconocimientos                                            */

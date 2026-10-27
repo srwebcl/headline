@@ -124,9 +124,7 @@ const LOGOS = [
   ["bcn", "Biblioteca del Congreso Nacional", `${C}/05 institucional/biblioteca congreso nacional.png`],
   ["itpo", "ITPO, Indian Trade Promotion Organisation", `${C}/05 institucional/india-trade-promotion-organisation-itpo-logo-vector-2023.png`],
   ["embajada-india", "Embajada de la India en Chile", `${C}/05 institucional/Embajada de la India en Chile.png`],
-  ["municipalidad-iquique", "Ilustre Municipalidad de Iquique", `${N}/Industrial minería infraestructura/iquique.png`, { lightOnTransparent: true }],
   ["pnuma", "PNUMA", `${N}/Instituciones /PNUMA.jpg`],
-  ["focco", "Focco", `${N}/logo focco.png`],
 
   // --- Ferias y entretenimiento ---
   ["oktoberfest", "Oktoberfest Chile", `${C}/06 Ferias y entretencion/oktoberfest.webp`],
@@ -151,8 +149,6 @@ const LOGOS = [
   // --- Reconocimientos y alianzas ---
   ["leaders-league", "Leaders League", `${R}/LOGO leaders-league.png`],
   ["sello-transforma", "Sello Transforma", `${R}/Logo-Sello-Transforma-2024-292x300.png`],
-  ["amcham", "AmCham Chile", `${R}/amcham-chile- logo.webp`, { lumOnly: true, floor: 0.3 }],
-  ["pr-latam", "PR LATAM", `${R}/LOGO-PR-LATAM-COLOR-3.webp`],
 ];
 
 async function toMask(file, { lightOnTransparent = false, lumOnly = false, floor = 0.08, darkBg = false, crop = 0 } = {}) {

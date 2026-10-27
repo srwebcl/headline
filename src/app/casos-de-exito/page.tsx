@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ClosingCta } from "@/components/ui/ClosingCta";
 import { PageHero } from "@/components/ui/PageHero";
-import { InkField } from "@/components/ui/InkField";
 import { Reveal } from "@/components/ui/Reveal";
-import { cases, citizenProjects } from "@/data/content";
-import { Dot, Dotted } from "@/components/ui/Dot";
+import { cases } from "@/data/content";
+import { Dot } from "@/components/ui/Dot";
 
 export const metadata: Metadata = {
   title: "Casos de éxito",
@@ -74,33 +73,6 @@ export default function CasosPage() {
                     </div>
                   </div>
                 </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="tone-ink relative isolate overflow-clip bg-bg py-20 text-fg md:py-28">
-      <InkField density={24} intensity={0.55} speed={0.6} interactive={false} className="ink-field--quiet -z-10" />
-        <div className="wrap">
-          <Reveal className="max-w-[760px]">
-            <h2 className="display text-[clamp(2rem,3.8vw,3.4rem)]"><Dotted>Proyectos de vinculación ciudadana.</Dotted></h2>
-          </Reveal>
-          <Reveal className="relative mt-12 aspect-[16/9] overflow-hidden md:aspect-[21/9]">
-            <Image
-              src="/cases/vinculacion-ciudadana.webp"
-              alt="Encuentro con la Fundación Angioedema Hereditario Chile"
-              fill
-              sizes="(min-width: 1360px) 1220px, 100vw"
-              className="object-cover object-[50%_40%]"
-            />
-          </Reveal>
-          <div className="mt-14 grid border-t border-line md:grid-cols-3">
-            {citizenProjects.map((p, i) => (
-              <Reveal key={p.name} as="article" delay={i * 0.08} className="border-b border-line py-10 md:border-b-0 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0">
-                <h3 className="text-2xl tracking-tight">{p.name}</h3>
-                <p className="mt-2 text-[13px] font-medium uppercase tracking-[0.12em] text-accent">{p.partner}</p>
-                <p className="mt-6 leading-relaxed text-muted">{p.body}</p>
               </Reveal>
             ))}
           </div>

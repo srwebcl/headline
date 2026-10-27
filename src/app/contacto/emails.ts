@@ -17,7 +17,6 @@ const INK = "#18171b";
 const LILA = "#8e4a9b";
 const MUTED = "#6b6a70";
 const LINE = "#e2e3e6";
-const DOT = "#f2e300";
 
 export function escapeHtml(s: string): string {
   return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
@@ -36,8 +35,8 @@ function layout(preheader: string, content: string): string {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f5f4f2;padding:32px 16px;">
 <tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;">
-<tr><td style="background:${INK};padding:28px 36px;">
-<span style="font-size:26px;font-weight:700;letter-spacing:-0.5px;color:#ffffff;">Headline</span><span style="font-size:26px;font-weight:700;color:${DOT};">.</span>
+<tr><td style="background:#ffffff;padding:32px 36px 28px;border-bottom:3px solid ${LILA};">
+<img src="${site.url}/brand/headline-email.png" width="220" height="66" alt="Headline Comunicaciones Estratégicas" style="display:block;width:220px;height:auto;border:0;outline:none;text-decoration:none;font-size:18px;font-weight:700;color:${INK};">
 </td></tr>
 <tr><td style="padding:36px;">${content}</td></tr>
 <tr><td style="padding:24px 36px;border-top:1px solid ${LINE};font-size:12px;line-height:1.6;color:${MUTED};">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/ssr";
 import { CTA, capabilities, nav, site } from "@/data/content";
 import { ButtonLink } from "@/components/ui/ButtonLink";
+import { ConsentPreferencesLink } from "@/components/site/ConsentManager";
 
 const heading = "text-[12px] font-semibold uppercase tracking-[0.16em] text-accent";
 const link = "text-[15px] text-muted transition-colors hover:text-fg";
@@ -86,13 +87,14 @@ export function SiteFooter() {
       <div className="wrap">
         <div className="flex flex-col gap-3 border-t border-line py-6 text-[13px] text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Headline Comunicaciones Estratégicas</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/codigo-de-etica" className="hover:text-fg">
               Código de ética
             </Link>
             <Link href="/politica-de-privacidad" className="hover:text-fg">
               Política de privacidad
             </Link>
+            <ConsentPreferencesLink className="text-left hover:text-fg" />
           </div>
         </div>
       </div>

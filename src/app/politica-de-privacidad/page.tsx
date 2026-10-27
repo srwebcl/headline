@@ -17,6 +17,10 @@ const FECHA = "27 de octubre de 2026";
 
 const link = "text-fg underline underline-offset-4 hover:text-accent";
 
+// Cuando se configuren el píxel de Meta o la etiqueta de Google Ads, la sección de
+// cookies describe las cookies publicitarias y el aviso de consentimiento.
+const hasAdTrackers = Boolean(process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || process.env.NEXT_PUBLIC_META_PIXEL_ID);
+
 function Mail() {
   return (
     <a href={`mailto:${site.contact.email}`} className={link}>
@@ -206,14 +210,43 @@ export default function PrivacidadPage() {
           </p>
 
           <h2>11. Cookies</h2>
-          <p>
-            Este sitio no usa cookies de analítica ni de publicidad. En la página de contacto, reCAPTCHA de Google puede utilizar
-            cookies técnicas necesarias para la verificación de seguridad, sujetas a la{" "}
-            <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" className={link}>
-              política de privacidad de Google
-            </a>
-            .
-          </p>
+          {hasAdTrackers ? (
+            <>
+              <p>Este sitio usa dos tipos de cookies:</p>
+              <ul>
+                <li>
+                  <strong>Necesarias:</strong> las que usa reCAPTCHA de Google en la página de contacto para la verificación de
+                  seguridad. No requieren tu consentimiento.
+                </li>
+                <li>
+                  <strong>Publicitarias:</strong> las de Google Ads y el píxel de Meta, que nos permiten medir los resultados de
+                  nuestras campañas (por ejemplo, cuántas personas completan el formulario después de ver un anuncio) y mostrarte
+                  publicidad de Headline en Google, Facebook e Instagram. Solo se activan si las aceptas en el aviso de cookies.
+                </li>
+              </ul>
+              <p>
+                Puedes cambiar tu decisión en cualquier momento desde el enlace &quot;Preferencias de cookies&quot; al pie de cada
+                página. Más información en la{" "}
+                <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noreferrer" className={link}>
+                  política de publicidad de Google
+                </a>{" "}
+                y la{" "}
+                <a href="https://www.facebook.com/privacy/policies/cookies/" target="_blank" rel="noreferrer" className={link}>
+                  política de cookies de Meta
+                </a>
+                .
+              </p>
+            </>
+          ) : (
+            <p>
+              Este sitio no usa cookies de analítica ni de publicidad. En la página de contacto, reCAPTCHA de Google puede utilizar
+              cookies técnicas necesarias para la verificación de seguridad, sujetas a la{" "}
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" className={link}>
+                política de privacidad de Google
+              </a>
+              .
+            </p>
+          )}
 
           <h2>12. Tus derechos</h2>
           <p>Como titular de los datos, puedes solicitar en cualquier momento:</p>

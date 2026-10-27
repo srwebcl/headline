@@ -6,6 +6,7 @@ import Script from "next/script";
 import { ArrowRight, CaretDown, CheckCircle } from "@phosphor-icons/react";
 import { sendContact, type ContactState } from "./actions";
 import { contactServices } from "@/data/content";
+import { trackLead } from "@/components/site/consent";
 
 const initial: ContactState = { status: "idle" };
 
@@ -64,6 +65,18 @@ export function ContactForm() {
   const err = state.errors ?? {};
   const val = state.values ?? {};
 
+  // Al enviar con éxito: desplazamiento suave hasta el mensaje de confirmación
+  // (el formulario se reemplaza por uno más corto y la vista quedaría desfasada).
+  const successRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (state.status !== "success" || !successRef.current) return;
+    const el = successRef.current;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+    el.focus({ preventScroll: true });
+    trackLead();
+  }, [state.status]);
+
   // El teléfono es controlado, así que conserva su valor entre envíos con error.
   const [phone, setPhone] = useState("");
 
@@ -78,7 +91,7 @@ export function ContactForm() {
 
   if (state.status === "success") {
     return (
-      <div role="status" className="border border-line bg-bg p-10">
+      <div ref={successRef} role="status" tabIndex={-1} className="border border-line bg-bg p-10 outline-none">
         <CheckCircle size={36} weight="light" className="text-accent" aria-hidden />
         <h2 className="mt-6 text-3xl font-light tracking-tight">Gracias por escribirnos.</h2>
         <p className="mt-4 max-w-[46ch] leading-relaxed text-muted">

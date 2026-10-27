@@ -497,9 +497,8 @@ export const cases: Case[] = [
       "El desafío fue lograr financiamiento estatal para un tratamiento biológico de alto costo para el angioedema hereditario (AEH), una enfermedad rara.",
       "Diseñamos una estrategia orientada a favorecer el diagnóstico, visibilizar el impacto de la enfermedad y promover su cobertura ante las autoridades. El trabajo integró el relacionamiento con grupos de interés, la articulación de vocerías, el impulso de una asociación de pacientes y la difusión de sus experiencias. Estas acciones contribuyeron a la incorporación de Berinert en el segundo decreto de la Ley Ricarte Soto, permitiendo el acceso de los pacientes al tratamiento bajo esta cobertura."
     ],
-    "image": "/cases/csl-behring-aeh.webp",
-    "imageAlt": "Plataforma educativa de CSL Behring sobre enfermedades raras",
-    "imageFit": "contain"
+    "image": "/cases/csl-behring.webp",
+    "imageAlt": "Encuentro con la Fundación Angioedema Hereditario Chile"
   },
   {
     "slug": "henkel",
@@ -614,8 +613,8 @@ export const cases: Case[] = [
     "body": [
       "Desde 2016, apoyamos la articulación de un proyecto multisectorial para promover el reconocimiento oportuno de los síntomas del accidente cerebrovascular (ACV) y contribuir a reducir sus consecuencias. En conjunto con el sistema público de salud, médicos y pacientes, desarrollamos una campaña de educación y difusión que incluyó una aplicación de ayuda, capacitaciones online y actividades en terreno."
     ],
-    "image": "/cases/vinculacion-ciudadana.webp",
-    "imageAlt": "Encuentro de un proyecto de vinculación ciudadana"
+    "image": "/cases/proyecto-angels.webp",
+    "imageAlt": "Equipo del Proyecto ANGELS en una actividad de educación sobre el ACV"
   },
   {
     "slug": "hidrogeno-verde",

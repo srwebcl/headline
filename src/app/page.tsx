@@ -148,10 +148,10 @@ function Cases() {
 /* Insights (bloque oscuro): nota destacada en formato horizontal (imagen + texto) y
    carrusel vertical con las demás. */
 const dateFmt = new Intl.DateTimeFormat("es-CL", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
-const FEATURED_INSIGHT = "nuevo-desafio-comunicaciones-corporativas";
 
 function Insights() {
-  const featured = insights.find((p) => p.slug === FEATURED_INSIGHT) ?? insights[0];
+  // Destacada: siempre la última publicada.
+  const featured = insights.reduce<(typeof insights)[number] | undefined>((a, p) => (!a || p.date > a.date ? p : a), undefined);
   if (!featured) return null;
   const catName = (slug: string) => insightCategories.find((c) => c.slug === slug)?.name ?? "";
   const others = insights

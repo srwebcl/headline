@@ -28,8 +28,8 @@ export default function ContactoPage() {
             <Dot />
           </h1>
           <p className="mt-8 max-w-[46ch] text-lg leading-relaxed text-muted">
-            Cuéntanos qué estás enfrentando. Estaremos encantados de conversar sobre cómo la comunicación puede ayudarte a fortalecer
-            tu reputación, posicionar a tus líderes o enfrentar escenarios complejos.
+            Cuéntanos qué estás enfrentando. Estaremos encantados de conversar sobre cómo la comunicación puede ayudar a fortalecer
+            la reputación de tu empresa, posicionar a sus líderes o enfrentar escenarios complejos.
           </p>
 
           <dl className="mt-14 border-t border-line">

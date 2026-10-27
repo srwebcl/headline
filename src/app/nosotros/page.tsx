@@ -34,9 +34,9 @@ export default function NosotrosPage() {
       </PageHero>
 
       {/* Foto grupal a todo el ancho, fundida arriba con el hero oscuro y abajo con la sección blanca. */}
-      <div className="relative isolate aspect-[1689/931] max-h-[780px] w-full overflow-hidden bg-[var(--ink)]">
+      <div className="relative isolate aspect-[2000/1046] max-h-[780px] w-full overflow-hidden bg-[var(--ink)]">
         <Image
-          src="/team/equipo-headline-2026.webp"
+          src="/team/equipo-headline-grupal.webp"
           alt="Equipo de Headline Comunicaciones Estratégicas"
           fill
           preload

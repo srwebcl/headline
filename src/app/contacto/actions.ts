@@ -30,10 +30,12 @@ const schema = z.object({
     .min(10, "Cuéntanos brevemente tu desafío (mínimo 10 caracteres).")
     .max(4000, "El mensaje puede tener hasta 4.000 caracteres."),
   privacidad: z.literal("si", "Debes aceptar la política de privacidad para enviar el formulario."),
+  // Consentimiento opcional y separado para comunicaciones comerciales y publicidad.
+  marketing: z.string().optional(),
 });
 
 type Field = keyof z.infer<typeof schema>;
-const FIELDS: Field[] = ["nombre", "empresa", "cargo", "email", "telefono", "servicio", "mensaje", "privacidad"];
+const FIELDS: Field[] = ["nombre", "empresa", "cargo", "email", "telefono", "servicio", "mensaje", "privacidad", "marketing"];
 
 export type ContactState = {
   status: "idle" | "success" | "error";
@@ -86,7 +88,11 @@ export async function sendContact(_prev: ContactState, formData: FormData): Prom
     };
   }
 
-  const data: ContactData = { ...parsed.data, cargo: parsed.data.cargo || undefined };
+  const data: ContactData = {
+    ...parsed.data,
+    cargo: parsed.data.cargo || undefined,
+    marketing: parsed.data.marketing === "si",
+  };
   const meta = {
     fecha: new Intl.DateTimeFormat("es-CL", { dateStyle: "full", timeStyle: "short", timeZone: "America/Santiago" }).format(
       new Date(),

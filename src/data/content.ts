@@ -20,6 +20,12 @@ export const site = {
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=San+Sebasti%C3%A1n+2807+Las+Condes",
     whatsapp: null as string | null,
   },
+  // Identificación legal del responsable de datos (Ley 21.719, art. 14 ter letra b).
+  legal: {
+    razonSocial: "Headline Comunicaciones Ltda.",
+    rut: "76.423.431-6",
+    representante: "Ana María Matulic Moreno",
+  },
 };
 
 export const nav = [

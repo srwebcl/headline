@@ -9,6 +9,8 @@ export type ContactData = {
   telefono: string;
   servicio: string;
   mensaje: string;
+  /** Aceptó recibir comunicaciones comerciales y publicidad de Headline. */
+  marketing: boolean;
 };
 
 export type ContactMeta = { fecha: string; ip: string; userAgent: string; origen: string; score?: number };
@@ -77,6 +79,7 @@ export function internalEmail(d: ContactData, meta: ContactMeta) {
       ["Correo", `<a href="mailto:${e(d.email)}" style="color:${LILA};">${e(d.email)}</a>`],
       ["Teléfono", `<a href="tel:${e(tel)}" style="color:${LILA};">${e(d.telefono)}</a>`],
       ["Servicio", e(d.servicio)],
+      ["Comunicaciones y publicidad", d.marketing ? "Acepta" : "No acepta"],
     ])}</table>
 <p style="margin:28px 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:1px;color:${MUTED};">Mensaje</p>
 <div style="padding:20px;background:#f5f4f2;border-left:3px solid ${LILA};font-size:15px;line-height:1.6;white-space:pre-wrap;">${e(d.mensaje)}</div>
@@ -95,6 +98,7 @@ export function internalEmail(d: ContactData, meta: ContactMeta) {
     `Correo: ${d.email}`,
     `Teléfono: ${d.telefono}`,
     `Servicio: ${d.servicio}`,
+    `Comunicaciones y publicidad: ${d.marketing ? "Acepta" : "No acepta"}`,
     "",
     "Mensaje:",
     d.mensaje,
@@ -119,8 +123,13 @@ export function confirmationEmail(d: ContactData) {
     `<h1 style="margin:0 0 20px;font-size:24px;font-weight:700;">Hola ${escapeHtml(firstName)}, gracias por escribirnos<span style="color:${LILA};">.</span></h1>
 <p style="margin:0 0 16px;font-size:16px;line-height:1.6;">Recibimos tu mensaje sobre <strong>${escapeHtml(d.servicio)}</strong>. Nuestro equipo lo revisará y te contactará a la brevedad.</p>
 <p style="margin:0 0 16px;font-size:16px;line-height:1.6;">Si necesitas agregar información, responde este correo o escríbenos a <a href="mailto:${site.contact.email}" style="color:${LILA};">${site.contact.email}</a>.</p>
+${
+      d.marketing
+        ? `<p style="margin:0 0 16px;font-size:16px;line-height:1.6;">También aceptaste recibir novedades de Headline y ver nuestra publicidad en Google y Meta. Puedes retirar ese consentimiento cuando quieras respondiendo este correo.</p>`
+        : ""
+    }
 <p style="margin:28px 0 0;font-size:16px;line-height:1.6;">Saludos,<br><strong>Equipo Headline</strong></p>
-<p style="margin:28px 0 0;font-size:12px;line-height:1.6;color:${MUTED};">Recibes este correo porque completaste el formulario de contacto en ${escapeHtml(site.url.replace(/^https?:\/\//, ""))}. Si no fuiste tú, puedes ignorarlo.</p>`,
+<p style="margin:28px 0 0;font-size:12px;line-height:1.6;color:${MUTED};">Recibes este correo porque completaste el formulario de contacto en ${escapeHtml(site.url.replace(/^https?:\/\//, ""))}. Si no fuiste tú, puedes ignorarlo. Conoce cómo tratamos tus datos en nuestra <a href="${site.url}/politica-de-privacidad" style="color:${LILA};">política de privacidad</a>.</p>`,
   );
 
   const text = [
@@ -128,6 +137,9 @@ export function confirmationEmail(d: ContactData) {
     "",
     `Recibimos tu mensaje sobre ${d.servicio}. Nuestro equipo lo revisará y te contactará a la brevedad.`,
     `Si necesitas agregar información, responde este correo o escríbenos a ${site.contact.email}.`,
+    ...(d.marketing
+      ? ["", "También aceptaste recibir novedades de Headline y ver nuestra publicidad en Google y Meta. Puedes retirar ese consentimiento cuando quieras respondiendo este correo."]
+      : []),
     "",
     "Saludos,",
     "Equipo Headline",

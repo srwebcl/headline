@@ -56,7 +56,6 @@ export default function CodigoEticaPage() {
             </a>
             .
           </p>
-          <p className="mt-10 text-sm">Texto provisorio, en revisión.</p>
         </div>
       </div>
     </section>

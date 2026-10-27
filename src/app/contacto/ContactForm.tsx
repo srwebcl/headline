@@ -296,6 +296,23 @@ export function ContactForm() {
         )}
       </div>
 
+      {/* Consentimiento opcional para comunicaciones comerciales y publicidad */}
+      <div className="-mt-3 sm:col-span-2">
+        <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-muted">
+          <input
+            type="checkbox"
+            name="marketing"
+            value="si"
+            defaultChecked={val.marketing === "si"}
+            className="mt-1 size-4 shrink-0 cursor-pointer accent-[var(--accent)]"
+          />
+          <span>
+            Quiero recibir novedades e invitaciones de Headline por correo, y acepto que mis datos de contacto se usen para
+            mostrarme su publicidad en Google y Meta (opcional).
+          </span>
+        </label>
+      </div>
+
       {/* Honeypot oculto para bots */}
       <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label htmlFor="sitio_web">No completar</label>

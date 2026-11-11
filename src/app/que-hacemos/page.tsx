@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata, pageSeo } from "@/data/seo";
 import Link from "next/link";
 import { ArrowRight, Asterisk } from "@phosphor-icons/react/ssr";
 import { BlendImage } from "@/components/ui/BlendImage";
@@ -8,12 +9,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { capabilities } from "@/data/content";
 import { Dot } from "@/components/ui/Dot";
 
-export const metadata: Metadata = {
-  title: "Qué hacemos",
-  description:
-    "Comunicación estratégica para organizaciones que necesitan avanzar en entornos complejos: reputación, riesgos, relaciones institucionales, comunicación interna y vocerías.",
-  alternates: { canonical: "/que-hacemos" },
-};
+export const metadata: Metadata = pageMetadata({ ...pageSeo.queHacemos, path: "/que-hacemos" });
 
 export default function QueHacemosPage() {
   return (

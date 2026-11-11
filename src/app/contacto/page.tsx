@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata, pageSeo } from "@/data/seo";
 import { ArrowUpRight } from "@phosphor-icons/react/ssr";
 import { Reveal } from "@/components/ui/Reveal";
 import { site } from "@/data/content";
 import { ContactForm } from "./ContactForm";
 import { Dot } from "@/components/ui/Dot";
 
-export const metadata: Metadata = {
-  title: "Contacto",
-  description: "Conversemos sobre el desafío que enfrenta tu organización.",
-  alternates: { canonical: "/contacto" },
-};
+export const metadata: Metadata = pageMetadata({ ...pageSeo.contacto, path: "/contacto" });
 
 const direct = [
   { label: "Correo", value: site.contact.email, href: `mailto:${site.contact.email}` },

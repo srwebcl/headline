@@ -7,6 +7,7 @@ import { ServiceHero } from "@/components/services/ServiceHero";
 import { InkField } from "@/components/ui/InkField";
 import { Reveal } from "@/components/ui/Reveal";
 import { capabilities } from "@/data/content";
+import { breadcrumbJsonLd, jsonLdScript, metaDescription, pageMetadata, serviceJsonLd } from "@/data/seo";
 import { Dotted } from "@/components/ui/Dot";
 
 export const dynamicParams = false;
@@ -19,11 +20,12 @@ export async function generateMetadata({ params }: PageProps<"/que-hacemos/[slug
   const { slug } = await params;
   const c = capabilities.find((x) => x.slug === slug);
   if (!c) return {};
-  return {
+  return pageMetadata({
     title: c.name,
-    description: c.summary,
-    alternates: { canonical: `/que-hacemos/${c.slug}` },
-  };
+    description: metaDescription(c.summary),
+    path: `/que-hacemos/${c.slug}`,
+    image: { url: c.image.src, alt: c.image.alt },
+  });
 }
 
 export default async function CapabilityPage({ params }: PageProps<"/que-hacemos/[slug]">) {
@@ -37,6 +39,16 @@ export default async function CapabilityPage({ params }: PageProps<"/que-hacemos
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(serviceJsonLd(c))} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScript(
+          breadcrumbJsonLd([
+            { name: "Qué hacemos", path: "/que-hacemos" },
+            { name: c.name, path: `/que-hacemos/${c.slug}` },
+          ]),
+        )}
+      />
       <ServiceHero num={c.num} name={c.name} title={c.title} image={c.image} />
 
       <section className="py-20 md:py-28">

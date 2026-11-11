@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/data/seo";
 import { Dotted } from "@/components/ui/Dot";
 import { site } from "@/data/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Código de ética",
-  description: "Principios que orientan el trabajo de Headline con sus clientes, colaboradores y la sociedad.",
-  alternates: { canonical: "/codigo-de-etica" },
-};
+  description: "Principios que orientan el trabajo de Headline con sus clientes, colaboradores, medios de comunicación y la sociedad.",
+  path: "/codigo-de-etica",
+});
 
 // TODO(contenido): texto provisorio. Reemplazar por el código de ética oficial de Headline.
 export default function CodigoEticaPage() {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata, pageSeo } from "@/data/seo";
 import Image from "next/image";
 import { ClosingCta } from "@/components/ui/ClosingCta";
 import { LogoMark } from "@/components/ui/LogoMark";
@@ -8,12 +9,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { leadership, recognitions, team, type Person } from "@/data/content";
 import { Dot, Dotted } from "@/components/ui/Dot";
 
-export const metadata: Metadata = {
-  title: "Nosotros",
-  description:
-    "Profesionales con más de dos décadas de experiencia integrando las comunicaciones al negocio de sus clientes, con conocimiento de industrias complejas.",
-  alternates: { canonical: "/nosotros" },
-};
+export const metadata: Metadata = pageMetadata({ ...pageSeo.nosotros, path: "/nosotros" });
 
 export default function NosotrosPage() {
   return (

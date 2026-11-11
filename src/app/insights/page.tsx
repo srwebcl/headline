@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { blogJsonLd, jsonLdScript, pageMetadata, pageSeo } from "@/data/seo";
 import Image from "next/image";
 import { ArrowUpRight, Asterisk } from "@phosphor-icons/react/ssr";
 import { InsightsGrid } from "@/components/insights/InsightsGrid";
@@ -9,16 +10,13 @@ import { Reveal } from "@/components/ui/Reveal";
 import { insightCategories, insights, site } from "@/data/content";
 import { Dot, Dotted } from "@/components/ui/Dot";
 
-export const metadata: Metadata = {
-  title: "Insights",
-  description:
-    "Ideas, análisis y perspectivas sobre reputación, liderazgo, gestión de crisis, comunicación estratégica y posicionamiento corporativo.",
-  alternates: { canonical: "/insights" },
-};
+export const metadata: Metadata = pageMetadata({ ...pageSeo.insights, path: "/insights" });
 
 export default function InsightsPage() {
+  const latestFirst = [...insights].sort((a, b) => b.date.localeCompare(a.date));
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(blogJsonLd(latestFirst))} />
       <PageHero
         label="Insights"
         title={

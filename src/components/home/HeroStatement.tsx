@@ -42,7 +42,8 @@ export function HeroStatement() {
   return (
     <div>
       {/* Eyebrow sincronizado (en movimiento reducido todos los términos quedan resaltados). */}
-      <p className="eyebrow rise mb-8 max-w-[64ch] leading-relaxed !text-muted lg:max-w-none" style={{ "--d": 0.1 } as React.CSSProperties}>
+      {/* H1 de la página: describe qué es Headline (señal principal para buscadores). */}
+      <h1 className="eyebrow rise mb-8 max-w-[64ch] leading-relaxed !text-muted lg:max-w-none" style={{ "--d": 0.1 } as React.CSSProperties}>
         Consultoría estratégica en{" "}
         {terms.map((t, i) => (
           <Fragment key={t}>
@@ -55,9 +56,9 @@ export function HeroStatement() {
             {i === 0 ? ", " : i === 1 ? " y " : ""}
           </Fragment>
         ))}
-      </p>
+      </h1>
 
-      <h1 className="sr-only">Anticipamos escenarios. Protegemos reputaciones. Posicionamos organizaciones.</h1>
+      <p className="sr-only">Anticipamos escenarios. Protegemos reputaciones. Posicionamos organizaciones.</p>
 
       {/* Versión estática para movimiento reducido: el formato aprobado de tres líneas. */}
       <div aria-hidden className="display hidden text-[clamp(2.15rem,6.2vw,5.6rem)] leading-[1.04] motion-reduce:block">

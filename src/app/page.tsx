@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import { pageMetadata, pageSeo } from "@/data/seo";
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/ssr";
 import { Authority } from "@/components/home/Authority";
@@ -13,6 +15,8 @@ import { InkField } from "@/components/ui/InkField";
 import { Reveal } from "@/components/ui/Reveal";
 import { capabilities, cases, insightCategories, insights, featuredCases } from "@/data/content";
 import { Dot } from "@/components/ui/Dot";
+
+export const metadata: Metadata = pageMetadata({ ...pageSeo.home, path: "/", absoluteTitle: true });
 
 /*
   Home (orden acordado): Hero → Autoridad → Capacidades → Método → Casos → Clientes → Insights → CTA.

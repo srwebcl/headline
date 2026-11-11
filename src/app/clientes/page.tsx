@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata, pageSeo } from "@/data/seo";
 import { IndustryNav } from "@/components/clients/IndustryNav";
 import { ClosingCta } from "@/components/ui/ClosingCta";
 import { LogoMark } from "@/components/ui/LogoMark";
@@ -7,12 +8,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { industries } from "@/data/content";
 import { Dot, Dotted } from "@/components/ui/Dot";
 
-export const metadata: Metadata = {
-  title: "Clientes",
-  description:
-    "Empresas nacionales y multinacionales de salud, minería, energía, tecnología, construcción, servicios, consumo y organizaciones que han confiado en Headline.",
-  alternates: { canonical: "/clientes" },
-};
+export const metadata: Metadata = pageMetadata({ ...pageSeo.clientes, path: "/clientes" });
 
 export default function ClientesPage() {
   return (

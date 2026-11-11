@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { ConsentManager } from "@/components/site/ConsentManager";
 import { site } from "@/data/content";
+import { OG_DEFAULT, jsonLdScript, organizationJsonLd, pageSeo } from "@/data/seo";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -15,16 +16,35 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Headline | Consultoría estratégica en comunicaciones, crisis y reputación",
+    default: pageSeo.home.title,
     template: "%s | Headline",
   },
-  description: site.description,
+  description: pageSeo.home.description,
+  applicationName: "Headline Comunicaciones Estratégicas",
+  authors: [{ name: "Headline Comunicaciones Estratégicas", url: site.url }],
+  creator: "Headline Comunicaciones Estratégicas",
+  publisher: "Headline Comunicaciones Estratégicas",
+  category: "Comunicación estratégica y relaciones públicas",
   openGraph: {
     type: "website",
     locale: "es_CL",
     siteName: "Headline Comunicaciones Estratégicas",
+    url: "/",
+    title: pageSeo.home.title,
+    description: pageSeo.home.description,
+    images: [OG_DEFAULT],
   },
-  alternates: { canonical: "/" },
+  twitter: { card: "summary_large_image", images: [OG_DEFAULT.url] },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+  },
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": [{ url: "/insights/rss.xml", title: "Insights de Headline" }] },
+  },
+  formatDetection: { telephone: false, email: false, address: false },
 };
 
 export const viewport: Viewport = {
@@ -38,6 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es-CL" className={outfit.variable}>
       <body className="tone-paper flex min-h-dvh flex-col">
+        <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(organizationJsonLd())} />
         <a
           href="#contenido"
           className="sr-only z-50 bg-accent px-4 py-3 text-accent-fg focus:not-sr-only focus:fixed focus:left-4 focus:top-4"

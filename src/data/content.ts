@@ -734,11 +734,20 @@ export type Insight = {
   source?: string;
   /** Párrafos; los que empiezan con "## " son subtítulos. */
   body: string[];
+  /* SEO opcional (ver README, "Publicar un artículo"). */
+  /** Título para Google si el título visible es muy largo (ideal: menos de 60 caracteres). */
+  seoTitle?: string;
+  /** Descripción para Google (ideal: 140 a 160 caracteres). Por defecto, el extracto. */
+  seoDescription?: string;
+  /** Fecha ISO de la última actualización relevante del texto. */
+  updated?: string;
+  /** Temas o búsquedas a los que responde el artículo. */
+  keywords?: string[];
 };
 
 // Artículos publicados en https://www.headline.cl/blog (texto original, autor y fecha de publicación).
 // Categoría asignada según las líneas editoriales del documento maestro (sección 14).
-export const insights: Insight[] = [
+const insightList: Insight[] = [
   {
     "slug": "medicos-influencers-industria-farmaceutica",
     "category": "tendencias",
@@ -749,6 +758,8 @@ export const insights: Insight[] = [
     "readingMinutes": 2,
     "image": "/insights/medicos-influencers-industria-farmaceutica.webp",
     "imageSize": [1672, 941],
+    "seoTitle": "Médicos influencers: el desafío para la farmacéutica",
+    "keywords": ["médicos influencers", "comunicación en salud", "industria farmacéutica", "Digital Opinion Leaders", "compliance"],
     "body": [
       "El auge de los profesionales de la salud en plataformas como TikTok e Instagram ha aportado a democratizar la divulgación médica, pero también planteó un desafío crítico para los laboratorios: ¿cómo capitalizar la credibilidad de estos nuevos líderes de opinión digitales sin comprometer la normativa regulatoria?",
       "La comunicación en salud exige rigor técnico. Un mensaje fuera de contexto o mal orientado no es una crisis de reputación tradicional, es un riesgo normativo y de salud pública. Trabajar con profesionales sanitarios en entornos digitales no es marketing de consumo masivo: exige dominar la farmacovigilancia, los códigos de ética y los marcos legales que rigen la industria.",
@@ -901,6 +912,9 @@ export const insights: Insight[] = [
     ]
   }
 ];
+
+// Siempre de la más reciente a la más antigua: el orden del arreglo de arriba no importa.
+export const insights: Insight[] = [...insightList].sort((a, b) => b.date.localeCompare(a.date));
 
 export const contactServices = [
   "Posicionamiento y reputación corporativa",

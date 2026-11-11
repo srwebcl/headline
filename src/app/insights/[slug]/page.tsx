@@ -6,6 +6,7 @@ import { ArrowLeft, LinkedinLogo } from "@phosphor-icons/react/ssr";
 import { ClosingCta } from "@/components/ui/ClosingCta";
 import { insightCategories, insights, site } from "@/data/content";
 import { Dotted } from "@/components/ui/Dot";
+import { articleJsonLd, breadcrumbJsonLd, jsonLdScript, metaDescription, pageMetadata } from "@/data/seo";
 
 export const dynamicParams = false;
 
@@ -17,12 +18,19 @@ export async function generateMetadata({ params }: PageProps<"/insights/[slug]">
   const { slug } = await params;
   const post = insights.find((p) => p.slug === slug);
   if (!post) return {};
-  return {
-    title: post.title,
-    description: post.excerpt,
-    alternates: { canonical: `/insights/${post.slug}` },
-    openGraph: { type: "article", publishedTime: post.date, authors: [post.author] },
-  };
+  return pageMetadata({
+    title: post.seoTitle ?? post.title,
+    description: post.seoDescription ?? metaDescription(post.excerpt),
+    path: `/insights/${post.slug}`,
+    type: "article",
+    image: post.image
+      ? { url: post.image, width: post.imageSize?.[0], height: post.imageSize?.[1], alt: post.title }
+      : undefined,
+    publishedTime: post.date,
+    modifiedTime: post.updated ?? post.date,
+    section: insightCategories.find((c) => c.slug === post.category)?.name,
+    tags: post.keywords,
+  });
 }
 
 const dateFmt = new Intl.DateTimeFormat("es-CL", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
@@ -39,6 +47,16 @@ export default async function InsightPage({ params }: PageProps<"/insights/[slug
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLdScript(articleJsonLd(post))} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdScript(
+          breadcrumbJsonLd([
+            { name: "Insights", path: "/insights" },
+            { name: post.title, path: `/insights/${post.slug}` },
+          ]),
+        )}
+      />
       <article className="py-16 md:py-24">
         <header className="wrap max-w-[860px]">
           <Link href="/insights" className="inline-flex items-center gap-2 text-[13px] uppercase tracking-[0.12em] text-muted hover:text-accent">
@@ -60,7 +78,7 @@ export default async function InsightPage({ params }: PageProps<"/insights/[slug
             {/* Imagen original del artículo, completa y sin recorte (formatos variados). */}
             <Image
               src={post.image}
-              alt=""
+              alt={post.title}
               width={post.imageSize?.[0] ?? 1800}
               height={post.imageSize?.[1] ?? 1200}
               preload

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata, pageSeo } from "@/data/seo";
 import Image from "next/image";
 import { ClosingCta } from "@/components/ui/ClosingCta";
 import { PageHero } from "@/components/ui/PageHero";
@@ -6,12 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { cases } from "@/data/content";
 import { Dot } from "@/components/ui/Dot";
 
-export const metadata: Metadata = {
-  title: "Casos de éxito",
-  description:
-    "Desafíos complejos que exigieron estrategia, relacionamiento y capacidad de ejecución: Laboratorio Chile, Ascenty, Scania, Abbott, CSL Behring, Henkel, Gardilcic y más.",
-  alternates: { canonical: "/casos-de-exito" },
-};
+export const metadata: Metadata = pageMetadata({ ...pageSeo.casos, path: "/casos-de-exito" });
 
 export default function CasosPage() {
   return (

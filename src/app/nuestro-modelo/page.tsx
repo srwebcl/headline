@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata, pageSeo } from "@/data/seo";
 import { ModelCycle } from "@/components/home/ModelCycle";
 import { BlendImage } from "@/components/ui/BlendImage";
 import { ClosingCta } from "@/components/ui/ClosingCta";
@@ -6,12 +7,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { model } from "@/data/content";
 import { Dot } from "@/components/ui/Dot";
 
-export const metadata: Metadata = {
-  title: "Nuestro modelo",
-  description:
-    "Escuchar, planificar, visibilizar y evaluar: un modelo que parte por entender el contexto antes de actuar y convierte la estrategia en acciones medibles.",
-  alternates: { canonical: "/nuestro-modelo" },
-};
+export const metadata: Metadata = pageMetadata({ ...pageSeo.modelo, path: "/nuestro-modelo" });
 
 export default function ModeloPage() {
   return (
